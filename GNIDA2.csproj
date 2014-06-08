@@ -50,8 +50,9 @@
     <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FastColoredTextBox">
-      <HintPath>WIDE\FCTB\FastColoredTextBox\bin\Release\FastColoredTextBox.dll</HintPath>
+    <Reference Include="FastColoredTextBox, Version=2.13.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>WIDE\FCTB\Binary\FastColoredTextBox.dll</HintPath>
     </Reference>
     <Reference Include="PEReader">
       <HintPath>PEReader\PEReader.dll</HintPath>
@@ -70,12 +71,6 @@
   <ItemGroup>
     <Compile Include="Flirt.cs" />
     <Compile Include="GNIDA.cs" />
-    <Compile Include="LIDE\gtk-gui\generated.cs" />
-    <Compile Include="LIDE\gtk-gui\MainWindow.cs" />
-    <Compile Include="LIDE\MainWindow.cs" />
-    <Compile Include="LIDE\Program.cs" />
-    <Compile Include="LIDE\Properties\AssemblyInfo.cs" />
-    <Compile Include="LIDE\Window.cs" />
     <Compile Include="mediana\mediana.cs" />
     <Compile Include="WIDE\AboutBox1.cs">
       <SubType>Form</SubType>
@@ -332,14 +327,6 @@
     <EmbeddedResource Include="WIDE\Wide.resx">
       <DependentUpon>Wide.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="LIDE\bin\Debug\libstetic.dll.config" />
-    <None Include="LIDE\bin\Debug\LIDE.exe.config" />
-    <None Include="LIDE\bin\Debug\LIDE.vshost.exe.manifest" />
-    <None Include="LIDE\gtk-gui\gui.stetic" />
-    <None Include="LIDE\LIDE.csproj" />
-    <None Include="LIDE\LIDE.userprefs" />
-    <None Include="LIDE\obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="LIDE\obj\x86\Debug\LIDE.csprojResolveAssemblyReference.cache" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -363,6 +350,7 @@
     <None Include="WIDE\Be.Windows.Forms.HexBox\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="WIDE\Be.Windows.Forms.HexBox\obj\Release\Be.Windows.Forms.HexBox.csproj.GenerateResource.Cache" />
     <None Include="WIDE\Be.Windows.Forms.HexBox\obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="WIDE\FCTB\Help\FastColoredTextBox_Help.chm" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -371,8 +359,6 @@
     <Folder Include="AsmRes\TUP.AsmResolver\obj\Debug\TempPE\" />
     <Folder Include="AsmRes\TUP.AsmResolver\obj\Release\TempPE\" />
     <Folder Include="AsmRes\TUP.AsmResolver\Properties\" />
-    <Folder Include="LIDE\bin\Release\" />
-    <Folder Include="LIDE\obj\x86\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -402,19 +388,6 @@
     <Content Include="AsmRes\TUP.AsmResolver\PE\Writers\Notes.txt" />
     <Content Include="AsmRes\TUP.AsmResolver\TUP.AsmResolver.csproj.user" />
     <Content Include="AsmRes\TUP.AsmResolver\TUP.AsmResolver.xml" />
-    <Content Include="LIDE\bin\Debug\libstetic.dll" />
-    <Content Include="LIDE\bin\Debug\libstetic.xml" />
-    <Content Include="LIDE\bin\Debug\LIDE.exe" />
-    <Content Include="LIDE\bin\Debug\LIDE.exe.mdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="LIDE\bin\Debug\LIDE.pdb" />
-    <Content Include="LIDE\bin\Debug\LIDE.vshost.exe" />
-    <Content Include="LIDE\LIDE.csproj.user" />
-    <Content Include="LIDE\LIDE.sln" />
-    <Content Include="LIDE\obj\x86\Debug\LIDE.csproj.FileListAbsolute.txt" />
-    <Content Include="LIDE\obj\x86\Debug\LIDE.exe" />
-    <Content Include="LIDE\obj\x86\Debug\LIDE.pdb" />
     <Content Include="WIDE\Be.Windows.Forms.HexBox\Be.Windows.Forms.HexBox.xml" />
     <Content Include="WIDE\Be.Windows.Forms.HexBox\bin\Debug\Be.Windows.Forms.HexBox.dll" />
     <Content Include="WIDE\Be.Windows.Forms.HexBox\bin\Debug\Be.Windows.Forms.HexBox.pdb" />
@@ -441,6 +414,16 @@
     <Content Include="media\rh4.jpg" />
     <Content Include="media\save.jpg" />
     <Content Include="media\saveall.jpg" />
+    <Content Include="WIDE\FCTB\Backup\FastColoredTextBoxVS2008.sln" />
+    <Content Include="WIDE\FCTB\Binary\FastColoredTextBox.dll" />
+    <Content Include="WIDE\FCTB\Binary\FastColoredTextBox.xml" />
+    <Content Include="WIDE\FCTB\Binary\htmlDesc.xml" />
+    <Content Include="WIDE\FCTB\Binary\TabStrip.dll" />
+    <Content Include="WIDE\FCTB\Binary\Tester.exe" />
+    <Content Include="WIDE\FCTB\FastColoredTextBox.sln" />
+    <Content Include="WIDE\FCTB\FastColoredTextBoxVS2008.sln" />
+    <Content Include="WIDE\FCTB\license.txt" />
+    <Content Include="WIDE\FCTB\UpgradeLog.htm" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
