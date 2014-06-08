@@ -1,0 +1,470 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3FE4B5EA-719A-4B9B-9825-F6979CC7ADAA}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GNIDA</RootNamespace>
+    <AssemblyName>GNIDA</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FastColoredTextBox">
+      <HintPath>WIDE\FCTB\FastColoredTextBox\bin\Release\FastColoredTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="PEReader">
+      <HintPath>PEReader\PEReader.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Flirt.cs" />
+    <Compile Include="GNIDA.cs" />
+    <Compile Include="LIDE\gtk-gui\generated.cs" />
+    <Compile Include="LIDE\gtk-gui\MainWindow.cs" />
+    <Compile Include="LIDE\MainWindow.cs" />
+    <Compile Include="LIDE\Program.cs" />
+    <Compile Include="LIDE\Properties\AssemblyInfo.cs" />
+    <Compile Include="LIDE\Window.cs" />
+    <Compile Include="mediana\mediana.cs" />
+    <Compile Include="WIDE\AboutBox1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WIDE\AboutBox1.Designer.cs">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AsmRes\TUP.AsmResolver\ASMGlobals.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\ASM\InstructionCollection.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\ASM\Operand.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\ASM\OperandType.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\ASM\x86Assembler.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\ASM\x86Disassembler.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\ASM\x86Instruction.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\ASM\x86OpCode.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\ASM\x86OpCodes.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\ASM\x86OperandType.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\ASM\x86Register.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\DataDirectory.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\DataDirectoryName.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\Exceptions\InvalidInstructionException.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\Exceptions\InvalidOpCodeException.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\Exceptions\ResolveException.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\ExecutableFlags.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\ExportMethod.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\FileHeader.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\ICacheProvider.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\IDataDirectoryProvider.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\IHeader.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\IImageProvider.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\ImageSignature.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\IMethod.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\ImportMethod.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\IOptionalHeader.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\LibraryFlags.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\LibraryReference.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\Machine.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\MZHeader.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NameDemangler.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\AssemblyResolver.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\BlobHeap.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\BlobSignatureReader.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\GuidHeap.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\MemberCollection.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\MemberRange.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\MetaDataHeader.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\MetaDataResolver.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\MetaDataRow.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\MetaDataStream.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\MetaDataTable.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\MetaDataTableGroup.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\MetaDataTableType.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\NETGlobals.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\NETHeader.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\NETHeaderFlags.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\ArrayDimension.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\ArrayType.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\AssemblyAttributes.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\AssemblyDefinition.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\AssemblyHashAlgorithm.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\AssemblyReference.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\ByReferenceType.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\ClassLayout.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\Constant.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\CustomAttribute.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\CustomAttributeArgument.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\CustomAttributeSignature.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\ElementType.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\EnCLog.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\EnCMap.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\EventAttributes.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\EventDefinition.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\EventMap.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\ExportedType.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\FieldAttributes.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\FieldDefinition.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\FieldLayout.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\FieldMarshal.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\FieldPtr.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\FieldReference.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\FieldRVA.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\FieldSignature.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\FileAttributes.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\FileReference.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\GenericInstanceType.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\GenericParamConstraint.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\GenericParameter.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\GenericParameterAttributes.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\IGenericContext.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\IGenericInstance.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\IGenericParamProvider.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\IMemberSignature.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\InterfaceImplementation.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\IResolutionScope.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\ISpecification.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\IStreamProvider.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\ManifestResource.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\ManifestResourceAttributes.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MemberReference.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MetaDataMember.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MetaDataTokenResolver.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MethodAttributes.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MethodCallingConvention.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MethodDefinition.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MethodImpl.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MethodImplAttributes.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MethodPtr.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MethodReference.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MethodSemantics.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MethodSemanticsAttributes.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MethodSignature.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MethodSpecification.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\ModifierType.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\ModuleDefinition.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\ModuleReference.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MSIL\ExceptionHandler.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MSIL\ExceptionHandlerType.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MSIL\MethodBody.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MSIL\MethodBodySection.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MSIL\MSILAssembler.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MSIL\MSILCode.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MSIL\MSILDisassembler.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MSIL\MSILInstruction.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MSIL\MSILOpCode.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MSIL\MSILOpCodes.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MSIL\OperandType.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MSIL\StackBehaviour.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\MSIL\VariableDefinition.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\NestedClass.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\ObsoleteAssemblyTables.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\ParameterAttributes.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\ParameterDefinition.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\ParameterReference.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\ParamPtr.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\PinnedType.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\PInvokeImplAttributes.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\PInvokeImplementation.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\PointerType.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\PropertyAttributes.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\PropertyDefinition.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\PropertyMap.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\PropertyPtr.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\PropertySignature.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\SecurityDeclaration.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\StandAloneSignature.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\TypeAttributes.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\TypeDefinition.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\TypeReference.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\TypeSpecification.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\Specialized\TypeSystem.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\StringsHeap.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\TableHeap.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NET\UserStringsHeap.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\NTHeader.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\Offset.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\OffsetConverter.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\OptionalHeader32.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\OptionalHeader64.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\PE\PeImage.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\PE\Readers\ImportExportTableReader.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\PE\Readers\NETHeaderReader.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\PE\Readers\NETMethodReader.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\PE\Readers\NETTableReader.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\PE\Readers\PEHeaderReader.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\PE\Readers\ResourcesReader.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\PE\Structures.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\PE\Writers\MetaDataBuilderTask.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\PE\Writers\MetaDataWriter.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\PE\Writers\MsilMethodBuilder.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\PE\Writers\OffsetSizeCalculator.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\PE\Writers\PEConstructor.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\PE\Writers\PreparationTask.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\PE\Writers\RebuildingTask.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\PE\Writers\Structures.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\ReadingParameters.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\ResourceDataEntry.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\ResourceDirectory.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\ResourceDirectoryEntry.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\ResourceDirectoryType.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\Section.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\SectionFlags.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\SubSystem.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\Win32Assembly.cs" />
+    <Compile Include="AsmRes\TUP.AsmResolver\WritingParameters.cs" />
+    <Compile Include="WIDE\Be.Windows.Forms.HexBox\BuiltInContextMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WIDE\Be.Windows.Forms.HexBox\ByteCharConverters.cs" />
+    <Compile Include="WIDE\Be.Windows.Forms.HexBox\ByteCollection.cs" />
+    <Compile Include="WIDE\Be.Windows.Forms.HexBox\BytePositionInfo.cs" />
+    <Compile Include="WIDE\Be.Windows.Forms.HexBox\DataBlock.cs" />
+    <Compile Include="WIDE\Be.Windows.Forms.HexBox\DataMap.cs" />
+    <Compile Include="WIDE\Be.Windows.Forms.HexBox\DynamicByteProvider.cs" />
+    <Compile Include="WIDE\Be.Windows.Forms.HexBox\DynamicFileByteProvider.cs" />
+    <Compile Include="WIDE\Be.Windows.Forms.HexBox\FileByteProvider.cs" />
+    <Compile Include="WIDE\Be.Windows.Forms.HexBox\FileDataBlock.cs" />
+    <Compile Include="WIDE\Be.Windows.Forms.HexBox\FindOptions.cs" />
+    <Compile Include="WIDE\Be.Windows.Forms.HexBox\HexBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WIDE\Be.Windows.Forms.HexBox\HexCasing.cs" />
+    <Compile Include="WIDE\Be.Windows.Forms.HexBox\IByteProvider.cs" />
+    <Compile Include="WIDE\Be.Windows.Forms.HexBox\MemoryDataBlock.cs" />
+    <Compile Include="WIDE\Be.Windows.Forms.HexBox\NativeMethods.cs" />
+    <Compile Include="WIDE\Be.Windows.Forms.HexBox\Properties\Resources.Designer.cs" />
+    <Compile Include="WIDE\Be.Windows.Forms.HexBox\Util.cs" />
+    <Compile Include="WIDE\Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WIDE\Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WIDE\Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WIDE\Form3.Designer.cs">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WIDE\Wide.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WIDE\Wide.Designer.cs">
+      <DependentUpon>Wide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WIDE\Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="WIDE\AboutBox1.resx">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AsmRes\AsmResolver\Properties\Resources.resx" />
+    <EmbeddedResource Include="WIDE\Be.Windows.Forms.HexBox\HexBox.resx">
+      <DependentUpon>HexBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WIDE\Be.Windows.Forms.HexBox\obj\Debug\Be.Windows.Forms.HexBox.resources" />
+    <EmbeddedResource Include="WIDE\Be.Windows.Forms.HexBox\obj\Debug\Be.Windows.Forms.Properties.Resources.resources" />
+    <EmbeddedResource Include="WIDE\Be.Windows.Forms.HexBox\obj\Release\Be.Windows.Forms.HexBox.resources" />
+    <EmbeddedResource Include="WIDE\Be.Windows.Forms.HexBox\obj\Release\Be.Windows.Forms.Properties.Resources.resources" />
+    <EmbeddedResource Include="WIDE\Be.Windows.Forms.HexBox\Properties\Resources.resx" />
+    <EmbeddedResource Include="WIDE\Wide.resx">
+      <DependentUpon>Wide.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="LIDE\bin\Debug\libstetic.dll.config" />
+    <None Include="LIDE\bin\Debug\LIDE.exe.config" />
+    <None Include="LIDE\bin\Debug\LIDE.vshost.exe.manifest" />
+    <None Include="LIDE\gtk-gui\gui.stetic" />
+    <None Include="LIDE\LIDE.csproj" />
+    <None Include="LIDE\LIDE.userprefs" />
+    <None Include="LIDE\obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="LIDE\obj\x86\Debug\LIDE.csprojResolveAssemblyReference.cache" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="AsmRes\TestConsoleApplication\TestConsoleApplication.vcxproj" />
+    <None Include="AsmRes\TestConsoleApplication\TestConsoleApplication.vcxproj.filters" />
+    <None Include="AsmRes\TUP.AsmResolver\bin\Release\TUP.AsmResolver.dll.lastcodeanalysissucceeded" />
+    <None Include="AsmRes\TUP.AsmResolver\ClassDiagram1.cd" />
+    <None Include="AsmRes\TUP.AsmResolver\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="AsmRes\TUP.AsmResolver\obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="AsmRes\TUP.AsmResolver\PE\Writers\Plan .NET Rebuilder" />
+    <None Include="AsmRes\TUP.AsmResolver\TUP.AsmResolver.csproj" />
+    <None Include="WIDE\Be.Windows.Forms.HexBox\Be.Windows.Forms.HexBox.csproj" />
+    <None Include="WIDE\Be.Windows.Forms.HexBox\HexBox.snk" />
+    <None Include="WIDE\Be.Windows.Forms.HexBox\obj\Debug\Be.Windows.Forms.HexBox.csproj.GenerateResource.Cache" />
+    <None Include="WIDE\Be.Windows.Forms.HexBox\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="WIDE\Be.Windows.Forms.HexBox\obj\Release\Be.Windows.Forms.HexBox.csproj.GenerateResource.Cache" />
+    <None Include="WIDE\Be.Windows.Forms.HexBox\obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AsmRes\TUP.AsmResolver\obj\Debug\TempPE\" />
+    <Folder Include="AsmRes\TUP.AsmResolver\obj\Release\TempPE\" />
+    <Folder Include="AsmRes\TUP.AsmResolver\Properties\" />
+    <Folder Include="LIDE\bin\Release\" />
+    <Folder Include="LIDE\obj\x86\Debug\TempPE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+    <Content Include="AsmRes\TestConsoleApplication\ReadMe.txt" />
+    <Content Include="AsmRes\TestConsoleApplication\stdafx.cpp" />
+    <Content Include="AsmRes\TestConsoleApplication\stdafx.h" />
+    <Content Include="AsmRes\TestConsoleApplication\targetver.h" />
+    <Content Include="AsmRes\TestConsoleApplication\TestConsoleApplication.cpp" />
+    <Content Include="AsmRes\TUP.AsmResolver.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AsmRes\TUP.AsmResolver.sln" />
+    <Content Include="AsmRes\TUP.AsmResolver\ASM\Notes.txt" />
+    <Content Include="AsmRes\TUP.AsmResolver\bin\Debug\TUP.AsmResolver.dll" />
+    <Content Include="AsmRes\TUP.AsmResolver\bin\Debug\TUP.AsmResolver.pdb" />
+    <Content Include="AsmRes\TUP.AsmResolver\bin\Debug\TUP.AsmResolver.xml" />
+    <Content Include="AsmRes\TUP.AsmResolver\bin\Release\TUP.AsmResolver.dll" />
+    <Content Include="AsmRes\TUP.AsmResolver\bin\Release\TUP.AsmResolver.dll.CodeAnalysisLog.xml" />
+    <Content Include="AsmRes\TUP.AsmResolver\bin\Release\TUP.AsmResolver.pdb" />
+    <Content Include="AsmRes\TUP.AsmResolver\bin\Release\TUP.AsmResolver.xml" />
+    <Content Include="AsmRes\TUP.AsmResolver\obj\Debug\TUP.AsmResolver.csproj.FileListAbsolute.txt" />
+    <Content Include="AsmRes\TUP.AsmResolver\obj\Debug\TUP.AsmResolver.dll" />
+    <Content Include="AsmRes\TUP.AsmResolver\obj\Debug\TUP.AsmResolver.pdb" />
+    <Content Include="AsmRes\TUP.AsmResolver\obj\Release\TUP.AsmResolver.csproj.FileListAbsolute.txt" />
+    <Content Include="AsmRes\TUP.AsmResolver\obj\Release\TUP.AsmResolver.dll" />
+    <Content Include="AsmRes\TUP.AsmResolver\obj\Release\TUP.AsmResolver.pdb" />
+    <Content Include="AsmRes\TUP.AsmResolver\PE\Writers\Notes.txt" />
+    <Content Include="AsmRes\TUP.AsmResolver\TUP.AsmResolver.csproj.user" />
+    <Content Include="AsmRes\TUP.AsmResolver\TUP.AsmResolver.xml" />
+    <Content Include="LIDE\bin\Debug\libstetic.dll" />
+    <Content Include="LIDE\bin\Debug\libstetic.xml" />
+    <Content Include="LIDE\bin\Debug\LIDE.exe" />
+    <Content Include="LIDE\bin\Debug\LIDE.exe.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LIDE\bin\Debug\LIDE.pdb" />
+    <Content Include="LIDE\bin\Debug\LIDE.vshost.exe" />
+    <Content Include="LIDE\LIDE.csproj.user" />
+    <Content Include="LIDE\LIDE.sln" />
+    <Content Include="LIDE\obj\x86\Debug\LIDE.csproj.FileListAbsolute.txt" />
+    <Content Include="LIDE\obj\x86\Debug\LIDE.exe" />
+    <Content Include="LIDE\obj\x86\Debug\LIDE.pdb" />
+    <Content Include="WIDE\Be.Windows.Forms.HexBox\Be.Windows.Forms.HexBox.xml" />
+    <Content Include="WIDE\Be.Windows.Forms.HexBox\bin\Debug\Be.Windows.Forms.HexBox.dll" />
+    <Content Include="WIDE\Be.Windows.Forms.HexBox\bin\Debug\Be.Windows.Forms.HexBox.pdb" />
+    <Content Include="WIDE\Be.Windows.Forms.HexBox\bin\Debug\Be.Windows.Forms.HexBox.xml" />
+    <Content Include="WIDE\Be.Windows.Forms.HexBox\bin\Release\Be.Windows.Forms.HexBox.dll" />
+    <Content Include="WIDE\Be.Windows.Forms.HexBox\HexBox.bmp" />
+    <Content Include="WIDE\Be.Windows.Forms.HexBox\obj\Debug\Be.Windows.Forms.HexBox.csproj.FileListAbsolute.txt" />
+    <Content Include="WIDE\Be.Windows.Forms.HexBox\obj\Debug\Be.Windows.Forms.HexBox.dll" />
+    <Content Include="WIDE\Be.Windows.Forms.HexBox\obj\Debug\Be.Windows.Forms.HexBox.pdb" />
+    <Content Include="WIDE\Be.Windows.Forms.HexBox\obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
+    <Content Include="WIDE\Be.Windows.Forms.HexBox\obj\Release\Be.Windows.Forms.HexBox.csproj.FileListAbsolute.txt" />
+    <Content Include="WIDE\Be.Windows.Forms.HexBox\obj\Release\Be.Windows.Forms.HexBox.dll" />
+    <Content Include="WIDE\Be.Windows.Forms.HexBox\obj\Release\TempPE\Properties.Resources.Designer.cs.dll" />
+    <Content Include="media\140px-Glider.svg.png" />
+    <Content Include="media\back.jpg" />
+    <Content Include="media\favicon.ico" />
+    <Content Include="media\Gnida.bmp" />
+    <Content Include="media\Gnida.ico" />
+    <Content Include="media\nxt.jpg" />
+    <Content Include="media\open.jpg" />
+    <Content Include="media\rh1.jpg" />
+    <Content Include="media\rh2.jpg" />
+    <Content Include="media\rh23.jpg" />
+    <Content Include="media\rh4.jpg" />
+    <Content Include="media\save.jpg" />
+    <Content Include="media\saveall.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>Клиентский профиль .NET Framework 3.5 с пакетом обновления 1 %28SP1%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
