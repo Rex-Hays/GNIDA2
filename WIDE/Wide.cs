@@ -11,8 +11,8 @@ using System.IO;
 using TUP.AsmResolver;
 using Be.Windows.Forms;
 using FastColoredTextBoxNS;
-using AlphaOmega.Debug;
 using GNIDA;
+
 namespace WIDE
 {
     public partial class MainForm : Form

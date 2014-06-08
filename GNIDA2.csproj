@@ -54,9 +54,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>WIDE\FCTB\Binary\FastColoredTextBox.dll</HintPath>
     </Reference>
-    <Reference Include="PEReader">
-      <HintPath>PEReader\PEReader.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
