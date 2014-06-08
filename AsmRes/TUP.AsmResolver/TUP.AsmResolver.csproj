@@ -100,6 +100,12 @@
     <Compile Include="NET\Specialized\MSIL\VariableDefinition.cs" />
     <Compile Include="NET\Specialized\ParamPtr.cs" />
     <Compile Include="NET\Specialized\PropertyPtr.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="OffsetConverter.cs" />
     <Compile Include="PE\Writers\MetaDataBuilderTask.cs" />
     <Compile Include="PE\Writers\MsilMethodBuilder.cs" />
@@ -235,10 +241,17 @@
   <ItemGroup>
     <Content Include="ASM\Notes.txt" />
     <Content Include="bin\Debug\TUP.AsmResolver.dll" />
+    <Content Include="obj\Release\TUP.AsmResolver.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\TUP.AsmResolver.dll" />
+    <Content Include="obj\Release\TUP.AsmResolver.pdb" />
     <Content Include="PE\Writers\Notes.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="PE\Writers\Plan .NET Rebuilder" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Release\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
