@@ -71,8 +71,6 @@ public partial class MainWindow
 	
 	private global::Gtk.Label label2;
 	
-	private global::Stetic.Custom custom1;
-	
 	private global::Gtk.Label label3;
 	
 	private global::Gtk.Label label4;
@@ -246,19 +244,10 @@ public partial class MainWindow
 		this.label2.LabelProp = global::Mono.Unix.Catalog.GetString ("page1");
 		this.notebook2.SetTabLabel (this.GtkScrolledWindow1, this.label2);
 		this.label2.ShowAll ();
-		// Container child notebook2.Gtk.Notebook+NotebookChild
-		this.custom1 = new global::Stetic.Custom ();
-		this.custom1.Name = "custom1";
-		this.custom1.Int1 = 0;
-		this.custom1.Int2 = 0;
-		this.notebook2.Add (this.custom1);
-		global::Gtk.Notebook.NotebookChild w11 = ((global::Gtk.Notebook.NotebookChild)(this.notebook2 [this.custom1]));
-		w11.Position = 1;
 		// Notebook tab
 		this.label3 = new global::Gtk.Label ();
 		this.label3.Name = "label3";
 		this.label3.LabelProp = global::Mono.Unix.Catalog.GetString ("page2");
-		this.notebook2.SetTabLabel (this.custom1, this.label3);
 		this.label3.ShowAll ();
 		// Notebook tab
 		global::Gtk.Label w12 = new global::Gtk.Label ();
