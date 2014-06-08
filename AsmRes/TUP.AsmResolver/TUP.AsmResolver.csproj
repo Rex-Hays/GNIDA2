@@ -234,6 +234,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ASM\Notes.txt" />
+    <Content Include="bin\Debug\TUP.AsmResolver.dll" />
     <Content Include="PE\Writers\Notes.txt" />
   </ItemGroup>
   <ItemGroup>
