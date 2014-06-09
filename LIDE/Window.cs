@@ -7,7 +7,7 @@ namespace LIDE
 		public Window () : 
 				base(Gtk.WindowType.Toplevel)
 		{
-			this.Build ();
+            this.Build();
 		}
 	}
 }

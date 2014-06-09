@@ -1,0 +1,14 @@
+C:\Users\Damir\Documents\Visual Studio 2013\Projects\GNIDA\LIDE\obj\x86\Debug\LIDE.csprojResolveAssemblyReference.cache
+C:\Users\Damir\Documents\Visual Studio 2013\Projects\GNIDA\LIDE\bin\Debug\LIDE.exe
+C:\Users\Damir\Documents\Visual Studio 2013\Projects\GNIDA\LIDE\bin\Debug\LIDE.pdb
+C:\Users\Damir\Documents\Visual Studio 2013\Projects\GNIDA\LIDE\obj\x86\Debug\LIDE.exe
+C:\Users\Damir\Documents\Visual Studio 2013\Projects\GNIDA\LIDE\obj\x86\Debug\LIDE.pdb
+C:\Users\Damir\Documents\Visual Studio 2013\Projects\GNIDA\LIDE\bin\Debug\LIDE.exe.config
+C:\Users\Damir\Documents\Visual Studio 2013\Projects\GNIDA\LIDE\bin\Debug\libstetic.dll
+C:\Users\Damir\Documents\Visual Studio 2013\Projects\GNIDA\LIDE\bin\Debug\libstetic.xml
+C:\Users\Damir\Source\Repos\GNIDA22\LIDE\bin\Debug\LIDE.exe.config
+C:\Users\Damir\Source\Repos\GNIDA22\LIDE\obj\x86\Debug\LIDE.exe
+C:\Users\Damir\Source\Repos\GNIDA22\LIDE\obj\x86\Debug\LIDE.pdb
+C:\Users\Damir\Source\Repos\GNIDA22\LIDE\bin\Debug\LIDE.exe
+C:\Users\Damir\Source\Repos\GNIDA22\LIDE\bin\Debug\LIDE.pdb
+C:\Users\Damir\Source\Repos\GNIDA22\LIDE\obj\x86\Debug\LIDE.csprojResolveAssemblyReference.cache

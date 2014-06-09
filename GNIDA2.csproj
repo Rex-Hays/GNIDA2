@@ -70,11 +70,19 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>WIDE.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="atk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f, processorArchitecture=MSIL" />
     <Reference Include="FastColoredTextBox, Version=2.13.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>WIDE\FCTB\Binary\FastColoredTextBox.dll</HintPath>
     </Reference>
+    <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f, processorArchitecture=MSIL" />
+    <Reference Include="gtk-dotnet, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f, processorArchitecture=MSIL" />
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f, processorArchitecture=MSIL" />
+    <Reference Include="Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -89,6 +97,10 @@
   <ItemGroup>
     <Compile Include="Flirt.cs" />
     <Compile Include="GNIDA.cs" />
+    <Compile Include="LIDE\gtk-gui\generated.cs" />
+    <Compile Include="LIDE\gtk-gui\MainWindow.cs" />
+    <Compile Include="LIDE\MainWindow.cs" />
+    <Compile Include="LIDE\Program.cs" />
     <Compile Include="mediana\mediana.cs" />
     <Compile Include="WIDE\AboutBox1.cs">
       <SubType>Form</SubType>
@@ -345,6 +357,14 @@
     <EmbeddedResource Include="WIDE\Wide.resx">
       <DependentUpon>Wide.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="LIDE\bin\Debug\libstetic.dll.config" />
+    <None Include="LIDE\bin\Debug\LIDE.exe.config" />
+    <None Include="LIDE\bin\Debug\LIDE.vshost.exe.config" />
+    <None Include="LIDE\bin\Debug\LIDE.vshost.exe.manifest" />
+    <None Include="LIDE\gtk-gui\gui.stetic" />
+    <None Include="LIDE\LIDE.csproj" />
+    <None Include="LIDE\LIDE.userprefs" />
+    <None Include="LIDE\obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -377,6 +397,9 @@
     <Folder Include="AsmRes\TUP.AsmResolver\obj\Debug\TempPE\" />
     <Folder Include="AsmRes\TUP.AsmResolver\obj\Release\TempPE\" />
     <Folder Include="AsmRes\TUP.AsmResolver\Properties\" />
+    <Folder Include="LIDE\bin\Release\" />
+    <Folder Include="LIDE\obj\x86\Debug\TempPE\" />
+    <Folder Include="LIDE\Properties\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -406,6 +429,19 @@
     <Content Include="AsmRes\TUP.AsmResolver\PE\Writers\Notes.txt" />
     <Content Include="AsmRes\TUP.AsmResolver\TUP.AsmResolver.csproj.user" />
     <Content Include="AsmRes\TUP.AsmResolver\TUP.AsmResolver.xml" />
+    <Content Include="LIDE\bin\Debug\libstetic.dll" />
+    <Content Include="LIDE\bin\Debug\libstetic.xml" />
+    <Content Include="LIDE\bin\Debug\LIDE.exe" />
+    <Content Include="LIDE\bin\Debug\LIDE.exe.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LIDE\bin\Debug\LIDE.pdb" />
+    <Content Include="LIDE\bin\Debug\LIDE.vshost.exe" />
+    <Content Include="LIDE\LIDE.csproj.user" />
+    <Content Include="LIDE\LIDE.sln" />
+    <Content Include="LIDE\obj\x86\Debug\LIDE.csproj.FileListAbsolute.txt" />
+    <Content Include="LIDE\obj\x86\Debug\LIDE.exe" />
+    <Content Include="LIDE\obj\x86\Debug\LIDE.pdb" />
     <Content Include="WIDE\Be.Windows.Forms.HexBox\Be.Windows.Forms.HexBox.xml" />
     <Content Include="WIDE\Be.Windows.Forms.HexBox\bin\Debug\Be.Windows.Forms.HexBox.dll" />
     <Content Include="WIDE\Be.Windows.Forms.HexBox\bin\Debug\Be.Windows.Forms.HexBox.pdb" />
