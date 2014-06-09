@@ -385,6 +385,7 @@
     <None Include="WIDE\Be.Windows.Forms.HexBox\Be.Windows.Forms.HexBox.csproj" />
     <None Include="WIDE\Be.Windows.Forms.HexBox\HexBox.snk" />
     <None Include="WIDE\Be.Windows.Forms.HexBox\obj\Debug\Be.Windows.Forms.HexBox.csproj.GenerateResource.Cache" />
+    <None Include="WIDE\Be.Windows.Forms.HexBox\obj\Debug\Be.Windows.Forms.HexBox.csprojResolveAssemblyReference.cache" />
     <None Include="WIDE\Be.Windows.Forms.HexBox\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="WIDE\Be.Windows.Forms.HexBox\obj\Release\Be.Windows.Forms.HexBox.csproj.GenerateResource.Cache" />
     <None Include="WIDE\Be.Windows.Forms.HexBox\obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
