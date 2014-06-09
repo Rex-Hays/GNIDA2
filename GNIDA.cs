@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TUP.AsmResolver;
-using TUP.AsmResolver.ASM;
+using GNIDA.Loaders;
 using System.ComponentModel;
 
 namespace GNIDA
@@ -89,7 +88,7 @@ namespace GNIDA
     }
     public class GNIDA1
     {
-        public Win32Assembly assembly;
+        public Loaders.LWin32 assembly;
         public mediana MeDisasm;
         public BackgroundWorker bw = new BackgroundWorker();
         public MyDictionary FullProcList = new MyDictionary();
@@ -274,7 +273,7 @@ namespace GNIDA
 
 
             RaiseLogEvent(this, "Loading " + FName);
-            assembly = Win32Assembly.LoadFile(FName);
+            assembly = LWin32.LoadFile(FName);
             MeDisasm = new mediana(assembly);
             int i = 0;
             foreach (Section sect in assembly.NTHeader.Sections)

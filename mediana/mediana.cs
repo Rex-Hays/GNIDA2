@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TUP.AsmResolver;
-using TUP.AsmResolver.ASM;
+//using TUP.AsmResolver;
+//using TUP.AsmResolver.ASM;
 using System.Runtime.InteropServices;
-
+using GNIDA.Loaders;
 
 namespace GNIDA
 {
@@ -6629,8 +6629,8 @@ static void convert_prefixes(INSTRUCTION instr, byte[] prefixes)
 }
 
 
-        public static Win32Assembly assembly;
-        public mediana(Win32Assembly _assembly)
+        public static Loaders.LWin32 assembly;
+        public mediana(Loaders.LWin32 _assembly)
         {
             assembly = _assembly;
         }

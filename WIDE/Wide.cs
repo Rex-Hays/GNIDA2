@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using TUP.AsmResolver;
+//using TUP.AsmResolver;
 using Be.Windows.Forms;
 using FastColoredTextBoxNS;
 using GNIDA;
-
+using GNIDA.Loaders;
 namespace WIDE
 {
     public partial class MainForm : Form

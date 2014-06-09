@@ -50,9 +50,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="TUP.AsmResolver">
-      <HintPath>..\AsmRes\TUP.AsmResolver\bin\Debug\TUP.AsmResolver.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutBox1.cs">

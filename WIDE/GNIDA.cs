@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TUP.AsmResolver;
-using TUP.AsmResolver.ASM;
+using GNIDA.Loaders;
 using System.ComponentModel;
 
 namespace GNIDA
