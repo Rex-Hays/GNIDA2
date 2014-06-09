@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A3DD6AB0-55F3-4247-AA65-FAD9A4125682}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WIDE</RootNamespace>
+    <AssemblyName>WIDE</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Be.Windows.Forms.HexBox, Version=1.6.0.10644, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Be.Windows.Forms.HexBox\bin\Debug\Be.Windows.Forms.HexBox.dll</HintPath>
+    </Reference>
+    <Reference Include="FastColoredTextBox, Version=2.13.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>FCTB\Binary\FastColoredTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TUP.AsmResolver">
+      <HintPath>..\AsmRes\TUP.AsmResolver\bin\Debug\TUP.AsmResolver.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutBox1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutBox1.Designer.cs">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Be.Windows.Forms.HexBox\BuiltInContextMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Be.Windows.Forms.HexBox\ByteCharConverters.cs" />
+    <Compile Include="Be.Windows.Forms.HexBox\ByteCollection.cs" />
+    <Compile Include="Be.Windows.Forms.HexBox\BytePositionInfo.cs" />
+    <Compile Include="Be.Windows.Forms.HexBox\DataBlock.cs" />
+    <Compile Include="Be.Windows.Forms.HexBox\DataMap.cs" />
+    <Compile Include="Be.Windows.Forms.HexBox\DynamicByteProvider.cs" />
+    <Compile Include="Be.Windows.Forms.HexBox\DynamicFileByteProvider.cs" />
+    <Compile Include="Be.Windows.Forms.HexBox\FileByteProvider.cs" />
+    <Compile Include="Be.Windows.Forms.HexBox\FileDataBlock.cs" />
+    <Compile Include="Be.Windows.Forms.HexBox\FindOptions.cs" />
+    <Compile Include="Be.Windows.Forms.HexBox\HexBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Be.Windows.Forms.HexBox\HexCasing.cs" />
+    <Compile Include="Be.Windows.Forms.HexBox\IByteProvider.cs" />
+    <Compile Include="Be.Windows.Forms.HexBox\MemoryDataBlock.cs" />
+    <Compile Include="Be.Windows.Forms.HexBox\NativeMethods.cs" />
+    <Compile Include="Be.Windows.Forms.HexBox\Properties\Resources.Designer.cs" />
+    <Compile Include="Be.Windows.Forms.HexBox\Util.cs" />
+    <Compile Include="FCTB\FastColoredTextBox\GoToForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FCTB\FastColoredTextBox\GoToForm.Designer.cs">
+      <DependentUpon>GoToForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FCTB\FastColoredTextBox\Hotkeys.cs" />
+    <Compile Include="FCTB\FastColoredTextBox\HotkeysEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FCTB\FastColoredTextBox\HotkeysEditorForm.Designer.cs">
+      <DependentUpon>HotkeysEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FCTB\FastColoredTextBox\LimitedStack.cs" />
+    <Compile Include="FCTB\FastColoredTextBox\PlatformType.cs" />
+    <Compile Include="FCTB\FastColoredTextBox\UnfocusablePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Flirt.cs" />
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form3.Designer.cs">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GNIDA.cs" />
+    <Compile Include="mediana.cs" />
+    <Compile Include="Wide.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Wide.Designer.cs">
+      <DependentUpon>Wide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AboutBox1.resx">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Be.Windows.Forms.HexBox\HexBox.resx">
+      <DependentUpon>HexBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Be.Windows.Forms.HexBox\obj\Debug\Be.Windows.Forms.HexBox.resources" />
+    <EmbeddedResource Include="Be.Windows.Forms.HexBox\obj\Debug\Be.Windows.Forms.Properties.Resources.resources" />
+    <EmbeddedResource Include="Be.Windows.Forms.HexBox\obj\Release\Be.Windows.Forms.HexBox.resources" />
+    <EmbeddedResource Include="Be.Windows.Forms.HexBox\obj\Release\Be.Windows.Forms.Properties.Resources.resources" />
+    <EmbeddedResource Include="Be.Windows.Forms.HexBox\Properties\Resources.resx" />
+    <EmbeddedResource Include="FCTB\FastColoredTextBox\GoToForm.resx">
+      <DependentUpon>GoToForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FCTB\FastColoredTextBox\HotkeysEditorForm.resx">
+      <DependentUpon>HotkeysEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FCTB\FastColoredTextBox\obj\Debug\FastColoredTextBoxNS.FastColoredTextBox.resources" />
+    <EmbeddedResource Include="FCTB\FastColoredTextBox\obj\Debug\FastColoredTextBoxNS.FindForm.resources" />
+    <EmbeddedResource Include="FCTB\FastColoredTextBox\obj\Debug\FastColoredTextBoxNS.GoToForm.resources" />
+    <EmbeddedResource Include="FCTB\FastColoredTextBox\obj\Debug\FastColoredTextBoxNS.HotkeysEditorForm.resources" />
+    <EmbeddedResource Include="FCTB\FastColoredTextBox\obj\Debug\FastColoredTextBoxNS.ReplaceForm.resources" />
+    <EmbeddedResource Include="FCTB\FastColoredTextBox\obj\Release\FastColoredTextBoxNS.FastColoredTextBox.resources" />
+    <EmbeddedResource Include="FCTB\FastColoredTextBox\obj\Release\FastColoredTextBoxNS.FindForm.resources" />
+    <EmbeddedResource Include="FCTB\FastColoredTextBox\obj\Release\FastColoredTextBoxNS.GoToForm.resources" />
+    <EmbeddedResource Include="FCTB\FastColoredTextBox\obj\Release\FastColoredTextBoxNS.HotkeysEditorForm.resources" />
+    <EmbeddedResource Include="FCTB\FastColoredTextBox\obj\Release\FastColoredTextBoxNS.ReplaceForm.resources" />
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form3.resx">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Wide.resx">
+      <DependentUpon>Wide.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Be.Windows.Forms.HexBox\Be.Windows.Forms.HexBox.csproj" />
+    <None Include="Be.Windows.Forms.HexBox\HexBox.snk" />
+    <None Include="Be.Windows.Forms.HexBox\obj\Debug\Be.Windows.Forms.HexBox.csproj.GenerateResource.Cache" />
+    <None Include="Be.Windows.Forms.HexBox\obj\Debug\Be.Windows.Forms.HexBox.csprojResolveAssemblyReference.cache" />
+    <None Include="Be.Windows.Forms.HexBox\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="Be.Windows.Forms.HexBox\obj\GTK debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="Be.Windows.Forms.HexBox\obj\GTK release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="Be.Windows.Forms.HexBox\obj\Release\Be.Windows.Forms.HexBox.csproj.GenerateResource.Cache" />
+    <None Include="Be.Windows.Forms.HexBox\obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="FCTB\FastColoredTextBox\bin\Release\FastColoredTextBox.dll.lastcodeanalysissucceeded" />
+    <None Include="FCTB\FastColoredTextBox\FastColoredTextBox.csproj" />
+    <None Include="FCTB\FastColoredTextBox\obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="FCTB\FastColoredTextBox\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="FCTB\FastColoredTextBox\obj\Debug\FastColoredTextBox.csproj.GenerateResource.Cache" />
+    <None Include="FCTB\FastColoredTextBox\obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="FCTB\FastColoredTextBox\obj\Release\FastColoredTextBox.csproj.GenerateResource.Cache" />
+    <None Include="FCTB\FastColoredTextBox\obj\Release\FastColoredTextBox.csprojResolveAssemblyReference.cache" />
+    <None Include="FCTB\FastColoredTextBox\SyntaxHighlighter.cs.old" />
+    <None Include="FCTB\Help\FastColoredTextBox_Help.chm" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Be.Windows.Forms.HexBox\Be.Windows.Forms.HexBox.xml" />
+    <Content Include="Be.Windows.Forms.HexBox\bin\Debug\Be.Windows.Forms.HexBox.dll" />
+    <Content Include="Be.Windows.Forms.HexBox\bin\Debug\Be.Windows.Forms.HexBox.pdb" />
+    <Content Include="Be.Windows.Forms.HexBox\bin\Debug\Be.Windows.Forms.HexBox.xml" />
+    <Content Include="Be.Windows.Forms.HexBox\bin\Release\Be.Windows.Forms.HexBox.dll" />
+    <Content Include="Be.Windows.Forms.HexBox\HexBox.bmp" />
+    <Content Include="Be.Windows.Forms.HexBox\obj\Debug\Be.Windows.Forms.HexBox.csproj.FileListAbsolute.txt" />
+    <Content Include="Be.Windows.Forms.HexBox\obj\Debug\Be.Windows.Forms.HexBox.dll" />
+    <Content Include="Be.Windows.Forms.HexBox\obj\Debug\Be.Windows.Forms.HexBox.pdb" />
+    <Content Include="Be.Windows.Forms.HexBox\obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
+    <Content Include="Be.Windows.Forms.HexBox\obj\GTK debug\TempPE\Properties.Resources.Designer.cs.dll" />
+    <Content Include="Be.Windows.Forms.HexBox\obj\GTK release\TempPE\Properties.Resources.Designer.cs.dll" />
+    <Content Include="Be.Windows.Forms.HexBox\obj\Release\Be.Windows.Forms.HexBox.csproj.FileListAbsolute.txt" />
+    <Content Include="Be.Windows.Forms.HexBox\obj\Release\Be.Windows.Forms.HexBox.dll" />
+    <Content Include="Be.Windows.Forms.HexBox\obj\Release\TempPE\Properties.Resources.Designer.cs.dll" />
+    <Content Include="FCTB\Backup\FastColoredTextBoxVS2008.sln" />
+    <Content Include="FCTB\Binary\FastColoredTextBox.dll" />
+    <Content Include="FCTB\Binary\FastColoredTextBox.xml" />
+    <Content Include="FCTB\Binary\htmlDesc.xml" />
+    <Content Include="FCTB\Binary\TabStrip.dll" />
+    <Content Include="FCTB\Binary\Tester.exe" />
+    <Content Include="FCTB\FastColoredTextBox.sln" />
+    <Content Include="FCTB\FastColoredTextBoxVS2008.sln" />
+    <Content Include="FCTB\FastColoredTextBox\bin\Debug\FastColoredTextBox.dll" />
+    <Content Include="FCTB\FastColoredTextBox\bin\Debug\FastColoredTextBox.pdb" />
+    <Content Include="FCTB\FastColoredTextBox\bin\Debug\FastColoredTextBox.XML" />
+    <Content Include="FCTB\FastColoredTextBox\bin\Release\FastColoredTextBox.dll" />
+    <Content Include="FCTB\FastColoredTextBox\bin\Release\FastColoredTextBox.dll.CodeAnalysisLog.xml" />
+    <Content Include="FCTB\FastColoredTextBox\bin\Release\FastColoredTextBox.pdb" />
+    <Content Include="FCTB\FastColoredTextBox\obj\Debug\FastColoredTextBox.csproj.FileListAbsolute.txt" />
+    <Content Include="FCTB\FastColoredTextBox\obj\Debug\FastColoredTextBox.dll" />
+    <Content Include="FCTB\FastColoredTextBox\obj\Debug\FastColoredTextBox.pdb" />
+    <Content Include="FCTB\FastColoredTextBox\obj\Release\FastColoredTextBox.csproj.FileListAbsolute.txt" />
+    <Content Include="FCTB\FastColoredTextBox\obj\Release\FastColoredTextBox.dll" />
+    <Content Include="FCTB\FastColoredTextBox\obj\Release\FastColoredTextBox.pdb" />
+    <Content Include="FCTB\license.txt" />
+    <Content Include="FCTB\UpgradeLog.htm" />
+    <Content Include="media\140px-Glider.svg.png" />
+    <Content Include="media\back.jpg" />
+    <Content Include="media\favicon.ico" />
+    <Content Include="media\Gnida.bmp" />
+    <Content Include="media\Gnida.ico" />
+    <Content Include="media\nxt.jpg" />
+    <Content Include="media\open.jpg" />
+    <Content Include="media\rh1.jpg" />
+    <Content Include="media\rh2.jpg" />
+    <Content Include="media\rh23.jpg" />
+    <Content Include="media\rh4.jpg" />
+    <Content Include="media\save.jpg" />
+    <Content Include="media\saveall.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Be.Windows.Forms.HexBox\bin\GTK debug\" />
+    <Folder Include="Be.Windows.Forms.HexBox\bin\GTK release\" />
+    <Folder Include="FCTB\FastColoredTextBox\obj\Debug\TempPE\" />
+    <Folder Include="FCTB\FastColoredTextBox\obj\Release\TempPE\" />
+    <Folder Include="FCTB\FastColoredTextBox\Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
