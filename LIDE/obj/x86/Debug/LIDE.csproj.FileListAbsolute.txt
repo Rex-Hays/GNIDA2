@@ -12,8 +12,7 @@ C:\Users\Damir\Source\Repos\GNIDA22\LIDE\obj\x86\Debug\LIDE.pdb
 C:\Users\Damir\Source\Repos\GNIDA22\LIDE\bin\Debug\LIDE.exe
 C:\Users\Damir\Source\Repos\GNIDA22\LIDE\bin\Debug\LIDE.pdb
 C:\Users\Damir\Source\Repos\GNIDA22\LIDE\obj\x86\Debug\LIDE.csprojResolveAssemblyReference.cache
-C:\Users\Damir\Documents\GNIDA26\LIDE\obj\x86\Debug\LIDE.csprojResolveAssemblyReference.cache
-C:\Users\Damir\Documents\GNIDA26\LIDE\obj\x86\Debug\LIDE.exe
-C:\Users\Damir\Documents\GNIDA26\LIDE\obj\x86\Debug\LIDE.pdb
 C:\Users\Damir\Documents\GNIDA26\LIDE\bin\Debug\LIDE.exe
 C:\Users\Damir\Documents\GNIDA26\LIDE\bin\Debug\LIDE.pdb
+C:\Users\Damir\Documents\GNIDA26\LIDE\obj\x86\Debug\LIDE.exe
+C:\Users\Damir\Documents\GNIDA26\LIDE\obj\x86\Debug\LIDE.pdb
