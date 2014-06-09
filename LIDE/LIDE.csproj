@@ -3,8 +3,6 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{BED9D62C-8A45-41D3-AF34-2A959D72C764}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>LIDE</RootNamespace>
@@ -82,6 +80,471 @@
     <Compile Include="..\Flirt.cs">
       <Link>Flirt.cs</Link>
     </Compile>
+    <Compile Include="..\Loaders\ArrayDimension.cs">
+      <Link>Loaders\ArrayDimension.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ArrayType.cs">
+      <Link>Loaders\ArrayType.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ASMGlobals.cs">
+      <Link>Loaders\ASMGlobals.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\AssemblyAttributes.cs">
+      <Link>Loaders\AssemblyAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\AssemblyDefinition.cs">
+      <Link>Loaders\AssemblyDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\AssemblyHashAlgorithm.cs">
+      <Link>Loaders\AssemblyHashAlgorithm.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\AssemblyReference.cs">
+      <Link>Loaders\AssemblyReference.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\AssemblyResolver.cs">
+      <Link>Loaders\AssemblyResolver.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\BlobHeap.cs">
+      <Link>Loaders\BlobHeap.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\BlobSignatureReader.cs">
+      <Link>Loaders\BlobSignatureReader.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ByReferenceType.cs">
+      <Link>Loaders\ByReferenceType.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ClassLayout.cs">
+      <Link>Loaders\ClassLayout.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\Constant.cs">
+      <Link>Loaders\Constant.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\CustomAttribute.cs">
+      <Link>Loaders\CustomAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\CustomAttributeArgument.cs">
+      <Link>Loaders\CustomAttributeArgument.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\CustomAttributeSignature.cs">
+      <Link>Loaders\CustomAttributeSignature.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\DataDirectory.cs">
+      <Link>Loaders\DataDirectory.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\DataDirectoryName.cs">
+      <Link>Loaders\DataDirectoryName.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ElementType.cs">
+      <Link>Loaders\ElementType.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\EnCLog.cs">
+      <Link>Loaders\EnCLog.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\EnCMap.cs">
+      <Link>Loaders\EnCMap.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\EventAttributes.cs">
+      <Link>Loaders\EventAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\EventDefinition.cs">
+      <Link>Loaders\EventDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\EventMap.cs">
+      <Link>Loaders\EventMap.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ExceptionHandler.cs">
+      <Link>Loaders\ExceptionHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ExceptionHandlerType.cs">
+      <Link>Loaders\ExceptionHandlerType.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ExecutableFlags.cs">
+      <Link>Loaders\ExecutableFlags.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ExportedType.cs">
+      <Link>Loaders\ExportedType.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ExportMethod.cs">
+      <Link>Loaders\ExportMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\FieldAttributes.cs">
+      <Link>Loaders\FieldAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\FieldDefinition.cs">
+      <Link>Loaders\FieldDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\FieldLayout.cs">
+      <Link>Loaders\FieldLayout.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\FieldMarshal.cs">
+      <Link>Loaders\FieldMarshal.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\FieldPtr.cs">
+      <Link>Loaders\FieldPtr.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\FieldReference.cs">
+      <Link>Loaders\FieldReference.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\FieldRVA.cs">
+      <Link>Loaders\FieldRVA.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\FieldSignature.cs">
+      <Link>Loaders\FieldSignature.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\FileAttributes.cs">
+      <Link>Loaders\FileAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\FileHeader.cs">
+      <Link>Loaders\FileHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\FileReference.cs">
+      <Link>Loaders\FileReference.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\GenericInstanceType.cs">
+      <Link>Loaders\GenericInstanceType.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\GenericParamConstraint.cs">
+      <Link>Loaders\GenericParamConstraint.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\GenericParameter.cs">
+      <Link>Loaders\GenericParameter.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\GenericParameterAttributes.cs">
+      <Link>Loaders\GenericParameterAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\GuidHeap.cs">
+      <Link>Loaders\GuidHeap.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ICacheProvider.cs">
+      <Link>Loaders\ICacheProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\IDataDirectoryProvider.cs">
+      <Link>Loaders\IDataDirectoryProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\IGenericContext.cs">
+      <Link>Loaders\IGenericContext.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\IGenericInstance.cs">
+      <Link>Loaders\IGenericInstance.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\IGenericParamProvider.cs">
+      <Link>Loaders\IGenericParamProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\IHeader.cs">
+      <Link>Loaders\IHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\IImageProvider.cs">
+      <Link>Loaders\IImageProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ImageSignature.cs">
+      <Link>Loaders\ImageSignature.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\IMemberSignature.cs">
+      <Link>Loaders\IMemberSignature.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\IMethod.cs">
+      <Link>Loaders\IMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ImportExportTableReader.cs">
+      <Link>Loaders\ImportExportTableReader.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ImportMethod.cs">
+      <Link>Loaders\ImportMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\InterfaceImplementation.cs">
+      <Link>Loaders\InterfaceImplementation.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\IOptionalHeader.cs">
+      <Link>Loaders\IOptionalHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\IResolutionScope.cs">
+      <Link>Loaders\IResolutionScope.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ISpecification.cs">
+      <Link>Loaders\ISpecification.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\IStreamProvider.cs">
+      <Link>Loaders\IStreamProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\LibraryFlags.cs">
+      <Link>Loaders\LibraryFlags.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\LibraryReference.cs">
+      <Link>Loaders\LibraryReference.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\LWin32.cs">
+      <Link>Loaders\LWin32.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\Machine.cs">
+      <Link>Loaders\Machine.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ManifestResource.cs">
+      <Link>Loaders\ManifestResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ManifestResourceAttributes.cs">
+      <Link>Loaders\ManifestResourceAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MemberCollection.cs">
+      <Link>Loaders\MemberCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MemberRange.cs">
+      <Link>Loaders\MemberRange.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MemberReference.cs">
+      <Link>Loaders\MemberReference.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MetaDataHeader.cs">
+      <Link>Loaders\MetaDataHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MetaDataMember.cs">
+      <Link>Loaders\MetaDataMember.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MetaDataResolver.cs">
+      <Link>Loaders\MetaDataResolver.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MetaDataRow.cs">
+      <Link>Loaders\MetaDataRow.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MetaDataStream.cs">
+      <Link>Loaders\MetaDataStream.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MetaDataTable.cs">
+      <Link>Loaders\MetaDataTable.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MetaDataTableGroup.cs">
+      <Link>Loaders\MetaDataTableGroup.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MetaDataTableType.cs">
+      <Link>Loaders\MetaDataTableType.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MetaDataTokenResolver.cs">
+      <Link>Loaders\MetaDataTokenResolver.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MethodAttributes.cs">
+      <Link>Loaders\MethodAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MethodBody.cs">
+      <Link>Loaders\MethodBody.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MethodBodySection.cs">
+      <Link>Loaders\MethodBodySection.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MethodCallingConvention.cs">
+      <Link>Loaders\MethodCallingConvention.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MethodDefinition.cs">
+      <Link>Loaders\MethodDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MethodImpl.cs">
+      <Link>Loaders\MethodImpl.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MethodImplAttributes.cs">
+      <Link>Loaders\MethodImplAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MethodPtr.cs">
+      <Link>Loaders\MethodPtr.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MethodReference.cs">
+      <Link>Loaders\MethodReference.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MethodSemantics.cs">
+      <Link>Loaders\MethodSemantics.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MethodSemanticsAttributes.cs">
+      <Link>Loaders\MethodSemanticsAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MethodSignature.cs">
+      <Link>Loaders\MethodSignature.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MethodSpecification.cs">
+      <Link>Loaders\MethodSpecification.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ModifierType.cs">
+      <Link>Loaders\ModifierType.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ModuleDefinition.cs">
+      <Link>Loaders\ModuleDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ModuleReference.cs">
+      <Link>Loaders\ModuleReference.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MSILAssembler.cs">
+      <Link>Loaders\MSILAssembler.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MSILCode.cs">
+      <Link>Loaders\MSILCode.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MSILDisassembler.cs">
+      <Link>Loaders\MSILDisassembler.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MSILInstruction.cs">
+      <Link>Loaders\MSILInstruction.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MSILOpCode.cs">
+      <Link>Loaders\MSILOpCode.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MSILOpCodes.cs">
+      <Link>Loaders\MSILOpCodes.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\MZHeader.cs">
+      <Link>Loaders\MZHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\NestedClass.cs">
+      <Link>Loaders\NestedClass.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\NETGlobals.cs">
+      <Link>Loaders\NETGlobals.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\NETHeader.cs">
+      <Link>Loaders\NETHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\NETHeaderFlags.cs">
+      <Link>Loaders\NETHeaderFlags.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\NETHeaderReader.cs">
+      <Link>Loaders\NETHeaderReader.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\NETMethodReader.cs">
+      <Link>Loaders\NETMethodReader.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\NETTableReader.cs">
+      <Link>Loaders\NETTableReader.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\NTHeader.cs">
+      <Link>Loaders\NTHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ObsoleteAssemblyTables.cs">
+      <Link>Loaders\ObsoleteAssemblyTables.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\Offset.cs">
+      <Link>Loaders\Offset.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\OffsetConverter.cs">
+      <Link>Loaders\OffsetConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\OperandType.cs">
+      <Link>Loaders\OperandType.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\OptionalHeader32.cs">
+      <Link>Loaders\OptionalHeader32.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\OptionalHeader64.cs">
+      <Link>Loaders\OptionalHeader64.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ParameterAttributes.cs">
+      <Link>Loaders\ParameterAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ParameterDefinition.cs">
+      <Link>Loaders\ParameterDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ParameterReference.cs">
+      <Link>Loaders\ParameterReference.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ParamPtr.cs">
+      <Link>Loaders\ParamPtr.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\PeHeaderReader.cs">
+      <Link>Loaders\PeHeaderReader.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\PeImage.cs">
+      <Link>Loaders\PeImage.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\PinnedType.cs">
+      <Link>Loaders\PinnedType.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\PInvokeImplAttributes.cs">
+      <Link>Loaders\PInvokeImplAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\PInvokeImplementation.cs">
+      <Link>Loaders\PInvokeImplementation.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\PointerType.cs">
+      <Link>Loaders\PointerType.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\PropertyAttributes.cs">
+      <Link>Loaders\PropertyAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\PropertyDefinition.cs">
+      <Link>Loaders\PropertyDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\PropertyMap.cs">
+      <Link>Loaders\PropertyMap.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\PropertyPtr.cs">
+      <Link>Loaders\PropertyPtr.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\PropertySignature.cs">
+      <Link>Loaders\PropertySignature.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ReadingParameters.cs">
+      <Link>Loaders\ReadingParameters.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ResolveException.cs">
+      <Link>Loaders\ResolveException.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ResourceDataEntry.cs">
+      <Link>Loaders\ResourceDataEntry.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ResourceDirectory.cs">
+      <Link>Loaders\ResourceDirectory.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ResourceDirectoryEntry.cs">
+      <Link>Loaders\ResourceDirectoryEntry.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ResourceDirectoryType.cs">
+      <Link>Loaders\ResourceDirectoryType.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\ResourcesReader.cs">
+      <Link>Loaders\ResourcesReader.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\Section.cs">
+      <Link>Loaders\Section.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\SectionFlags.cs">
+      <Link>Loaders\SectionFlags.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\SecurityDeclaration.cs">
+      <Link>Loaders\SecurityDeclaration.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\StackBehaviour.cs">
+      <Link>Loaders\StackBehaviour.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\StandAloneSignature.cs">
+      <Link>Loaders\StandAloneSignature.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\StringsHeap.cs">
+      <Link>Loaders\StringsHeap.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\Structures.cs">
+      <Link>Loaders\Structures.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\SubSystem.cs">
+      <Link>Loaders\SubSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\TablesHeap.cs">
+      <Link>Loaders\TablesHeap.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\TypeAttributes.cs">
+      <Link>Loaders\TypeAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\TypeDefinition.cs">
+      <Link>Loaders\TypeDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\TypeReference.cs">
+      <Link>Loaders\TypeReference.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\TypeSpecification.cs">
+      <Link>Loaders\TypeSpecification.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\TypeSystem.cs">
+      <Link>Loaders\TypeSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\UserStringsHeap.cs">
+      <Link>Loaders\UserStringsHeap.cs</Link>
+    </Compile>
+    <Compile Include="..\Loaders\VariableDefinition.cs">
+      <Link>Loaders\VariableDefinition.cs</Link>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
@@ -95,5 +558,6 @@
   </ProjectExtensions>
   <ItemGroup>
     <Folder Include="Properties\" />
+    <Folder Include="Loaders\" />
   </ItemGroup>
 </Project>
