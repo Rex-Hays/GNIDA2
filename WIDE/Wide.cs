@@ -144,10 +144,10 @@ namespace WIDE
             //if( & DynamicLoadedLibraryFile)
 
 
-            if ((MyGNIDA.assembly.NTHeader.FileHeader.ExecutableFlags & ExecutableFlags.DynamicLoadedLibraryFile) != 0)
+			if ((MyGNIDA.assembly.NTHeader.FileHeader.ExecutableFlags & ExecutableFlags.DynamicLoadedLibraryFile) != 0)
             { fastColoredTextBox1.Text += "#pragma option DLL\n"; }
             else {
-                switch (MyGNIDA.assembly.NTHeader.OptionalHeader.SubSystem)
+				switch (MyGNIDA.assembly.NTHeader.OptionalHeader.SubSystem)
                     {
                         case SubSystem.WindowsGraphicalUI: fastColoredTextBox1.Text += "#pragma option W32\n"; break;
                         case SubSystem.WindowsConsoleUI: fastColoredTextBox1.Text += "#pragma option W32C\n"; break;
