@@ -1,4 +1,7 @@
-﻿namespace WIDE
+﻿using System;
+using System.Reflection;
+
+namespace WIDE
 {
     partial class MainForm
     {
@@ -621,7 +624,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "GNIDA v1.0";
+            this.Text = String.Format("GNIDA v{0}", Assembly.GetExecutingAssembly().GetName().Version.ToString());
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -698,7 +701,6 @@
         private System.Windows.Forms.ListView listView4;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
-
     }
 }
 

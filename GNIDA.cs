@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GNIDA.Loaders;
 using System.ComponentModel;
+using System.Reflection;
 
 namespace GNIDA
 {
@@ -271,6 +272,12 @@ namespace GNIDA
             mediana.INSTRUCTION instr1 = new mediana.INSTRUCTION();
             mediana.DISASM_INOUT_PARAMS param = new mediana.DISASM_INOUT_PARAMS();
 
+            //ILoader asm = ILoader.Load
+            Assembly asm = Assembly.LoadFrom("Loaders\\LoaderWin32.dll");
+            foreach (Type t in asm.GetExportedTypes())
+                if (typeof(ILoader).IsAssignableFrom(t))
+                    if (t.IsClass & !t.IsAbstract)
+                    { };
 
             RaiseLogEvent(this, "Loading " + FName);
             assembly = LWin32.LoadFile(FName);

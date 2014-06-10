@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -27,7 +27,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -206,9 +206,6 @@
     <None Include="Be.Windows.Forms.HexBox\Properties\Resources.resx" />
     <Compile Include="..\Loaders\ILoader.cs">
       <Link>Loaders\ILoader.cs</Link>
-    </Compile>
-    <Compile Include="..\Loaders\Win32Loader.cs">
-      <Link>Loaders\Win32Loader.cs</Link>
     </Compile>
     <Compile Include="..\Loaders\pl1\ASMGlobals.cs">
       <Link>Loaders\pl1\ASMGlobals.cs</Link>

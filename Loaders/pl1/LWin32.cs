@@ -63,10 +63,6 @@ namespace GNIDA.Loaders
                 return _path;
             }
         }
-        public bool CanLoad(string path)
-        {
-            return true;
-        }
         /// <summary>
         /// Gets the reading arguments that are being used to open the application.
         /// </summary>

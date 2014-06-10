@@ -7,10 +7,11 @@ using GNIDA.Loaders;
 
 namespace LoaderWin32
 {
-	public class LoaderWin32 : ILoader
+	public class LoaderWin32 : LWin32, ILoader 
     {
 		public bool CanLoad(string FName)
 		{
+
 			return true;
 		}
     }
