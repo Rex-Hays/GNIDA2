@@ -79,6 +79,7 @@
     <Compile Include="LIDE\MainWindow.cs" />
     <Compile Include="LIDE\Program.cs" />
     <Compile Include="Loaders\ILoader.cs" />
+    <Compile Include="Loaders\LoaderWin32.cs" />
     <Compile Include="Loaders\pl1\ASMGlobals.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -447,9 +448,6 @@
     <Content Include="LIDE\bin\Debug\libstetic.dll" />
     <Content Include="LIDE\bin\Debug\libstetic.xml" />
     <Content Include="LIDE\bin\Debug\LIDE.exe" />
-    <Content Include="LIDE\bin\Debug\LIDE.exe.mdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="LIDE\bin\Debug\LIDE.pdb" />
     <Content Include="LIDE\bin\Debug\LIDE.vshost.exe" />
     <Content Include="LIDE\LIDE.csproj.user" />

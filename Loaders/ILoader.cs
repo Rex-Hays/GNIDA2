@@ -8,7 +8,6 @@ namespace GNIDA.Loaders
 {
     interface ILoader
     {
-        bool CanLoad(string FName);
-
+         bool CanLoad(string FName);
     }
 }
