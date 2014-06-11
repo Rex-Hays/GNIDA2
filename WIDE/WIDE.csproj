@@ -34,6 +34,10 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Loaders\common.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -204,9 +208,6 @@
     <None Include="Be.Windows.Forms.HexBox\obj\Release\TempPE\Properties.Resources.Designer.cs.dll" />
     <Compile Include="Be.Windows.Forms.HexBox\Properties\Resources.Designer.cs" />
     <None Include="Be.Windows.Forms.HexBox\Properties\Resources.resx" />
-    <Compile Include="..\Loaders\ILoader.cs">
-      <Link>Loaders\ILoader.cs</Link>
-    </Compile>
     <Compile Include="..\Loaders\pl1\ASMGlobals.cs">
       <Link>Loaders\pl1\ASMGlobals.cs</Link>
     </Compile>

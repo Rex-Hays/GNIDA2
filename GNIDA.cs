@@ -7,6 +7,7 @@ using GNIDA.Loaders;
 using System.ComponentModel;
 using System.Reflection;
 //using LoaderWin32;
+using ldrs;
 
 namespace GNIDA
 {

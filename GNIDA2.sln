@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WIDE", "WIDE\WIDE.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoaderWin32", "Loaders\LoaderWin32\LoaderWin32.csproj", "{4BA07514-A8CF-419C-A414-153D2EF307B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "common", "Loaders\common\common.csproj", "{1A6855B1-D006-4B74-82AD-E9707FE59B8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,16 @@ Global
 		{4BA07514-A8CF-419C-A414-153D2EF307B8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{4BA07514-A8CF-419C-A414-153D2EF307B8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{4BA07514-A8CF-419C-A414-153D2EF307B8}.Release|x86.ActiveCfg = Release|Any CPU
+		{1A6855B1-D006-4B74-82AD-E9707FE59B8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A6855B1-D006-4B74-82AD-E9707FE59B8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A6855B1-D006-4B74-82AD-E9707FE59B8A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1A6855B1-D006-4B74-82AD-E9707FE59B8A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1A6855B1-D006-4B74-82AD-E9707FE59B8A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1A6855B1-D006-4B74-82AD-E9707FE59B8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A6855B1-D006-4B74-82AD-E9707FE59B8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A6855B1-D006-4B74-82AD-E9707FE59B8A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1A6855B1-D006-4B74-82AD-E9707FE59B8A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{1A6855B1-D006-4B74-82AD-E9707FE59B8A}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

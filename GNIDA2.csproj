@@ -52,6 +52,10 @@
     <StartupObject>WIDE.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Loaders\common.dll</HintPath>
+    </Reference>
     <Reference Include="Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -78,7 +82,6 @@
     <Compile Include="LIDE\gtk-gui\MainWindow.cs" />
     <Compile Include="LIDE\MainWindow.cs" />
     <Compile Include="LIDE\Program.cs" />
-    <Compile Include="Loaders\ILoader.cs" />
     <Compile Include="Loaders\LoaderWin32.cs" />
     <Compile Include="Loaders\pl1\ASMGlobals.cs">
       <SubType>Code</SubType>

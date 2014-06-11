@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GNIDA.Loaders;
+using ldrs;
 
 namespace LoaderWin32
 {
-	public class LoaderWin32 : /*LWin32, */ILoader 
+	public class LoaderWin32 : ILoader 
     {
         LWin32 ldr;
 		public bool CanLoad(string FName)
