@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,6 +29,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -41,6 +43,489 @@
   <ItemGroup>
     <Compile Include="common.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs">
+      <Link>Loaders\common\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs</Link>
+    </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs">
+      <Link>Loaders\common\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs</Link>
+    </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs">
+      <Link>Loaders\common\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs</Link>
+    </Compile>
+    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs">
+      <Link>Loaders\common\obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs</Link>
+    </Compile>
+    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs">
+      <Link>Loaders\common\obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs</Link>
+    </Compile>
+    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs">
+      <Link>Loaders\common\obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\ASMGlobals.cs">
+      <Link>Loaders\pl1\ASMGlobals.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\DataDirectory.cs">
+      <Link>Loaders\pl1\DataDirectory.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\DataDirectoryName.cs">
+      <Link>Loaders\pl1\DataDirectoryName.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\ExceptionHandler.cs">
+      <Link>Loaders\pl1\ExceptionHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\ExceptionHandlerType.cs">
+      <Link>Loaders\pl1\ExceptionHandlerType.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\ExecutableFlags.cs">
+      <Link>Loaders\pl1\ExecutableFlags.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\ExportedType.cs">
+      <Link>Loaders\pl1\ExportedType.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\ExportMethod.cs">
+      <Link>Loaders\pl1\ExportMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\FileAttributes.cs">
+      <Link>Loaders\pl1\FileAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\FileHeader.cs">
+      <Link>Loaders\pl1\FileHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\FileReference.cs">
+      <Link>Loaders\pl1\FileReference.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\IHeader.cs">
+      <Link>Loaders\pl1\IHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\IImageProvider.cs">
+      <Link>Loaders\pl1\IImageProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\ImageSignature.cs">
+      <Link>Loaders\pl1\ImageSignature.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\ImportExportTableReader.cs">
+      <Link>Loaders\pl1\ImportExportTableReader.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\ImportMethod.cs">
+      <Link>Loaders\pl1\ImportMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\IOptionalHeader.cs">
+      <Link>Loaders\pl1\IOptionalHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\IResolutionScope.cs">
+      <Link>Loaders\pl1\IResolutionScope.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\IStreamProvider.cs">
+      <Link>Loaders\pl1\IStreamProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\LibraryFlags.cs">
+      <Link>Loaders\pl1\LibraryFlags.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\LibraryReference.cs">
+      <Link>Loaders\pl1\LibraryReference.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\LWin32.cs">
+      <Link>Loaders\pl1\LWin32.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\Machine.cs">
+      <Link>Loaders\pl1\Machine.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\ManifestResource.cs">
+      <Link>Loaders\pl1\ManifestResource.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\ManifestResourceAttributes.cs">
+      <Link>Loaders\pl1\ManifestResourceAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\ModifierType.cs">
+      <Link>Loaders\pl1\ModifierType.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\MZHeader.cs">
+      <Link>Loaders\pl1\MZHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NETHeaderReader.cs">
+      <Link>Loaders\pl1\NETHeaderReader.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NTHeader.cs">
+      <Link>Loaders\pl1\NTHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\Offset.cs">
+      <Link>Loaders\pl1\Offset.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\OffsetConverter.cs">
+      <Link>Loaders\pl1\OffsetConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\OperandType.cs">
+      <Link>Loaders\pl1\OperandType.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\OptionalHeader32.cs">
+      <Link>Loaders\pl1\OptionalHeader32.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\OptionalHeader64.cs">
+      <Link>Loaders\pl1\OptionalHeader64.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\PeHeaderReader.cs">
+      <Link>Loaders\pl1\PeHeaderReader.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\PeImage.cs">
+      <Link>Loaders\pl1\PeImage.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\ReadingParameters.cs">
+      <Link>Loaders\pl1\ReadingParameters.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\ResolveException.cs">
+      <Link>Loaders\pl1\ResolveException.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\ResourceDataEntry.cs">
+      <Link>Loaders\pl1\ResourceDataEntry.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\ResourceDirectory.cs">
+      <Link>Loaders\pl1\ResourceDirectory.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\ResourceDirectoryEntry.cs">
+      <Link>Loaders\pl1\ResourceDirectoryEntry.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\ResourceDirectoryType.cs">
+      <Link>Loaders\pl1\ResourceDirectoryType.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\ResourcesReader.cs">
+      <Link>Loaders\pl1\ResourcesReader.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\Section.cs">
+      <Link>Loaders\pl1\Section.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\SectionFlags.cs">
+      <Link>Loaders\pl1\SectionFlags.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\StackBehaviour.cs">
+      <Link>Loaders\pl1\StackBehaviour.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\StandAloneSignature.cs">
+      <Link>Loaders\pl1\StandAloneSignature.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\Structures.cs">
+      <Link>Loaders\pl1\Structures.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\SubSystem.cs">
+      <Link>Loaders\pl1\SubSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\ArrayDimension.cs">
+      <Link>Loaders\pl1\NET\ArrayDimension.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\ArrayType.cs">
+      <Link>Loaders\pl1\NET\ArrayType.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\AssemblyAttributes.cs">
+      <Link>Loaders\pl1\NET\AssemblyAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\AssemblyDefinition.cs">
+      <Link>Loaders\pl1\NET\AssemblyDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\AssemblyHashAlgorithm.cs">
+      <Link>Loaders\pl1\NET\AssemblyHashAlgorithm.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\AssemblyReference.cs">
+      <Link>Loaders\pl1\NET\AssemblyReference.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\AssemblyResolver.cs">
+      <Link>Loaders\pl1\NET\AssemblyResolver.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\BlobHeap.cs">
+      <Link>Loaders\pl1\NET\BlobHeap.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\BlobSignatureReader.cs">
+      <Link>Loaders\pl1\NET\BlobSignatureReader.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\ByReferenceType.cs">
+      <Link>Loaders\pl1\NET\ByReferenceType.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\ClassLayout.cs">
+      <Link>Loaders\pl1\NET\ClassLayout.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\Constant.cs">
+      <Link>Loaders\pl1\NET\Constant.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\CustomAttribute.cs">
+      <Link>Loaders\pl1\NET\CustomAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\CustomAttributeArgument.cs">
+      <Link>Loaders\pl1\NET\CustomAttributeArgument.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\CustomAttributeSignature.cs">
+      <Link>Loaders\pl1\NET\CustomAttributeSignature.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\ElementType.cs">
+      <Link>Loaders\pl1\NET\ElementType.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\EnCLog.cs">
+      <Link>Loaders\pl1\NET\EnCLog.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\EnCMap.cs">
+      <Link>Loaders\pl1\NET\EnCMap.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\EventAttributes.cs">
+      <Link>Loaders\pl1\NET\EventAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\EventDefinition.cs">
+      <Link>Loaders\pl1\NET\EventDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\EventMap.cs">
+      <Link>Loaders\pl1\NET\EventMap.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\FieldAttributes.cs">
+      <Link>Loaders\pl1\NET\FieldAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\FieldDefinition.cs">
+      <Link>Loaders\pl1\NET\FieldDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\FieldLayout.cs">
+      <Link>Loaders\pl1\NET\FieldLayout.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\FieldMarshal.cs">
+      <Link>Loaders\pl1\NET\FieldMarshal.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\FieldPtr.cs">
+      <Link>Loaders\pl1\NET\FieldPtr.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\FieldReference.cs">
+      <Link>Loaders\pl1\NET\FieldReference.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\FieldRVA.cs">
+      <Link>Loaders\pl1\NET\FieldRVA.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\FieldSignature.cs">
+      <Link>Loaders\pl1\NET\FieldSignature.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\GenericInstanceType.cs">
+      <Link>Loaders\pl1\NET\GenericInstanceType.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\GenericParamConstraint.cs">
+      <Link>Loaders\pl1\NET\GenericParamConstraint.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\GenericParameter.cs">
+      <Link>Loaders\pl1\NET\GenericParameter.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\GenericParameterAttributes.cs">
+      <Link>Loaders\pl1\NET\GenericParameterAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\GuidHeap.cs">
+      <Link>Loaders\pl1\NET\GuidHeap.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\ICacheProvider.cs">
+      <Link>Loaders\pl1\NET\ICacheProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\IDataDirectoryProvider.cs">
+      <Link>Loaders\pl1\NET\IDataDirectoryProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\IGenericContext.cs">
+      <Link>Loaders\pl1\NET\IGenericContext.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\IGenericInstance.cs">
+      <Link>Loaders\pl1\NET\IGenericInstance.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\IGenericParamProvider.cs">
+      <Link>Loaders\pl1\NET\IGenericParamProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\IMemberSignature.cs">
+      <Link>Loaders\pl1\NET\IMemberSignature.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\IMethod.cs">
+      <Link>Loaders\pl1\NET\IMethod.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\InterfaceImplementation.cs">
+      <Link>Loaders\pl1\NET\InterfaceImplementation.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\ISpecification.cs">
+      <Link>Loaders\pl1\NET\ISpecification.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MemberCollection.cs">
+      <Link>Loaders\pl1\NET\MemberCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MemberRange.cs">
+      <Link>Loaders\pl1\NET\MemberRange.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MemberReference.cs">
+      <Link>Loaders\pl1\NET\MemberReference.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MetaDataHeader.cs">
+      <Link>Loaders\pl1\NET\MetaDataHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MetaDataMember.cs">
+      <Link>Loaders\pl1\NET\MetaDataMember.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MetaDataResolver.cs">
+      <Link>Loaders\pl1\NET\MetaDataResolver.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MetaDataRow.cs">
+      <Link>Loaders\pl1\NET\MetaDataRow.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MetaDataStream.cs">
+      <Link>Loaders\pl1\NET\MetaDataStream.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MetaDataTable.cs">
+      <Link>Loaders\pl1\NET\MetaDataTable.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MetaDataTableGroup.cs">
+      <Link>Loaders\pl1\NET\MetaDataTableGroup.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MetaDataTableType.cs">
+      <Link>Loaders\pl1\NET\MetaDataTableType.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MetaDataTokenResolver.cs">
+      <Link>Loaders\pl1\NET\MetaDataTokenResolver.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MethodAttributes.cs">
+      <Link>Loaders\pl1\NET\MethodAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MethodBody.cs">
+      <Link>Loaders\pl1\NET\MethodBody.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MethodBodySection.cs">
+      <Link>Loaders\pl1\NET\MethodBodySection.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MethodCallingConvention.cs">
+      <Link>Loaders\pl1\NET\MethodCallingConvention.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MethodDefinition.cs">
+      <Link>Loaders\pl1\NET\MethodDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MethodImpl.cs">
+      <Link>Loaders\pl1\NET\MethodImpl.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MethodImplAttributes.cs">
+      <Link>Loaders\pl1\NET\MethodImplAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MethodPtr.cs">
+      <Link>Loaders\pl1\NET\MethodPtr.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MethodReference.cs">
+      <Link>Loaders\pl1\NET\MethodReference.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MethodSemantics.cs">
+      <Link>Loaders\pl1\NET\MethodSemantics.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MethodSemanticsAttributes.cs">
+      <Link>Loaders\pl1\NET\MethodSemanticsAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MethodSignature.cs">
+      <Link>Loaders\pl1\NET\MethodSignature.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MethodSpecification.cs">
+      <Link>Loaders\pl1\NET\MethodSpecification.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\ModuleDefinition.cs">
+      <Link>Loaders\pl1\NET\ModuleDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\ModuleReference.cs">
+      <Link>Loaders\pl1\NET\ModuleReference.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MSILAssembler.cs">
+      <Link>Loaders\pl1\NET\MSILAssembler.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MSILCode.cs">
+      <Link>Loaders\pl1\NET\MSILCode.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MSILDisassembler.cs">
+      <Link>Loaders\pl1\NET\MSILDisassembler.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MSILInstruction.cs">
+      <Link>Loaders\pl1\NET\MSILInstruction.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MSILOpCode.cs">
+      <Link>Loaders\pl1\NET\MSILOpCode.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\MSILOpCodes.cs">
+      <Link>Loaders\pl1\NET\MSILOpCodes.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\NestedClass.cs">
+      <Link>Loaders\pl1\NET\NestedClass.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\NETGlobals.cs">
+      <Link>Loaders\pl1\NET\NETGlobals.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\NETHeader.cs">
+      <Link>Loaders\pl1\NET\NETHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\NETHeaderFlags.cs">
+      <Link>Loaders\pl1\NET\NETHeaderFlags.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\NETMethodReader.cs">
+      <Link>Loaders\pl1\NET\NETMethodReader.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\NETTableReader.cs">
+      <Link>Loaders\pl1\NET\NETTableReader.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\ObsoleteAssemblyTables.cs">
+      <Link>Loaders\pl1\NET\ObsoleteAssemblyTables.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\ParameterAttributes.cs">
+      <Link>Loaders\pl1\NET\ParameterAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\ParameterDefinition.cs">
+      <Link>Loaders\pl1\NET\ParameterDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\ParameterReference.cs">
+      <Link>Loaders\pl1\NET\ParameterReference.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\ParamPtr.cs">
+      <Link>Loaders\pl1\NET\ParamPtr.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\PinnedType.cs">
+      <Link>Loaders\pl1\NET\PinnedType.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\PInvokeImplAttributes.cs">
+      <Link>Loaders\pl1\NET\PInvokeImplAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\PInvokeImplementation.cs">
+      <Link>Loaders\pl1\NET\PInvokeImplementation.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\PointerType.cs">
+      <Link>Loaders\pl1\NET\PointerType.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\PropertyAttributes.cs">
+      <Link>Loaders\pl1\NET\PropertyAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\PropertyDefinition.cs">
+      <Link>Loaders\pl1\NET\PropertyDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\PropertyMap.cs">
+      <Link>Loaders\pl1\NET\PropertyMap.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\PropertyPtr.cs">
+      <Link>Loaders\pl1\NET\PropertyPtr.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\PropertySignature.cs">
+      <Link>Loaders\pl1\NET\PropertySignature.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\SecurityDeclaration.cs">
+      <Link>Loaders\pl1\NET\SecurityDeclaration.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\StringsHeap.cs">
+      <Link>Loaders\pl1\NET\StringsHeap.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\TablesHeap.cs">
+      <Link>Loaders\pl1\NET\TablesHeap.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\TypeAttributes.cs">
+      <Link>Loaders\pl1\NET\TypeAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\TypeDefinition.cs">
+      <Link>Loaders\pl1\NET\TypeDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\TypeReference.cs">
+      <Link>Loaders\pl1\NET\TypeReference.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\TypeSpecification.cs">
+      <Link>Loaders\pl1\NET\TypeSpecification.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\TypeSystem.cs">
+      <Link>Loaders\pl1\NET\TypeSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\UserStringsHeap.cs">
+      <Link>Loaders\pl1\NET\UserStringsHeap.cs</Link>
+    </Compile>
+    <Compile Include="..\pl1\NET\VariableDefinition.cs">
+      <Link>Loaders\pl1\NET\VariableDefinition.cs</Link>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -50,4 +535,19 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="common.csproj">
+      <Link>Loaders\common\common.csproj</Link>
+    </None>
+    <None Include="obj\Debug\common.csproj.FileListAbsolute.txt">
+      <Link>Loaders\common\obj\Debug\common.csproj.FileListAbsolute.txt</Link>
+    </None>
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache">
+      <Link>Loaders\common\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache</Link>
+    </None>
+    <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache">
+      <Link>Loaders\common\obj\Release\DesignTimeResolveAssemblyReferencesInput.cache</Link>
+    </None>
+  </ItemGroup>
 </Project>

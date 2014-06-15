@@ -6,15 +6,53 @@ using System.Threading.Tasks;
 using GNIDA.Loaders;
 using ldrs;
 
+
 namespace LoaderWin32
 {
 	public class LoaderWin32 : ILoader 
     {
         LWin32 ldr;
+        public SubSystem SubSystem()
+        {
+            return ldr.NTHeader.OptionalHeader.SubSystem;
+        }
+
+        public GNIDA.Loaders.ExecutableFlags ExecutableFlags()
+        {
+            return ldr.NTHeader.FileHeader.ExecutableFlags;
+        }
+        public ulong ImageBase()
+        {
+            return ldr.NTHeader.OptionalHeader.ImageBase;
+        }
+        public List<ExportMethod> LibraryExports()
+        {
+            return ldr.LibraryExports;
+        }
+        public List<LibraryReference> LibraryImports()
+        {
+            return ldr.LibraryImports;
+        }
+        public byte[] ReadBytes(long offset, int length)
+        {
+            return ldr.Image.ReadBytes(offset, length);
+        }
+        public List<Section> Sections()
+        {
+            return ldr.NTHeader.Sections;
+        }
+        public uint Entrypoint()
+        {
+            return ldr.NTHeader.OptionalHeader.Entrypoint.Rva;
+        }
 		public bool CanLoad(string FName)
 		{
             ldr = LWin32.LoadFile(FName);
             return (ldr.NTHeader.Signature == ImageSignature.NT);
 		}
+        public void LoadFile(string FName)
+        {
+            ldr = LWin32.LoadFile(FName);
+        }
     }
 }

@@ -45,6 +45,7 @@ C:\Users\Damir\Documents\GNIDA26\WIDE\FCTB\FastColoredTextBox\obj\Debug\FastColo
 C:\Users\Damir\Documents\GNIDA27\WIDE\FCTB\FastColoredTextBox\bin\Debug\FastColoredTextBox.XML
 C:\Users\Damir\Documents\GNIDA27\WIDE\FCTB\FastColoredTextBox\bin\Debug\FastColoredTextBox.dll
 C:\Users\Damir\Documents\GNIDA27\WIDE\FCTB\FastColoredTextBox\bin\Debug\FastColoredTextBox.pdb
+C:\Users\Damir\Documents\GNIDA27\WIDE\FCTB\FastColoredTextBox\obj\Debug\FastColoredTextBox.csprojResolveAssemblyReference.cache
 C:\Users\Damir\Documents\GNIDA27\WIDE\FCTB\FastColoredTextBox\obj\Debug\FastColoredTextBoxNS.FastColoredTextBox.resources
 C:\Users\Damir\Documents\GNIDA27\WIDE\FCTB\FastColoredTextBox\obj\Debug\FastColoredTextBoxNS.FindForm.resources
 C:\Users\Damir\Documents\GNIDA27\WIDE\FCTB\FastColoredTextBox\obj\Debug\FastColoredTextBoxNS.GoToForm.resources

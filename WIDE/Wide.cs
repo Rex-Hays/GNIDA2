@@ -13,6 +13,10 @@ using Be.Windows.Forms;
 using FastColoredTextBoxNS;
 using GNIDA;
 using GNIDA.Loaders;
+using ldrs;
+using System.Reflection;
+
+
 namespace WIDE
 {
     public partial class MainForm : Form
@@ -129,7 +133,23 @@ namespace WIDE
             MyGNIDA.OnAddStr += AddText;
             MyGNIDA.OnVarEvent += AddVarEvent1;
             MyGNIDA.OnFuncChanged += OnFuncChanged1;
-            MyGNIDA.LoadFile(openFileDialog1.FileName);
+
+    string iMyInterfaceName = typeof(ILoader).ToString();
+    Type[] defaultConstructorParametersTypes = new Type[0];
+    object[] defaultConstructorParameters = new object[0];
+    Assembly assembly1;
+        assembly1 = Assembly.LoadFrom("Loaders\\LoaderWin32.dll");
+        foreach (Type type in assembly1.GetTypes())
+            {
+                if (type.GetInterface(iMyInterfaceName) != null)
+                    //if (type.IsClass & !type.IsAbstract)
+                    {
+                        ConstructorInfo defaultConstructor = type.GetConstructor(defaultConstructorParametersTypes);
+                        object instance = defaultConstructor.Invoke(defaultConstructorParameters);
+                        MyGNIDA.assembly = instance as ILoader;
+                    }
+            }
+        MyGNIDA.LoadFile(openFileDialog1.FileName);
 
             dynamicFileByteProvider = new DynamicFileByteProvider(openFileDialog1.FileName, true);
             hexBox1.ByteProvider = dynamicFileByteProvider;
@@ -143,11 +163,10 @@ namespace WIDE
                               "\n//+---------------------------------------------------------------------+\n";
             //if( & DynamicLoadedLibraryFile)
 
-
-			if ((MyGNIDA.assembly.NTHeader.FileHeader.ExecutableFlags & ExecutableFlags.DynamicLoadedLibraryFile) != 0)
+            if ((MyGNIDA.assembly.ExecutableFlags() & ExecutableFlags.DynamicLoadedLibraryFile) != 0)
             { fastColoredTextBox1.Text += "#pragma option DLL\n"; }
             else {
-				switch (MyGNIDA.assembly.NTHeader.OptionalHeader.SubSystem)
+				switch (MyGNIDA.assembly.SubSystem())
                     {
                         case SubSystem.WindowsGraphicalUI: fastColoredTextBox1.Text += "#pragma option W32\n"; break;
                         case SubSystem.WindowsConsoleUI: fastColoredTextBox1.Text += "#pragma option W32C\n"; break;

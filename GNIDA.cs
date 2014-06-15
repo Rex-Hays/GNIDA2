@@ -91,7 +91,8 @@ namespace GNIDA
     }
     public class GNIDA1
     {
-        public Loaders.LWin32 assembly;
+        //public Loaders.LWin32 assembly;
+        public ldrs.ILoader assembly;
         public mediana MeDisasm;
         public BackgroundWorker bw = new BackgroundWorker();
         public MyDictionary FullProcList = new MyDictionary();
@@ -133,11 +134,11 @@ namespace GNIDA
             public string ToCmmString(Dictionary<long, TFunc> NewSubs)
             {
                 string tmp = "";
-                if (Label != "") tmp = "/*" + (Inst.Addr + Parent.assembly.NTHeader.OptionalHeader.ImageBase).ToString("X8") + "*/ " + Label + ":\n";
+                if (Label != "") tmp = "/*" + (Inst.Addr + Parent.assembly.ImageBase()).ToString("X8") + "*/ " + Label + ":\n";
                 tmp += "/*" + (Inst.Addr).ToString("X8") + "*/  " + Inst.ToString(Parent.FullProcList, Parent.VarDict, NewSubs);
                 if (Comment != "") tmp += "// " + Comment;
                 tmp += "\n";
-                if (SubComment != "") tmp += "/*" + (Inst.Addr + Parent.assembly.NTHeader.OptionalHeader.ImageBase).ToString("X8") + "*/ // " + SubComment + "\n";
+                if (SubComment != "") tmp += "/*" + (Inst.Addr + Parent.assembly.ImageBase()).ToString("X8") + "*/ // " + SubComment + "\n";
                 return tmp;
             }
         }
@@ -156,7 +157,7 @@ namespace GNIDA
             param.sf_prefixes = sf_prefixes;
             param.mode = mediana.DISMODE.DISASSEMBLE_MODE_32;
             param.options = (byte)(mediana.DISASM_OPTION_APPLY_REL | mediana.DISASM_OPTION_OPTIMIZE_DISP);
-            param.bas = assembly.NTHeader.OptionalHeader.ImageBase+2000;
+            param.bas = assembly.ImageBase()+2000;
             mediana.INSTRUCTION instr1 = new mediana.INSTRUCTION();
 
             Tasks.Add(addr);
@@ -274,81 +275,38 @@ namespace GNIDA
             mediana.INSTRUCTION instr1 = new mediana.INSTRUCTION();
             mediana.DISASM_INOUT_PARAMS param = new mediana.DISASM_INOUT_PARAMS();
 
-
-    string iMyInterfaceName = typeof(ILoader).ToString();
-    Type[] defaultConstructorParametersTypes = new Type[0];
-    object[] defaultConstructorParameters = new object[0];
-    Assembly assembly1 = Assembly.LoadFrom("Loaders\\LoaderWin32.dll");
-    List<ILoader> list = new List<ILoader>();
-    foreach (Type type in assembly1.GetTypes())
-    {
-        if (type.GetInterface(iMyInterfaceName) != null)
-        {
-            ConstructorInfo defaultConstructor = type.GetConstructor(defaultConstructorParametersTypes);
-            object instance = defaultConstructor.Invoke(defaultConstructorParameters);
-            list.Add(instance as ILoader);
-        }
-    }
-
-    foreach (ILoader item in list)
-    {
-        Console.WriteLine(item.CanLoad(FName));
-    }
-            /*
-            //ILoader asm = ILoader.Load
-            Assembly asm = Assembly.LoadFrom("Loaders\\LoaderWin32.dll");
-            ILoader plg;// = (ILoader)asm.GetExportedTypes()[1];
-            //plg = (ILoader)asm.CreateInstance(asm.FullName);
-            //plg = asm as ILoader;
-            //plg.CanLoad(FName);
-            
-            foreach (Type t in asm.GetExportedTypes())
-                //if(t.GetInterface(typeof(ILoader).ToString()) != null)
-                //if (typeof(ILoader).IsAssignableFrom(t))
-                    if (t.IsClass & !t.IsAbstract)
-                    {
-                        Type[] defaultConstructorParametersTypes = new Type[0];
-                        object[] defaultConstructorParameters = new object[0];
-                        ConstructorInfo defaultConstructor = t.GetConstructor(defaultConstructorParametersTypes);
-                        object instance = defaultConstructor.Invoke(defaultConstructorParameters);
-                        Console.WriteLine(instance.ToString());
-                        plg = (ILoader)instance;
-                        Console.WriteLine(plg.ToString());
-                        (instance as ILoader).CanLoad(FName);
-                        //plg.CanLoad(FName);
-                    };*/
             RaiseLogEvent(this, "Loading " + FName);
-            assembly = LWin32.LoadFile(FName);
+            assembly.LoadFile(FName);
             MeDisasm = new mediana(assembly);
             int i = 0;
-            foreach (Section sect in assembly.NTHeader.Sections)
+            foreach (Section sect in assembly.Sections())
             {
                 RaiseLogEvent(this, i.ToString() + ". Creating a new segment " + sect.RVA.ToString("X8") + " - " + (sect.RVA + sect.VirtualSize).ToString("X8") + "... ... OK");
                 i++;
             }
 
-            TFunc fnc = new TFunc((uint)assembly.NTHeader.OptionalHeader.ImageBase + assembly.NTHeader.OptionalHeader.Entrypoint.Rva, 0, 0, "main");
+            TFunc fnc = new TFunc((uint)assembly.ImageBase() + assembly.Entrypoint(), 0, 0, "main");
 
             param.arch = mediana.ARCH_ALL;
             param.sf_prefixes = sf_prefixes;
             param.mode = mediana.DISMODE.DISASSEMBLE_MODE_32;
             param.options = (byte)(mediana.DISASM_OPTION_APPLY_REL | mediana.DISASM_OPTION_OPTIMIZE_DISP);
-            param.bas = assembly.NTHeader.OptionalHeader.ImageBase;
+            param.bas = assembly.ImageBase();
             MeDisasm.medi_disassemble(RVA2FO(fnc.Addr), ref instr1, ref param);
             Console.WriteLine(instr1.mnemonic);
             //MeDisasm.medi_dump(instr, buff, OUT_BUFF_SIZE, DUMP_OPTION_IMM_UHEX | DUMP_OPTION_DISP_HEX);
             FullProcList.AddFunc(fnc);
-            foreach (ExportMethod func in assembly.LibraryExports)
+            foreach (ExportMethod func in assembly.LibraryExports())
             {
 
-                TFunc tmpfunc = new TFunc((uint)assembly.NTHeader.OptionalHeader.ImageBase + func.RVA, 2, func.Ordinal, func.Name);
+                TFunc tmpfunc = new TFunc((uint)assembly.ImageBase() + func.RVA, 2, func.Ordinal, func.Name);
                 FullProcList.AddFunc(tmpfunc);
             }
-            foreach (LibraryReference lib in assembly.LibraryImports)
+            foreach (LibraryReference lib in assembly.LibraryImports())
             {
                 foreach (ImportMethod func in lib.ImportMethods)
                 {
-                    TFunc tmpfunc = new TFunc((uint)assembly.NTHeader.OptionalHeader.ImageBase + func.RVA, 3, func.Ordinal, func.Name, lib.LibraryName);
+                    TFunc tmpfunc = new TFunc((uint)assembly.ImageBase() + func.RVA, 3, func.Ordinal, func.Name, lib.LibraryName);
                     FullProcList.AddFunc(tmpfunc);
                 }
             }
@@ -388,7 +346,7 @@ namespace GNIDA
                 List<Stroka> tmp = new List<Stroka>();
                 long Len = DisasmFunc(tmp, RVA2FO(dct.Key), FullProcList);
                 dct.Value.Length = Len;
-                dct.Value.bytes = assembly.Image.ReadBytes(RVA2FO(dct.Key), (int)Len);
+                dct.Value.bytes = assembly.ReadBytes(RVA2FO(dct.Key), (int)Len);
                 foreach(Stroka t in tmp)
                 {
                     RaiseAddStrEvent(t.ToCmmString(NewSubs));
@@ -405,11 +363,11 @@ namespace GNIDA
         public ulong FO2RVA(ulong FO)
         {
             ulong addr = 0;
-            foreach (Section sct in assembly.NTHeader.Sections)
+            foreach (Section sct in assembly.Sections())
             {
                 if (sct.ContainsRawOffset((uint)FO))
                 {
-                    addr = (ulong)(sct.RVA + FO - sct.RawOffset + assembly.NTHeader.OptionalHeader.ImageBase);
+                    addr = (ulong)(sct.RVA + FO - sct.RawOffset + assembly.ImageBase());
                 }
             }
             return addr;
@@ -417,8 +375,8 @@ namespace GNIDA
         public long RVA2FO(long RVA)
         {
             uint addr = 0;
-            RVA -= (long)assembly.NTHeader.OptionalHeader.ImageBase;
-            foreach (Section sct in assembly.NTHeader.Sections)
+            RVA -= (long)assembly.ImageBase();
+            foreach (Section sct in assembly.Sections())
             {
                 if (sct.ContainsRva((uint)RVA)) addr = sct.RVAToFileOffset((uint)RVA);
             }

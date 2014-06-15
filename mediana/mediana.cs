@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 //using TUP.AsmResolver;
 //using TUP.AsmResolver.ASM;
 using System.Runtime.InteropServices;
-using GNIDA.Loaders;
+using ldrs;// GNIDA.Loaders;
 
 namespace GNIDA
 {
@@ -2182,7 +2182,7 @@ static UInt32 post_proc_arpl_movsxd(long origin_offset, long offset, ref INSTRUC
         instr.flags &= (ushort)(INSTR_FLAG_MODRM | INSTR_FLAG_SIB);
 
         instr.mnemonic = "movsxd";
-        byte[] bt = assembly.Image.ReadBytes(instr.opcode_offset + 1, 4);
+        byte[] bt = assembly.ReadBytes(instr.opcode_offset + 1, 4);
         res = (UInt32)(
               bt[0] +
               bt[1]*256 +  
@@ -2377,7 +2377,7 @@ static byte get_disp(long origin_offset, long offset, ref INSTRUCTION instr, int
     if (len!=0)
     {
         //instr.disp.value.ab = assembly.Image.ReadBytes(offset, len);
-        byte[] bt = assembly.Image.ReadBytes(offset, len);
+        byte[] bt = assembly.ReadBytes(offset, len);
         instr.disp.value.d64 = 0;
         foreach (byte bb in bt.Reverse())
         {
@@ -2682,7 +2682,7 @@ public static UInt32 tq_A(long origin_offset, long offset, ref INSTRUCTION instr
     instr.ops[op_index].size = (ushort)opsize.size;
     instr.ops[op_index].value.far_addr.offset = (byte)(offset - origin_offset);
     //instr.ops[op_index].value.far_addr.far_addr_ab = assembly.Image.ReadBytes(offset, instr.ops[op_index].size);
-    byte[] bt = assembly.Image.ReadBytes(offset, instr.ops[op_index].size);
+    byte[] bt = assembly.ReadBytes(offset, instr.ops[op_index].size);
     instr.ops[op_index].value.far_addr.far_addr48.Val = 0;
     foreach (byte bb in bt.Reverse())
     {
@@ -2735,7 +2735,7 @@ public static UInt32 tq_I(long origin_offset, long offset, ref INSTRUCTION instr
     instr.ops[op_index].value.imm .offset = (byte)(offset - origin_offset);
     //instr.ops[op_index].value.imm.immab = assembly.Image.ReadBytes(offset, opsize.size_in_stream);
 
-    byte[] bt = assembly.Image.ReadBytes(offset, (int)opsize.size_in_stream);
+    byte[] bt = assembly.ReadBytes(offset, (int)opsize.size_in_stream);
     instr.ops[op_index].value.imm.imm64 = 0;
     foreach (byte bb in bt.Reverse())
     {
@@ -2781,7 +2781,7 @@ public static UInt32 tq_O(long origin_offset, long offset, ref INSTRUCTION instr
     instr.ops[op_index].size = (ushort)opsize.size;
     instr.ops[op_index].value.addr.mod = ADDR_MOD_DISP;
     //instr.disp.value.ab = assembly.Image.ReadBytes(offset, instr.addrsize);
-    byte[] bt = assembly.Image.ReadBytes(offset, instr.addrsize);
+    byte[] bt = assembly.ReadBytes(offset, instr.addrsize);
     instr.disp.value.d64 = 0;
     foreach (byte bb in bt.Reverse())
     {
@@ -2903,7 +2903,7 @@ public static UInt32 tq_Y(long origin_offset, long offset, ref INSTRUCTION instr
 
 public static UInt32 tq_Z(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
-    byte[] bt = assembly.Image.ReadBytes(offset - 1, 1);
+    byte[] bt = assembly.ReadBytes(offset - 1, 1);
     //We already consumed opcode, hence we need to look backward.
     create_genreg_operand(ref instr, op_index, (byte)(bt[0] & 0x7), opsize.size, PREFIX_REX_B, ref idata, mode);
 
@@ -6214,7 +6214,7 @@ static UInt32 parse_prefixes(long offset, ref INSTRUCTION instr, INTERNAL_DATA i
     {
         
         //pref_code = *offset;
-        pref_code = assembly.Image.ReadBytes(offset, 1)[0];
+        pref_code = assembly.ReadBytes(offset, 1)[0];
 
         if (res > MAX_INSTRUCTION_LEN)
         {
@@ -6286,7 +6286,7 @@ static UInt32 lookup_opcode(long offset, byte table, ref OPCODE_DESCRIPTOR opcod
     //opcode_descr = NULL;
     do
     {
-        opcode = assembly.Image.ReadBytes(offset, 1)[0];
+        opcode = assembly.ReadBytes(offset, 1)[0];
         
 
         opcode >>= tables[table].shift;
@@ -6479,7 +6479,7 @@ static byte parse_modrm_sib(long offset, ref INSTRUCTION instr, OPCODE_DESCRIPTO
         len++;
         instr.flags |= INSTR_FLAG_MODRM;
         //instr.modrm = *offset;
-        instr.modrm = assembly.Image.ReadBytes(offset, 1)[0];
+        instr.modrm = assembly.ReadBytes(offset, 1)[0];
         if (instr.addrsize != ADDR_SIZE_16)
         {
             if ((instr.modrm & 0x7) == 0x4 && (instr.modrm & 0xC0) != 0xC0)
@@ -6487,7 +6487,7 @@ static byte parse_modrm_sib(long offset, ref INSTRUCTION instr, OPCODE_DESCRIPTO
                 len++;
                 instr.flags |= INSTR_FLAG_SIB;
                 //instr.sib = offset[1];
-                instr.sib = instr.modrm = assembly.Image.ReadBytes(offset, 2)[1]; 
+                instr.sib = instr.modrm = assembly.ReadBytes(offset, 2)[1]; 
             }
         }
     }
@@ -6629,8 +6629,8 @@ static void convert_prefixes(INSTRUCTION instr, byte[] prefixes)
 }
 
 
-        public static Loaders.LWin32 assembly;
-        public mediana(Loaders.LWin32 _assembly)
+        public static ILoader assembly;
+        public mediana(ILoader _assembly)
         {
             assembly = _assembly;
         }
@@ -6776,7 +6776,7 @@ static void convert_prefixes(INSTRUCTION instr, byte[] prefixes)
         param.errcode = ERRS.ERR_64_ONLY;//error: instruction is 64bit mode only.
 
     apply_disasm_options(ref instr, len, param);
-    instr.bytes = assembly.Image.ReadBytes(offset, (int)len);
+    instr.bytes = assembly.ReadBytes(offset, (int)len);
 
             instr.Addr = (ulong)offset;
             return len;

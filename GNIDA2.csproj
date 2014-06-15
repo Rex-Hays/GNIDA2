@@ -31,7 +31,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>.\</OutputPath>
+    <OutputPath>.</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -39,7 +39,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
-    <OutputPath>.\</OutputPath>
+    <OutputPath>.</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -82,90 +82,6 @@
     <Compile Include="LIDE\gtk-gui\MainWindow.cs" />
     <Compile Include="LIDE\MainWindow.cs" />
     <Compile Include="LIDE\Program.cs" />
-    <Compile Include="Loaders\LoaderWin32.cs" />
-    <Compile Include="Loaders\pl1\ASMGlobals.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Loaders\pl1\DataDirectory.cs" />
-    <Compile Include="Loaders\pl1\DataDirectoryName.cs" />
-    <Compile Include="Loaders\pl1\ExecutableFlags.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Loaders\pl1\ExportMethod.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Loaders\pl1\FileHeader.cs" />
-    <Compile Include="Loaders\pl1\IHeader.cs" />
-    <Compile Include="Loaders\pl1\IImageProvider.cs" />
-    <Compile Include="Loaders\pl1\ImageSignature.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Loaders\pl1\ImportExportTableReader.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Loaders\pl1\ImportMethod.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Loaders\pl1\IOptionalHeader.cs" />
-    <Compile Include="Loaders\pl1\IResolutionScope.cs" />
-    <Compile Include="Loaders\pl1\LibraryFlags.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Loaders\pl1\LibraryReference.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Loaders\pl1\LWin32.cs" />
-    <Compile Include="Loaders\pl1\Machine.cs" />
-    <Compile Include="Loaders\pl1\MZHeader.cs" />
-    <Compile Include="Loaders\pl1\NETHeaderReader.cs" />
-    <Compile Include="Loaders\pl1\ExportedType.cs" />
-    <Compile Include="Loaders\pl1\FileAttributes.cs" />
-    <Compile Include="Loaders\pl1\FileReference.cs" />
-    <Compile Include="Loaders\pl1\IStreamProvider.cs" />
-    <Compile Include="Loaders\pl1\ManifestResource.cs" />
-    <Compile Include="Loaders\pl1\ManifestResourceAttributes.cs" />
-    <Compile Include="Loaders\pl1\ModifierType.cs" />
-    <Compile Include="Loaders\pl1\ExceptionHandler.cs" />
-    <Compile Include="Loaders\pl1\ExceptionHandlerType.cs" />
-    <Compile Include="Loaders\pl1\OperandType.cs" />
-    <Compile Include="Loaders\pl1\OptionalHeader32.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Loaders\pl1\OptionalHeader64.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Loaders\pl1\ResolveException.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Loaders\pl1\ResourceDataEntry.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Loaders\pl1\ResourceDirectory.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Loaders\pl1\ResourceDirectoryEntry.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Loaders\pl1\ResourceDirectoryType.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Loaders\pl1\ResourcesReader.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Loaders\pl1\SectionFlags.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Loaders\pl1\StackBehaviour.cs" />
-    <Compile Include="Loaders\pl1\StandAloneSignature.cs" />
-    <Compile Include="Loaders\pl1\NTHeader.cs" />
-    <Compile Include="Loaders\pl1\Offset.cs" />
-    <Compile Include="Loaders\pl1\OffsetConverter.cs" />
-    <Compile Include="Loaders\pl1\PeHeaderReader.cs" />
-    <Compile Include="Loaders\pl1\PeImage.cs" />
-    <Compile Include="Loaders\pl1\ReadingParameters.cs" />
-    <Compile Include="Loaders\pl1\Section.cs" />
-    <Compile Include="Loaders\pl1\Structures.cs" />
-    <Compile Include="Loaders\pl1\SubSystem.cs" />
     <Compile Include="mediana\mediana.cs" />
     <Compile Include="WIDE\AboutBox1.cs">
       <SubType>Form</SubType>
@@ -323,116 +239,6 @@
     <None Include="WIDE\FCTB\FastColoredTextBox\obj\Release\FastColoredTextBox.csprojResolveAssemblyReference.cache" />
     <None Include="WIDE\FCTB\FastColoredTextBox\SyntaxHighlighter.cs.old" />
     <None Include="WIDE\FCTB\Help\FastColoredTextBox_Help.chm" />
-    <Compile Include="Loaders\pl1\NET\AssemblyAttributes.cs" />
-    <Compile Include="Loaders\pl1\NET\AssemblyDefinition.cs" />
-    <Compile Include="Loaders\pl1\NET\AssemblyHashAlgorithm.cs" />
-    <Compile Include="Loaders\pl1\NET\AssemblyReference.cs" />
-    <Compile Include="Loaders\pl1\NET\AssemblyResolver.cs" />
-    <Compile Include="Loaders\pl1\NET\BlobHeap.cs" />
-    <Compile Include="Loaders\pl1\NET\BlobSignatureReader.cs" />
-    <Compile Include="Loaders\pl1\NET\ClassLayout.cs" />
-    <Compile Include="Loaders\pl1\NET\ByReferenceType.cs" />
-    <Compile Include="Loaders\pl1\NET\Constant.cs" />
-    <Compile Include="Loaders\pl1\NET\ArrayDimension.cs" />
-    <Compile Include="Loaders\pl1\NET\ArrayType.cs" />
-    <Compile Include="Loaders\pl1\NET\CustomAttribute.cs" />
-    <Compile Include="Loaders\pl1\NET\CustomAttributeArgument.cs" />
-    <Compile Include="Loaders\pl1\NET\CustomAttributeSignature.cs" />
-    <Compile Include="Loaders\pl1\NET\ElementType.cs" />
-    <Compile Include="Loaders\pl1\NET\EnCLog.cs" />
-    <Compile Include="Loaders\pl1\NET\EnCMap.cs" />
-    <Compile Include="Loaders\pl1\NET\EventAttributes.cs" />
-    <Compile Include="Loaders\pl1\NET\EventDefinition.cs" />
-    <Compile Include="Loaders\pl1\NET\EventMap.cs" />
-    <Compile Include="Loaders\pl1\NET\FieldAttributes.cs" />
-    <Compile Include="Loaders\pl1\NET\FieldDefinition.cs" />
-    <Compile Include="Loaders\pl1\NET\FieldLayout.cs" />
-    <Compile Include="Loaders\pl1\NET\FieldMarshal.cs" />
-    <Compile Include="Loaders\pl1\NET\FieldPtr.cs" />
-    <Compile Include="Loaders\pl1\NET\FieldReference.cs" />
-    <Compile Include="Loaders\pl1\NET\FieldRVA.cs" />
-    <Compile Include="Loaders\pl1\NET\FieldSignature.cs" />
-    <Compile Include="Loaders\pl1\NET\GenericInstanceType.cs" />
-    <Compile Include="Loaders\pl1\NET\GenericParamConstraint.cs" />
-    <Compile Include="Loaders\pl1\NET\GenericParameter.cs" />
-    <Compile Include="Loaders\pl1\NET\GenericParameterAttributes.cs" />
-    <Compile Include="Loaders\pl1\NET\GuidHeap.cs" />
-    <Compile Include="Loaders\pl1\NET\ICacheProvider.cs" />
-    <Compile Include="Loaders\pl1\NET\IDataDirectoryProvider.cs" />
-    <Compile Include="Loaders\pl1\NET\IGenericContext.cs" />
-    <Compile Include="Loaders\pl1\NET\IGenericInstance.cs" />
-    <Compile Include="Loaders\pl1\NET\IGenericParamProvider.cs" />
-    <Compile Include="Loaders\pl1\NET\IMemberSignature.cs" />
-    <Compile Include="Loaders\pl1\NET\IMethod.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Loaders\pl1\NET\ISpecification.cs" />
-    <Compile Include="Loaders\pl1\NET\MemberCollection.cs" />
-    <Compile Include="Loaders\pl1\NET\MemberRange.cs" />
-    <Compile Include="Loaders\pl1\NET\MemberReference.cs" />
-    <Compile Include="Loaders\pl1\NET\MethodAttributes.cs" />
-    <Compile Include="Loaders\pl1\NET\MethodBody.cs" />
-    <Compile Include="Loaders\pl1\NET\MethodBodySection.cs" />
-    <Compile Include="Loaders\pl1\NET\MethodCallingConvention.cs" />
-    <Compile Include="Loaders\pl1\NET\MethodDefinition.cs" />
-    <Compile Include="Loaders\pl1\NET\MethodImpl.cs" />
-    <Compile Include="Loaders\pl1\NET\MethodImplAttributes.cs" />
-    <Compile Include="Loaders\pl1\NET\MethodPtr.cs" />
-    <Compile Include="Loaders\pl1\NET\MethodReference.cs" />
-    <Compile Include="Loaders\pl1\NET\MethodSemantics.cs" />
-    <Compile Include="Loaders\pl1\NET\MethodSemanticsAttributes.cs" />
-    <Compile Include="Loaders\pl1\NET\MethodSignature.cs" />
-    <Compile Include="Loaders\pl1\NET\MethodSpecification.cs" />
-    <Compile Include="Loaders\pl1\NET\MSILAssembler.cs" />
-    <Compile Include="Loaders\pl1\NET\MSILCode.cs" />
-    <Compile Include="Loaders\pl1\NET\MSILDisassembler.cs" />
-    <Compile Include="Loaders\pl1\NET\MSILInstruction.cs" />
-    <Compile Include="Loaders\pl1\NET\MSILOpCode.cs" />
-    <Compile Include="Loaders\pl1\NET\MSILOpCodes.cs" />
-    <Compile Include="Loaders\pl1\NET\NestedClass.cs" />
-    <Compile Include="Loaders\pl1\NET\NETGlobals.cs" />
-    <Compile Include="Loaders\pl1\NET\NETHeader.cs" />
-    <Compile Include="Loaders\pl1\NET\NETHeaderFlags.cs" />
-    <Compile Include="Loaders\pl1\NET\NETMethodReader.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Loaders\pl1\NET\NETTableReader.cs" />
-    <Compile Include="Loaders\pl1\NET\ParameterAttributes.cs" />
-    <Compile Include="Loaders\pl1\NET\ParameterDefinition.cs" />
-    <Compile Include="Loaders\pl1\NET\ParameterReference.cs" />
-    <Compile Include="Loaders\pl1\NET\ParamPtr.cs" />
-    <Compile Include="Loaders\pl1\NET\PInvokeImplAttributes.cs" />
-    <Compile Include="Loaders\pl1\NET\PInvokeImplementation.cs" />
-    <Compile Include="Loaders\pl1\NET\PropertyAttributes.cs" />
-    <Compile Include="Loaders\pl1\NET\PropertyDefinition.cs" />
-    <Compile Include="Loaders\pl1\NET\PropertyMap.cs" />
-    <Compile Include="Loaders\pl1\NET\PropertyPtr.cs" />
-    <Compile Include="Loaders\pl1\NET\PropertySignature.cs" />
-    <Compile Include="Loaders\pl1\NET\TypeAttributes.cs" />
-    <Compile Include="Loaders\pl1\NET\TypeDefinition.cs" />
-    <Compile Include="Loaders\pl1\NET\TypeReference.cs" />
-    <Compile Include="Loaders\pl1\NET\TypeSpecification.cs" />
-    <Compile Include="Loaders\pl1\NET\TypeSystem.cs" />
-    <Compile Include="Loaders\pl1\NET\VariableDefinition.cs" />
-    <Compile Include="Loaders\pl1\NET\MetaDataHeader.cs" />
-    <Compile Include="Loaders\pl1\NET\MetaDataMember.cs" />
-    <Compile Include="Loaders\pl1\NET\MetaDataResolver.cs" />
-    <Compile Include="Loaders\pl1\NET\MetaDataRow.cs" />
-    <Compile Include="Loaders\pl1\NET\MetaDataStream.cs" />
-    <Compile Include="Loaders\pl1\NET\MetaDataTable.cs" />
-    <Compile Include="Loaders\pl1\NET\MetaDataTableGroup.cs" />
-    <Compile Include="Loaders\pl1\NET\MetaDataTableType.cs" />
-    <Compile Include="Loaders\pl1\NET\MetaDataTokenResolver.cs" />
-    <Compile Include="Loaders\pl1\NET\TablesHeap.cs" />
-    <Compile Include="Loaders\pl1\NET\UserStringsHeap.cs" />
-    <Compile Include="Loaders\pl1\NET\PinnedType.cs" />
-    <Compile Include="Loaders\pl1\NET\PointerType.cs" />
-    <Compile Include="Loaders\pl1\NET\SecurityDeclaration.cs" />
-    <Compile Include="Loaders\pl1\NET\StringsHeap.cs" />
-    <Compile Include="Loaders\pl1\NET\ObsoleteAssemblyTables.cs" />
-    <Compile Include="Loaders\pl1\NET\ModuleDefinition.cs" />
-    <Compile Include="Loaders\pl1\NET\ModuleReference.cs" />
-    <Compile Include="Loaders\pl1\NET\InterfaceImplementation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -441,7 +247,6 @@
     <Folder Include="LIDE\bin\Release\" />
     <Folder Include="LIDE\obj\x86\Debug\TempPE\" />
     <Folder Include="LIDE\Properties\" />
-    <Folder Include="Loaders\pl2\" />
     <Folder Include="WIDE\FCTB\FastColoredTextBox\obj\Debug\TempPE\" />
     <Folder Include="WIDE\FCTB\FastColoredTextBox\obj\Release\TempPE\" />
     <Folder Include="WIDE\FCTB\FastColoredTextBox\Properties\" />
@@ -458,6 +263,7 @@
     <Content Include="LIDE\obj\x86\Debug\LIDE.csproj.FileListAbsolute.txt" />
     <Content Include="LIDE\obj\x86\Debug\LIDE.exe" />
     <Content Include="LIDE\obj\x86\Debug\LIDE.pdb" />
+    <Content Include="ReadMe.txt" />
     <Content Include="WIDE\Be.Windows.Forms.HexBox\Be.Windows.Forms.HexBox.xml" />
     <Content Include="WIDE\Be.Windows.Forms.HexBox\bin\Debug\Be.Windows.Forms.HexBox.dll" />
     <Content Include="WIDE\Be.Windows.Forms.HexBox\bin\Debug\Be.Windows.Forms.HexBox.pdb" />

@@ -1,14 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Loaders\LoaderWin32\LoaderWin32.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GNIDA.cs">
     <Files>
-      <File FileName="GNIDA.cs" Line="1" Column="1" />
+      <File FileName="GNIDA.cs" Line="10" Column="7" />
       <File FileName="WIDE\Wide.cs" Line="1" Column="1" />
-      <File FileName="c:\Users\Damir\Documents\GNIDA27\Loaders\pl1\ImportExportTableReader.cs" Line="1" Column="1" />
+      <File FileName="c:\Users\Damir\Documents\GNIDA27\Loaders\pl1\ImportExportTableReader.cs" Line="10" Column="27" />
       <File FileName="..\..\..\..\Program Files\MSBuild\12.0\bin\Microsoft.CSharp.CurrentVersion.targets" Line="1" Column="1" />
       <File FileName="Loaders\ILoader.cs" Line="1" Column="1" />
-      <File FileName="Loaders\LoaderWin32\LoaderWin32.cs" Line="1" Column="1" />
+      <File FileName="Loaders\LoaderWin32\LoaderWin32.cs" Line="12" Column="15" />
       <File FileName="Loaders\pl1\LWin32.cs" Line="1" Column="1" />
+      <File FileName="Loaders\common\common.cs" Line="12" Column="9" />
+      <File FileName="c:\Users\Damir\Documents\GNIDA27\Loaders\LoaderWin32.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
