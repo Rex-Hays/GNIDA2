@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Xml;
 using GNIDA;
+using plugins;
 
 namespace WIDE
 {
@@ -20,7 +21,7 @@ namespace WIDE
             InitializeComponent();
         }
         public Flirt flrt;
-        public TFunc Func;
+        public medi.TFunc Func;
         private void Form3_Load(object sender, EventArgs e)
         {
             XmlTextReader reader = new XmlTextReader(flrt.DName);

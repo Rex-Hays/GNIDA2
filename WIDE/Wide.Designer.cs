@@ -469,12 +469,15 @@ namespace WIDE
             // 
             // hexBox1
             // 
+            this.hexBox1.ColumnInfoVisible = true;
             this.hexBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hexBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.hexBox1.GroupSize = 8;
             this.hexBox1.LineInfoVisible = true;
             this.hexBox1.Location = new System.Drawing.Point(4, 4);
             this.hexBox1.Margin = new System.Windows.Forms.Padding(4);
             this.hexBox1.Name = "hexBox1";
+            this.hexBox1.ReadOnly = true;
             this.hexBox1.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
             this.hexBox1.Size = new System.Drawing.Size(668, 231);
             this.hexBox1.StringViewVisible = true;
@@ -624,7 +627,7 @@ namespace WIDE
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = String.Format("GNIDA v{0}", Assembly.GetExecutingAssembly().GetName().Version.ToString());
+            this.Text = "GNIDA v12.0.0.0";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);

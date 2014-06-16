@@ -84,7 +84,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="bfd.h" />
+    <ClInclude Include="..\..\Dasmer\libopcodes\bfd.h" />
     <ClInclude Include="libbfd.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="sysdep.h" />

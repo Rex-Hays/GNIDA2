@@ -46,7 +46,7 @@ namespace WIDE
             VarLine++;
         }
 
-        public void AddVarEvent1(object sender, TVar Var)
+        public void AddVarEvent1(object sender, medi.TVar Var)
         {
             if (this.fastColoredTextBox1.InvokeRequired)
             {
@@ -62,7 +62,7 @@ namespace WIDE
                 AppendText(Var.FName);
             }
         }
-        public void AddFuncEvent1(object sender, TFunc func)
+        public void AddFuncEvent1(object sender, medi.TFunc func)
         {
             ListViewItem itm1 = new ListViewItem();
             itm1.Text = func.FName;
@@ -74,10 +74,10 @@ namespace WIDE
             Log.Items.Add(LogStr);
             //Log.SelectedIndex = Log.Items.Count-1;
         }
-        public void OnFuncChanged1(object sender, TFunc Func)
+        public void OnFuncChanged1(object sender, medi.TFunc Func)
         {
             foreach(ListViewItem itm in listView3.Items)
-                if ((itm.Tag as TFunc).Equals(Func))
+                if ((itm.Tag as medi.TFunc).Equals(Func))
                 {
                     fastColoredTextBox1.BeginUpdate();
                     fastColoredTextBox1.Text = fastColoredTextBox1.Text.Replace(itm.Text, Func.FName);
@@ -157,6 +157,7 @@ namespace WIDE
 
             dynamicFileByteProvider = new DynamicFileByteProvider(openFileDialog1.FileName, true);
             hexBox1.ByteProvider = dynamicFileByteProvider;
+            hexBox1.LineInfoOffset = (long)MyGNIDA.assembly.Entrypoint() + (long)MyGNIDA.assembly.ImageBase();
 
             fastColoredTextBox1.Clear();
             fastColoredTextBox1.Text = "//+---------------------------------------------------------------------+" +
@@ -225,7 +226,7 @@ namespace WIDE
         private void Funclist_DoubleClick(object sender, EventArgs e)
         {
             string sss = "";
-            TFunc Func = (TFunc)listView3.SelectedItems[0].Tag;
+            medi.TFunc Func = (medi.TFunc)listView3.SelectedItems[0].Tag;
             Console.WriteLine(Func.Addr.ToString("X8"));
         }
 
@@ -244,7 +245,7 @@ namespace WIDE
             e.ChangedRange.ClearStyle(blueStyle);
             e.ChangedRange.SetStyle(blueStyle, @"Loc_[\dA-Fa-f]+");
             if(MyGNIDA!=null)
-            foreach(KeyValuePair<long, TFunc> fnc in MyGNIDA.FullProcList)
+                foreach (KeyValuePair<long, medi.TFunc> fnc in MyGNIDA.FullProcList)
             {
                 e.ChangedRange.SetStyle(funcStyle, ' '+fnc.Value.FName);
             }
@@ -255,16 +256,16 @@ namespace WIDE
             if (listView3.SelectedItems.Count == 1)
             {
                 Form2 Fm = new Form2();
-                Fm.NName = (listView3.SelectedItems[0].Tag as TFunc).FName;
+                Fm.NName = (listView3.SelectedItems[0].Tag as medi.TFunc).FName;
                 if (Fm.ShowDialog() == DialogResult.OK)
-                    MyGNIDA.RenameFunction((listView3.SelectedItems[0].Tag as TFunc), Fm.NName);
+                    MyGNIDA.RenameFunction((listView3.SelectedItems[0].Tag as medi.TFunc), Fm.NName);
             };
         }
 
         private void renameToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
-            TFunc f = GetSelectedFunction();
+            medi.TFunc f = GetSelectedFunction();
             if (f != null) 
             {
                 Form2 Fm = new Form2();
@@ -276,7 +277,7 @@ namespace WIDE
 
         private void fastColoredTextBox1_DoubleClick(object sender, EventArgs e)
         {
-            TFunc f = GetSelectedFunction();
+            medi.TFunc f = GetSelectedFunction();
             if (f!= null)
             {
                 //foreach(Line L in fastColoredTextBox1.Lines)
@@ -286,18 +287,18 @@ namespace WIDE
 
         private void fastColoredTextBox1_Click(object sender, EventArgs e)
         {
-            TFunc f = GetSelectedFunction();
+            medi.TFunc f = GetSelectedFunction();
             if (f != null) renameToolStripMenuItem1.Text = f.FName;
             renameToolStripMenuItem1.Enabled = f!= null;
         }
 
-        private TFunc GetSelectedFunction()
+        private medi.TFunc GetSelectedFunction()
         {
             Place place = fastColoredTextBox1.Selection.Start;
             var r = new Range(fastColoredTextBox1, place, place);
             string hoveredWord = r.GetFragment("[_a-zA-Z0-9]").Text;
             ListViewItem itm = listView3.FindItemWithText(hoveredWord);
-            if (itm != null) return (itm.Tag as TFunc);
+            if (itm != null) return (itm.Tag as medi.TFunc);
             return null;
         }
         private void sendToFLIRTToolStripMenuItem_Click(object sender, EventArgs e)

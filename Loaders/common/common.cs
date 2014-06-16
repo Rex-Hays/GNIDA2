@@ -5,15 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using GNIDA;
 using GNIDA.Loaders;
+using medi;
 
 namespace plugins
 {
+    public interface IGNIDA
+    {
+        medi.MyDictionary ToDisasmFuncList();
+        medi.MyDictionary DisasmedFuncList();
+        void RaiseAddFuncEvent(object sender, medi.TFunc Func);
+        void RaiseVarFuncEvent(object sender, medi.TVar Var);
+    }
     public interface ILoader
     {
         SubSystem SubSystem();
-//        ulong SubSystem();
         GNIDA.Loaders.ExecutableFlags ExecutableFlags();
-//        ulong ExecutableFlags();
         ulong ImageBase();
         ulong Entrypoint();
         List<Section> Sections();
@@ -24,6 +30,7 @@ namespace plugins
         void LoadFile(string FName);
     }
     public interface IDasmer
-    {
+   {
+        UInt32 disassemble(long offset, ref medi.mediana.INSTRUCTION instr, ref medi.mediana.DISASM_INOUT_PARAMS param);
     }
 }

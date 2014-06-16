@@ -27,10 +27,10 @@
     <ClInclude Include="libbfd.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="bfd.h">
+    <ClInclude Include="sysdep.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="sysdep.h">
+    <ClInclude Include="..\..\Dasmer\libopcodes\bfd.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
   </ItemGroup>
