@@ -9,3 +9,8 @@ C:\Users\Damir\Source\Repos\GNIDA22\WIDE\Be.Windows.Forms.HexBox\obj\Release\Be.
 C:\Users\Damir\Source\Repos\GNIDA22\WIDE\Be.Windows.Forms.HexBox\obj\Release\Be.Windows.Forms.Properties.Resources.resources
 C:\Users\Damir\Source\Repos\GNIDA22\WIDE\Be.Windows.Forms.HexBox\obj\Release\Be.Windows.Forms.HexBox.csproj.GenerateResource.Cache
 C:\Users\Damir\Source\Repos\GNIDA22\WIDE\Be.Windows.Forms.HexBox\obj\Release\Be.Windows.Forms.HexBox.dll
+C:\Users\Damir\Documents\GNIDA27\WIDE\Be.Windows.Forms.HexBox\bin\Release\Be.Windows.Forms.HexBox.dll
+C:\Users\Damir\Documents\GNIDA27\WIDE\Be.Windows.Forms.HexBox\obj\Release\Be.Windows.Forms.HexBox.resources
+C:\Users\Damir\Documents\GNIDA27\WIDE\Be.Windows.Forms.HexBox\obj\Release\Be.Windows.Forms.Properties.Resources.resources
+C:\Users\Damir\Documents\GNIDA27\WIDE\Be.Windows.Forms.HexBox\obj\Release\Be.Windows.Forms.HexBox.csproj.GenerateResource.Cache
+C:\Users\Damir\Documents\GNIDA27\WIDE\Be.Windows.Forms.HexBox\obj\Release\Be.Windows.Forms.HexBox.dll

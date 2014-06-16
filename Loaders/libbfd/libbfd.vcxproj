@@ -25,7 +25,7 @@
     <CharacterSet>Unicode</CharacterSet>
     <OutputPath>.\</OutputPath>
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)Loaders\</OutDir>
+    <OutDir>..\..\Release\Loaders</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -35,7 +35,7 @@
     <CharacterSet>Unicode</CharacterSet>
     <OutputPath>.\</OutputPath>
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)Loaders\</OutDir>
+    <OutDir>..\..\Release\Loaders\</OutDir>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">

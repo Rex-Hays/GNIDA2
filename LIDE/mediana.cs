@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
-using ldrs;// GNIDA.Loaders;
+using plugins;// GNIDA.Loaders;
 
 namespace GNIDA
 {
@@ -2180,7 +2180,7 @@ static UInt32 post_proc_arpl_movsxd(long origin_offset, long offset, ref INSTRUC
         instr.flags &= (ushort)(INSTR_FLAG_MODRM | INSTR_FLAG_SIB);
 
         instr.mnemonic = "movsxd";
-        byte[] bt = assembly.Image.ReadBytes(instr.opcode_offset + 1, 4);
+        byte[] bt = assembly.ReadBytes(instr.opcode_offset + 1, 4);
         res = (UInt32)(
               bt[0] +
               bt[1]*256 +  

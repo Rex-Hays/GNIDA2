@@ -5,7 +5,7 @@
 // функции LIBBFD_API как импортированные из DLL, тогда как данная DLL видит символы,
 // определяемые данным макросом, как экспортированные.
 #ifdef LIBBFD_EXPORTS
-#define LIBBFD_API __declspec(dllexport)
+#define LIBBFD_API __declspec(dllexport) 
 #else
 #define LIBBFD_API __declspec(dllimport)
 #endif
@@ -18,5 +18,3 @@ public:
 };
 
 extern LIBBFD_API int nlibbfd;
-
-LIBBFD_API int fnlibbfd(void);

@@ -7,7 +7,7 @@ using GNIDA.Loaders;
 using System.ComponentModel;
 using System.Reflection;
 //using LoaderWin32;
-using ldrs;
+using plugins;
 
 namespace GNIDA
 {
@@ -92,7 +92,7 @@ namespace GNIDA
     public class GNIDA1
     {
         //public Loaders.LWin32 assembly;
-        public ldrs.ILoader assembly;
+        public plugins.ILoader assembly;
         public mediana MeDisasm;
         public BackgroundWorker bw = new BackgroundWorker();
         public MyDictionary FullProcList = new MyDictionary();
@@ -285,7 +285,7 @@ namespace GNIDA
                 i++;
             }
 
-            TFunc fnc = new TFunc((uint)assembly.ImageBase() + assembly.Entrypoint(), 0, 0, "main");
+            TFunc fnc = new TFunc(((long)(assembly.ImageBase() + assembly.Entrypoint())), 0, 0, "main");
 
             param.arch = mediana.ARCH_ALL;
             param.sf_prefixes = sf_prefixes;

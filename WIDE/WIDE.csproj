@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\</OutputPath>
+    <OutputPath>..\Release\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -27,16 +27,23 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\</OutputPath>
+    <OutputPath>..\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Loaders\common.dll</HintPath>
+      <HintPath>..\Release\common.dll</HintPath>
+    </Reference>
+    <Reference Include="GNIDA, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Release\GNIDA.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -80,7 +87,6 @@
     <Compile Include="FCTB\FastColoredTextBox\UnfocusablePanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Flirt.cs" />
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,9 +98,6 @@
     </Compile>
     <Compile Include="Form3.Designer.cs">
       <DependentUpon>Form3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="mediana.cs">
-      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Wide.cs">
       <SubType>Form</SubType>
@@ -160,61 +163,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="..\GNIDA.cs">
-      <Link>GNIDA.cs</Link>
-    </Compile>
-    <None Include="Be.Windows.Forms.HexBox\Be.Windows.Forms.HexBox.csproj" />
-    <None Include="Be.Windows.Forms.HexBox\Be.Windows.Forms.HexBox.xml" />
-    <Compile Include="Be.Windows.Forms.HexBox\BuiltInContextMenu.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Be.Windows.Forms.HexBox\ByteCharConverters.cs" />
-    <Compile Include="Be.Windows.Forms.HexBox\ByteCollection.cs" />
-    <Compile Include="Be.Windows.Forms.HexBox\BytePositionInfo.cs" />
-    <Compile Include="Be.Windows.Forms.HexBox\DataBlock.cs" />
-    <Compile Include="Be.Windows.Forms.HexBox\DataMap.cs" />
-    <Compile Include="Be.Windows.Forms.HexBox\DynamicByteProvider.cs" />
-    <Compile Include="Be.Windows.Forms.HexBox\DynamicFileByteProvider.cs" />
-    <Compile Include="Be.Windows.Forms.HexBox\FileByteProvider.cs" />
-    <Compile Include="Be.Windows.Forms.HexBox\FileDataBlock.cs" />
-    <Compile Include="Be.Windows.Forms.HexBox\FindOptions.cs" />
-    <None Include="Be.Windows.Forms.HexBox\HexBox.bmp" />
-    <Compile Include="Be.Windows.Forms.HexBox\HexBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <None Include="Be.Windows.Forms.HexBox\HexBox.resx" />
-    <None Include="Be.Windows.Forms.HexBox\HexBox.snk" />
-    <Compile Include="Be.Windows.Forms.HexBox\HexCasing.cs" />
-    <Compile Include="Be.Windows.Forms.HexBox\IByteProvider.cs" />
-    <Compile Include="Be.Windows.Forms.HexBox\MemoryDataBlock.cs" />
-    <Compile Include="Be.Windows.Forms.HexBox\NativeMethods.cs" />
-    <Compile Include="Be.Windows.Forms.HexBox\Util.cs" />
-    <None Include="Be.Windows.Forms.HexBox\bin\Debug\Be.Windows.Forms.HexBox.dll" />
-    <None Include="Be.Windows.Forms.HexBox\bin\Debug\Be.Windows.Forms.HexBox.pdb" />
-    <None Include="Be.Windows.Forms.HexBox\bin\Debug\Be.Windows.Forms.HexBox.xml" />
-    <None Include="Be.Windows.Forms.HexBox\bin\Release\Be.Windows.Forms.HexBox.dll" />
-    <None Include="Be.Windows.Forms.HexBox\obj\Debug\Be.Windows.Forms.HexBox.csproj.FileListAbsolute.txt" />
-    <None Include="Be.Windows.Forms.HexBox\obj\Debug\Be.Windows.Forms.HexBox.csproj.GenerateResource.Cache" />
-    <None Include="Be.Windows.Forms.HexBox\obj\Debug\Be.Windows.Forms.HexBox.csprojResolveAssemblyReference.cache" />
-    <None Include="Be.Windows.Forms.HexBox\obj\Debug\Be.Windows.Forms.HexBox.dll" />
-    <None Include="Be.Windows.Forms.HexBox\obj\Debug\Be.Windows.Forms.HexBox.pdb" />
-    <None Include="Be.Windows.Forms.HexBox\obj\Debug\Be.Windows.Forms.HexBox.resources" />
-    <None Include="Be.Windows.Forms.HexBox\obj\Debug\Be.Windows.Forms.Properties.Resources.resources" />
-    <None Include="Be.Windows.Forms.HexBox\obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
-    <None Include="Be.Windows.Forms.HexBox\obj\Release\Be.Windows.Forms.HexBox.csproj.FileListAbsolute.txt" />
-    <None Include="Be.Windows.Forms.HexBox\obj\Release\Be.Windows.Forms.HexBox.csproj.GenerateResource.Cache" />
-    <None Include="Be.Windows.Forms.HexBox\obj\Release\Be.Windows.Forms.HexBox.dll" />
-    <None Include="Be.Windows.Forms.HexBox\obj\Release\Be.Windows.Forms.HexBox.resources" />
-    <None Include="Be.Windows.Forms.HexBox\obj\Release\Be.Windows.Forms.Properties.Resources.resources" />
-    <None Include="Be.Windows.Forms.HexBox\obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="Be.Windows.Forms.HexBox\obj\Release\TempPE\Properties.Resources.Designer.cs.dll" />
-    <Compile Include="Be.Windows.Forms.HexBox\Properties\Resources.Designer.cs" />
-    <None Include="Be.Windows.Forms.HexBox\Properties\Resources.resx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="favicon.ico" />
     <Content Include="FCTB\Backup\FastColoredTextBoxVS2008.sln" />
     <Content Include="FCTB\Binary\FastColoredTextBox.dll" />
     <Content Include="FCTB\Binary\FastColoredTextBox.xml" />

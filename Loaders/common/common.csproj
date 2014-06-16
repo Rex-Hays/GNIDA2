@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\</OutputPath>
+    <OutputPath>..\..\Release\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,13 +25,17 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\</OutputPath>
+    <OutputPath>..\..\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GNIDA, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Release\GNIDA.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -535,7 +539,11 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Loaders\common\obj\Debug\" />
+    <Folder Include="Loaders\common\obj\Release\" />
+    <Folder Include="Loaders\common\Properties\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="common.csproj">
       <Link>Loaders\common\common.csproj</Link>
@@ -549,5 +557,189 @@
     <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache">
       <Link>Loaders\common\obj\Release\DesignTimeResolveAssemblyReferencesInput.cache</Link>
     </None>
+    <None Include="obj\Debug\common.csprojResolveAssemblyReference.cache">
+      <Link>Loaders\common\obj\Debug\common.csprojResolveAssemblyReference.cache</Link>
+    </None>
+    <None Include="obj\Debug\common.dll">
+      <Link>Loaders\common\obj\Debug\common.dll</Link>
+    </None>
+    <None Include="obj\Debug\common.pdb">
+      <Link>Loaders\common\obj\Debug\common.pdb</Link>
+    </None>
+    <None Include="obj\Release\common.csproj.FileListAbsolute.txt">
+      <Link>Loaders\common\obj\Release\common.csproj.FileListAbsolute.txt</Link>
+    </None>
+    <None Include="..\libbfd\ansidecl.h">
+      <Link>Loaders\libbfd\ansidecl.h</Link>
+    </None>
+    <None Include="..\libbfd\bfd.h">
+      <Link>Loaders\libbfd\bfd.h</Link>
+    </None>
+    <None Include="..\libbfd\config.h">
+      <Link>Loaders\libbfd\config.h</Link>
+    </None>
+    <None Include="..\libbfd\dllmain.cpp">
+      <Link>Loaders\libbfd\dllmain.cpp</Link>
+    </None>
+    <None Include="..\libbfd\filenames.h">
+      <Link>Loaders\libbfd\filenames.h</Link>
+    </None>
+    <None Include="..\libbfd\fopen-same.h">
+      <Link>Loaders\libbfd\fopen-same.h</Link>
+    </None>
+    <None Include="..\libbfd\hashtab.h">
+      <Link>Loaders\libbfd\hashtab.h</Link>
+    </None>
+    <None Include="..\libbfd\libbfd.a">
+      <Link>Loaders\libbfd\libbfd.a</Link>
+    </None>
+    <None Include="..\libbfd\libbfd.cpp">
+      <Link>Loaders\libbfd\libbfd.cpp</Link>
+    </None>
+    <None Include="..\libbfd\libbfd.h">
+      <Link>Loaders\libbfd\libbfd.h</Link>
+    </None>
+    <None Include="..\libbfd\libbfd.vcxproj">
+      <Link>Loaders\libbfd\libbfd.vcxproj</Link>
+    </None>
+    <None Include="..\libbfd\libbfd.vcxproj.filters">
+      <Link>Loaders\libbfd\libbfd.vcxproj.filters</Link>
+    </None>
+    <None Include="..\libbfd\libgcc.a">
+      <Link>Loaders\libbfd\libgcc.a</Link>
+    </None>
+    <None Include="..\libbfd\libiberty.a">
+      <Link>Loaders\libbfd\libiberty.a</Link>
+    </None>
+    <None Include="..\libbfd\libiconv.a">
+      <Link>Loaders\libbfd\libiconv.a</Link>
+    </None>
+    <None Include="..\libbfd\libintl.a">
+      <Link>Loaders\libbfd\libintl.a</Link>
+    </None>
+    <None Include="..\libbfd\libmingwex.a">
+      <Link>Loaders\libbfd\libmingwex.a</Link>
+    </None>
+    <None Include="..\libbfd\libmsvcrt.a">
+      <Link>Loaders\libbfd\libmsvcrt.a</Link>
+    </None>
+    <None Include="..\libbfd\libstdc++.a">
+      <Link>Loaders\libbfd\libstdc++.a</Link>
+    </None>
+    <None Include="..\libbfd\libz.a">
+      <Link>Loaders\libbfd\libz.a</Link>
+    </None>
+    <None Include="..\libbfd\ReadMe.txt">
+      <Link>Loaders\libbfd\ReadMe.txt</Link>
+    </None>
+    <None Include="..\libbfd\stdafx.cpp">
+      <Link>Loaders\libbfd\stdafx.cpp</Link>
+    </None>
+    <None Include="..\libbfd\stdafx.h">
+      <Link>Loaders\libbfd\stdafx.h</Link>
+    </None>
+    <None Include="..\libbfd\symcat.h">
+      <Link>Loaders\libbfd\symcat.h</Link>
+    </None>
+    <None Include="..\libbfd\sysdep.h">
+      <Link>Loaders\libbfd\sysdep.h</Link>
+    </None>
+    <None Include="..\libbfd\targetver.h">
+      <Link>Loaders\libbfd\targetver.h</Link>
+    </None>
+    <None Include="..\libbfd\Debug\dllmain.obj">
+      <Link>Loaders\libbfd\Debug\dllmain.obj</Link>
+    </None>
+    <None Include="..\libbfd\Debug\libbfd.Build.CppClean.log">
+      <Link>Loaders\libbfd\Debug\libbfd.Build.CppClean.log</Link>
+    </None>
+    <None Include="..\libbfd\Debug\libbfd.log">
+      <Link>Loaders\libbfd\Debug\libbfd.log</Link>
+    </None>
+    <None Include="..\libbfd\Debug\libbfd.obj">
+      <Link>Loaders\libbfd\Debug\libbfd.obj</Link>
+    </None>
+    <None Include="..\libbfd\Debug\libbfd.pch">
+      <Link>Loaders\libbfd\Debug\libbfd.pch</Link>
+    </None>
+    <None Include="..\libbfd\Debug\stdafx.obj">
+      <Link>Loaders\libbfd\Debug\stdafx.obj</Link>
+    </None>
+    <None Include="..\libbfd\Debug\vc120.idb">
+      <Link>Loaders\libbfd\Debug\vc120.idb</Link>
+    </None>
+    <None Include="..\libbfd\Debug\vc120.pdb">
+      <Link>Loaders\libbfd\Debug\vc120.pdb</Link>
+    </None>
+    <None Include="..\libbfd\Debug\libbfd.tlog\cl.command.1.tlog">
+      <Link>Loaders\libbfd\Debug\libbfd.tlog\cl.command.1.tlog</Link>
+    </None>
+    <None Include="..\libbfd\Debug\libbfd.tlog\CL.read.1.tlog">
+      <Link>Loaders\libbfd\Debug\libbfd.tlog\CL.read.1.tlog</Link>
+    </None>
+    <None Include="..\libbfd\Debug\libbfd.tlog\CL.write.1.tlog">
+      <Link>Loaders\libbfd\Debug\libbfd.tlog\CL.write.1.tlog</Link>
+    </None>
+    <None Include="..\libbfd\Debug\libbfd.tlog\libbfd.lastbuildstate">
+      <Link>Loaders\libbfd\Debug\libbfd.tlog\libbfd.lastbuildstate</Link>
+    </None>
+    <None Include="..\libbfd\Debug\libbfd.tlog\libbfd.write.1u.tlog">
+      <Link>Loaders\libbfd\Debug\libbfd.tlog\libbfd.write.1u.tlog</Link>
+    </None>
+    <None Include="..\libbfd\Debug\libbfd.tlog\link.command.1.tlog">
+      <Link>Loaders\libbfd\Debug\libbfd.tlog\link.command.1.tlog</Link>
+    </None>
+    <None Include="..\libbfd\Debug\libbfd.tlog\link.read.1.tlog">
+      <Link>Loaders\libbfd\Debug\libbfd.tlog\link.read.1.tlog</Link>
+    </None>
+    <None Include="..\libbfd\Debug\libbfd.tlog\link.write.1.tlog">
+      <Link>Loaders\libbfd\Debug\libbfd.tlog\link.write.1.tlog</Link>
+    </None>
+    <None Include="..\libbfd\Release\dllmain.obj">
+      <Link>Loaders\libbfd\Release\dllmain.obj</Link>
+    </None>
+    <None Include="..\libbfd\Release\libbfd.Build.CppClean.log">
+      <Link>Loaders\libbfd\Release\libbfd.Build.CppClean.log</Link>
+    </None>
+    <None Include="..\libbfd\Release\libbfd.log">
+      <Link>Loaders\libbfd\Release\libbfd.log</Link>
+    </None>
+    <None Include="..\libbfd\Release\libbfd.obj">
+      <Link>Loaders\libbfd\Release\libbfd.obj</Link>
+    </None>
+    <None Include="..\libbfd\Release\libbfd.pch">
+      <Link>Loaders\libbfd\Release\libbfd.pch</Link>
+    </None>
+    <None Include="..\libbfd\Release\stdafx.obj">
+      <Link>Loaders\libbfd\Release\stdafx.obj</Link>
+    </None>
+    <None Include="..\libbfd\Release\vc120.pdb">
+      <Link>Loaders\libbfd\Release\vc120.pdb</Link>
+    </None>
+    <None Include="..\libbfd\Release\libbfd.tlog\cl.command.1.tlog">
+      <Link>Loaders\libbfd\Release\libbfd.tlog\cl.command.1.tlog</Link>
+    </None>
+    <None Include="..\libbfd\Release\libbfd.tlog\CL.read.1.tlog">
+      <Link>Loaders\libbfd\Release\libbfd.tlog\CL.read.1.tlog</Link>
+    </None>
+    <None Include="..\libbfd\Release\libbfd.tlog\CL.write.1.tlog">
+      <Link>Loaders\libbfd\Release\libbfd.tlog\CL.write.1.tlog</Link>
+    </None>
+    <None Include="..\libbfd\Release\libbfd.tlog\libbfd.lastbuildstate">
+      <Link>Loaders\libbfd\Release\libbfd.tlog\libbfd.lastbuildstate</Link>
+    </None>
+    <None Include="..\libbfd\Release\libbfd.tlog\libbfd.write.1u.tlog">
+      <Link>Loaders\libbfd\Release\libbfd.tlog\libbfd.write.1u.tlog</Link>
+    </None>
+    <None Include="..\libbfd\Release\libbfd.tlog\link.command.1.tlog">
+      <Link>Loaders\libbfd\Release\libbfd.tlog\link.command.1.tlog</Link>
+    </None>
+    <None Include="..\libbfd\Release\libbfd.tlog\link.read.1.tlog">
+      <Link>Loaders\libbfd\Release\libbfd.tlog\link.read.1.tlog</Link>
+    </None>
+    <None Include="..\libbfd\Release\libbfd.tlog\link.write.1.tlog">
+      <Link>Loaders\libbfd\Release\libbfd.tlog\link.write.1.tlog</Link>
+    </None>
   </ItemGroup>
+  <ItemGroup />
 </Project>

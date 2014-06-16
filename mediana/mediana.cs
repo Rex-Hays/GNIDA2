@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 //using TUP.AsmResolver;
 //using TUP.AsmResolver.ASM;
 using System.Runtime.InteropServices;
-using ldrs;// GNIDA.Loaders;
+using plugins;// GNIDA.Loaders;
 
 namespace GNIDA
 {

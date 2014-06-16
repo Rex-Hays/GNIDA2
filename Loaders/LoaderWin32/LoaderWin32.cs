@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GNIDA.Loaders;
-using ldrs;
+using plugins;
 
 
 namespace LoaderWin32
@@ -41,7 +41,7 @@ namespace LoaderWin32
         {
             return ldr.NTHeader.Sections;
         }
-        public uint Entrypoint()
+        public ulong Entrypoint()
         {
             return ldr.NTHeader.OptionalHeader.Entrypoint.Rva;
         }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 //using GNIDA.Loaders;
 using GNIDA.Loaders;
-using ldrs;
+using plugins;
 
 namespace LoaderWin32
 {

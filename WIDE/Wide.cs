@@ -13,7 +13,7 @@ using Be.Windows.Forms;
 using FastColoredTextBoxNS;
 using GNIDA;
 using GNIDA.Loaders;
-using ldrs;
+using plugins;
 using System.Reflection;
 
 
@@ -138,7 +138,9 @@ namespace WIDE
     Type[] defaultConstructorParametersTypes = new Type[0];
     object[] defaultConstructorParameters = new object[0];
     Assembly assembly1;
-        assembly1 = Assembly.LoadFrom("Loaders\\LoaderWin32.dll");
+        assembly1 = Assembly.LoadFrom(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\Loaders\\LoaderWin32.dll");
+//    assembly1 = Assembly.LoadFrom("Loaders\\bfdLoader.dll");
+            
         foreach (Type type in assembly1.GetTypes())
             {
                 if (type.GetInterface(iMyInterfaceName) != null)
@@ -147,6 +149,8 @@ namespace WIDE
                         ConstructorInfo defaultConstructor = type.GetConstructor(defaultConstructorParametersTypes);
                         object instance = defaultConstructor.Invoke(defaultConstructorParameters);
                         MyGNIDA.assembly = instance as ILoader;
+                        Console.WriteLine(MyGNIDA.assembly.CanLoad(openFileDialog1.FileName));
+                        //return;
                     }
             }
         MyGNIDA.LoadFile(openFileDialog1.FileName);
