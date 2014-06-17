@@ -1184,13 +1184,16 @@ public class INSTRUCTION
 
     public string ToString(MyDictionary ProcList, VarDictionary VarDict, Dictionary<long, TFunc> NewSubs)
     {
-        switch (bytes[0])
+        if (!(bytes==null))
+            if (bytes.Count() > 0)
+                switch (bytes[0])
         {
             case 0x74: return "$jz Loc_" + OpToString(0).Remove(0, 2);
             case 0x75: return "$jnz Loc_" + OpToString(0).Remove(0, 2);
             case 0xE8://call;
                 return AddProc((long)ops[0].value.imm.imm64, ProcList, NewSubs);
             case 0xE9://jmp;
+            case 0xEB://jmp;
                 return "$jmp Loc_" + OpToString(0).Remove(0, 2);
             case 0xA3://mov somevar, EAX
                 {

@@ -45,14 +45,16 @@ namespace LoaderWin32
         {
             return ldr.NTHeader.OptionalHeader.Entrypoint.Rva;
         }
-		public bool CanLoad(string FName)
+        public bool CanLoad(string FName, out string descr)
 		{
             ldr = LWin32.LoadFile(FName);
+            descr = "Win32 Loader";
             return (ldr.NTHeader.Signature == ImageSignature.NT);
 		}
-        public void LoadFile(string FName)
+        public IntPtr LoadFile(string FName)
         {
             ldr = LWin32.LoadFile(FName);
+            return IntPtr.Zero;
         }
     }
 }

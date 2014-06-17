@@ -93,6 +93,7 @@ namespace GNIDA
                 DTasks.Add(Tasks[0]);
                 Tasks.Remove(Tasks[0]);
                 lst.Add(new Stroka(this, instr1));
+                if(Len>0)
                 switch (instr1.bytes[0])
                 {
                     case 0x0F: switch(instr1.bytes[1])
@@ -126,7 +127,7 @@ namespace GNIDA
                         } break;
                     case 0xC2://retn XX;
                     case 0xC3://retn                        
-                        goto _end;
+                        goto _end;//Костыль
                         //continue;// Don't disasm after it
                     case 0xE8://Call;
                         int val3 = (int)instr1.bytes[1] + (int)Len + (int)instr1.Addr;
@@ -199,8 +200,8 @@ namespace GNIDA
             medi.mediana.DISASM_INOUT_PARAMS param = new medi.mediana.DISASM_INOUT_PARAMS();
 
             RaiseLogEvent(this, "Loading " + FName);
-            assembly.LoadFile(FName);
-            MeDisasm = new medi.mediana(assembly);
+            IntPtr tmp = assembly.LoadFile(FName);
+            //MeDisasm = new medi.mediana(assembly);
             int i = 0;
             foreach (Section sect in assembly.Sections())
             {

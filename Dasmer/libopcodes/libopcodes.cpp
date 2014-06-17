@@ -9,14 +9,15 @@
 
 // Пример экспортированной переменной
 LIBOPCODES_API int nlibopcodes=0;
-
 disassemble_info dinfo = { 0 };
+disassembler_ftype dsmblr;
+
 int custom_fprintf(void * stream, const char * format, ...)
 {
 	return 0;
 }
 // Пример экспортированной функции.
-LIBOPCODES_API disassembler_ftype init_disassembler(bfd *Bfd)
+LIBOPCODES_API disassemble_info* init_disassembler(bfd *Bfd)
 {
 	init_disassemble_info(&dinfo, NULL, custom_fprintf);
 	dinfo.flavour = bfd_get_flavour(Bfd);
@@ -24,12 +25,13 @@ LIBOPCODES_API disassembler_ftype init_disassembler(bfd *Bfd)
 	dinfo.mach = bfd_get_mach(Bfd);
 	dinfo.endian = Bfd->xvec->byteorder;
 	disassemble_init_for_target(&dinfo);
-	return disassembler(Bfd);
+	dsmblr = disassembler(Bfd);
+	return &dinfo;
 }
 
-LIBOPCODES_API int disasm(bfd_vma vma, disassembler_ftype disassembler, disassemble_info dinfo)
+LIBOPCODES_API int disasm(bfd_vma vma, disassemble_info* dinfo)
 {
-	return disassembler(vma, &dinfo);
+	return dsmblr(vma, dinfo);
 }
 // Конструктор для экспортированного класса.
 // см. определение класса в libopcodes.h

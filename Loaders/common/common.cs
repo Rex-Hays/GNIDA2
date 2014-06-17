@@ -26,8 +26,8 @@ namespace plugins
         List<ExportMethod> LibraryExports();
         List<LibraryReference> LibraryImports();
         byte[] ReadBytes(long offset, int length);
-        bool CanLoad(string FName);
-        void LoadFile(string FName);
+        bool CanLoad(string FName, out string descr);
+        IntPtr LoadFile(string FName);
     }
     public interface IDasmer
    {

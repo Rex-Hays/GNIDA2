@@ -11,10 +11,11 @@ LIBBFD_API int nlibbfd=0;
 
 bfd* Bfd;
 
-extern "C" __declspec(dllexport) void __stdcall bfd_open(const char *filename, const char *target)
+extern "C" __declspec(dllexport) bfd* __stdcall bfd_open(const char *filename, const char *target)
 {
 	bfd_init();
 	Bfd = bfd_openr(filename, target);
+	return Bfd;
 }
 extern "C" __declspec(dllexport) bool __stdcall bfd_check(const char *filename, const char *target)
 {
@@ -27,9 +28,14 @@ extern "C" __declspec(dllexport) bool __stdcall bfd_check(const char *filename, 
 
 }
 
-extern "C" __declspec(dllexport) ULONG __stdcall bfd_entrypoint()
+extern "C" __declspec(dllexport) ULONG __stdcall bfd_entrypoint(bfd* BFD)
 {
-	return bfd_get_start_address(Bfd);
+	return bfd_get_start_address(BFD);
+}
+
+extern "C" __declspec(dllexport) int __stdcall bfd_sec_count(bfd* BFD)
+{
+	return bfd_count_sections(BFD);
 }
 
 // Пример экспортированной функции.

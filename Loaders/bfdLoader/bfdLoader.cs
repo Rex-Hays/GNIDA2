@@ -11,18 +11,23 @@ namespace bfdLoader
 {
     public class bfdLoader : ILoader 
     {
+        IntPtr tmp;
         [DllImport("libbfd.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-        public static extern void bfd_open(String filename, String target);
-        //[DllImport("libbfd.dll", CallingConvention = CallingConvention.StdCall)]
-        //public static extern int fnlibbfd();
+        public static extern IntPtr bfd_open(String filename, String target);
         [DllImport("libbfd.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
-        public static extern ulong bfd_entrypoint();
+        public static extern ulong bfd_entrypoint(IntPtr bfd);
         [DllImport("libbfd.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern bool bfd_check(String filename, String target);
+        [DllImport("libbfd.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        public static extern int bfd_sec_count(IntPtr bfd);
         
 
-        public byte[] ReadBytes(long offset, int length)
-        { return new byte[10]; }
+        public byte[] ReadBytes(long offset, int length)     
+        {
+            byte[] tmp = new byte[10];
+            tmp[0] = 0xC3;//Костыль
+            return tmp;
+        }
         public SubSystem SubSystem()
         { return GNIDA.Loaders.SubSystem.WindowsConsoleUI; }
         public GNIDA.Loaders.ExecutableFlags ExecutableFlags()
@@ -31,10 +36,17 @@ namespace bfdLoader
         { return 0; }
         public ulong Entrypoint()
         { 
-            return bfd_entrypoint();
+            return bfd_entrypoint(tmp);
         }
         public List<Section> Sections()
-        { return new List<Section>(); }
+        {
+            //bfd_count_sections
+  //struct bfd_section *sections;
+
+  /* The number of sections.  */
+  //unsigned int section_count;
+            return new List<Section>();
+        }
         public List<ExportMethod> LibraryExports()
         {
             return new List<ExportMethod>();
@@ -43,13 +55,17 @@ namespace bfdLoader
         {
             return new List<LibraryReference>();
         }
-        public bool CanLoad(string FName)
+        public bool CanLoad(string FName, out string descr)
         {
-            return bfd_check(FName, null);
+            descr = "bfd Loader";
+            return bfd_check(FName, "pe-i386");
         }
-        public void LoadFile(string FName)
+        public IntPtr LoadFile(string FName)
         {
-            bfd_open(FName, null);
+            tmp = bfd_open(FName, "pe-i386");
+            //bfd_map_over_sections( bfd *, &callback, void * user_data );
+            Console.WriteLine(bfd_sec_count(tmp));
+            return tmp;
         }
     }
 }
