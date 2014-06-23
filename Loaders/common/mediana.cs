@@ -9,84 +9,6 @@ using GNIDA;
 
 namespace medi
 {
-    public class TFunc
-    {
-        public long Addr;
-        public long Length;
-        public byte[] bytes;
-        public string FName;
-        public string LibraryName;
-        public uint type;
-        public uint Ordinal;
-        public TFunc(long addr, uint Type, uint Ord = 0, string Name = "", string LibName = "")
-        {
-            Addr = addr;
-            type = Type;
-            Ordinal = Ord;
-            LibraryName = LibName;
-            if (Name != "") FName = Name;
-            else FName = "proc_" + Addr.ToString("X8");
-        }
-    }
-    public class MyDictionary : Dictionary<long, TFunc>
-    {
-        public IGNIDA Parent;
-        public void AddFunc(TFunc value)
-        {
-            if (!this.ContainsKey(value.Addr))
-            {
-                this.Add(value.Addr, value);
-                Parent.RaiseAddFuncEvent(this, value);
-                if (value.type != 3)
-                    if ((!Parent.ToDisasmFuncList().ContainsKey(value.Addr))
-                      || (!Parent.DisasmedFuncList().ContainsKey(value.Addr))) Parent.ToDisasmFuncList().Add(value.Addr, value);
-            }
-        }
-    }
-
-    public class TVar
-    {
-        public ulong Addr;
-        public string FName;
-        public uint type;
-        public string ToStr()
-        {
-            switch (type)
-            {
-                case 0: return "void " + FName;
-                case 1: return "byte " + FName;
-                case 2: return "word " + FName;
-                case 4: return "dword " + FName;
-                default: return "void " + FName;
-            }
-        }
-        public TVar(ulong addr, string Name = "", uint Type = 0)
-        {
-            Addr = addr;
-            type = Type;
-            if (Name != "") FName = Name;
-            else
-                switch (Type)
-                {
-                    case 1: FName = "byte_" + Addr.ToString("X8"); break;
-                    case 2: FName = "word_" + Addr.ToString("X8"); break;
-                    case 4: FName = "dword_" + Addr.ToString("X8"); break;
-                    default: FName = "unk_" + Addr.ToString("X8"); break;
-                }
-        }
-    }
-    public class VarDictionary : Dictionary<ulong, TVar>
-    {
-        public IGNIDA Parent;
-        public void AddVar(TVar value)
-        {
-            if (!this.ContainsKey(value.Addr))
-            {
-                this.Add(value.Addr, value);
-                Parent.RaiseVarFuncEvent(this, value);
-            }
-        }
-    }
 
     [StructLayout(LayoutKind.Explicit, Pack = 1)]
     public struct reg1
@@ -176,8 +98,6 @@ namespace medi
     };
     public class mediana : IDasmer
     {
-        static uint MAX_MNEMONIC_LEN = 0x0C;
-        public static uint MAX_INSTRUCTION_LEN = 0x0F;
 
 /*******************
 * Instructions' IDs.
@@ -982,36 +902,6 @@ static byte TBL_PROP_MODRM  = 0x1;
 static byte TBL_PROP_SUFFIX = 0x2;
 
 /**********************
-* Disassembling errors.
-***********************
-*/
-public enum ERRS
-{
-        ERR_OK,
-        ERR_BADCODE,
-        ERR_TOO_LONG,
-        ERR_NON_LOCKABLE,   
-        ERR_RM_REG,
-        ERR_RM_MEM,
-        ERR_16_32_ONLY,
-        ERR_64_ONLY,
-        ERR_REX_NOOPCD,
-        ERR_ANOT_ARCH,
-        ERR_INTERNAL
-};
-
-/*******************
-* Disassemble modes.
-********************
-*/
-public enum DISMODE { 
-DISASSEMBLE_MODE_16 = 0x1,
-DISASSEMBLE_MODE_32 = 0x2,
-DISASSEMBLE_MODE_64 = 0x4,
-}
-
-
-/**********************
 * Instructions' groups.
 ***********************
 */
@@ -1144,37 +1034,10 @@ static uint INSTR_PREFIX_SIZE_MASK = 0x0300;
 //LOCK prefix:
 static UInt16 INSTR_PREFIX_LOCK = 0x0800;
 
-//[StructLayout(LayoutKind.Explicit)]
-public struct DISPLACEMENT
-        {
-    //[FieldOffset(0)]
-            public byte size;
-    //[FieldOffset(1)]
-            public byte offset;
-    //[FieldOffset(2)]
-    public value2 value;
-    [StructLayout(LayoutKind.Explicit)]
-    public struct value2
-    {
-        [FieldOffset(0)]
-        public UInt16 d16;
-        [FieldOffset(0)]
-        public UInt32 d32;
-        [FieldOffset(0)]
-        public UInt64 d64;
-        //[FieldOffset(0)]
-        //public byte[] ab;
-    }
-};
 
-
-
-
-
-
-public class INSTRUCTION
+public class INSTRUCTION : IInstruction
 {
-    private static string AddProc(long x, MyDictionary ProcList, Dictionary<long, TFunc> NewSubs)
+    private static string AddProc(ulong x, MyDictionary ProcList, Dictionary<ulong, TFunc> NewSubs)
     {
         if (ProcList.ContainsKey(x)) return ProcList[x].FName + "();";
         TFunc tmpfunc = new TFunc(x, 1);
@@ -1182,7 +1045,7 @@ public class INSTRUCTION
         return "proc_" + x.ToString("X8") + "();";
     }
 
-    public string ToString(MyDictionary ProcList, VarDictionary VarDict, Dictionary<long, TFunc> NewSubs)
+    public string ToString(MyDictionary ProcList, VarDictionary VarDict, Dictionary<ulong, TFunc> NewSubs)
     {
         if (!(bytes==null))
             if (bytes.Count() > 0)
@@ -1191,7 +1054,7 @@ public class INSTRUCTION
             case 0x74: return "$jz Loc_" + OpToString(0).Remove(0, 2);
             case 0x75: return "$jnz Loc_" + OpToString(0).Remove(0, 2);
             case 0xE8://call;
-                return AddProc((long)ops[0].value.imm.imm64, ProcList, NewSubs);
+                return AddProc(ops[0].value.imm.imm64, ProcList, NewSubs);
             case 0xE9://jmp;
             case 0xEB://jmp;
                 return "$jmp Loc_" + OpToString(0).Remove(0, 2);
@@ -1207,7 +1070,7 @@ public class INSTRUCTION
             case 0xFF:
                 {
                     if (this.bytes[1] == 0x15)
-                        return AddProc((long)disp.value.d64, ProcList, NewSubs);
+                        return AddProc(disp.value.d64, ProcList, NewSubs);
                 } break;
             case 0x0F:
                 {
@@ -1435,21 +1298,8 @@ static string dump_addr(INSTRUCTION instr, OPERAND op)
     return res;
 }
 
-    /*
-        switch (ops[N].flags)
-        {
-            case 0: return "";
-            case 17: return regs32[ops[N].value.reg.code];
-            case 18: return "0x" + ops[N].flags.ToString("X");
-            case 20: return "0x" + ops[N].value.imm.imm8.ToString("X");
-            case 52: return "0x" + (ops[N].value.far_addr.far_addr48.offset).ToString("X");
-            default: return flags.ToString();
-        }
-
-        return ops[N].ToString();
-    }*/
-    public ulong Addr;
-    public byte[] bytes;
+public ulong Addr { get; set; }
+    public byte[] bytes { get; set; }
     public UInt64 groups;
     public UInt16 id;
     public UInt16 flags;
@@ -1457,7 +1307,7 @@ static string dump_addr(INSTRUCTION instr, OPERAND op)
     public byte opcode_offset;
 
     public OPERAND[] ops;//OPERAND[3];
-    public DISPLACEMENT disp;
+    public DISPLACEMENT disp { get; set; }
 
     public byte addrsize;
     public byte opsize;
@@ -1471,23 +1321,14 @@ static string dump_addr(INSTRUCTION instr, OPERAND op)
     public byte cleared_flags;
     public byte undefined_flags;
 
-    public string mnemonic;//[MAX_MNEMONIC_LEN];
+    public string mnemonic { get; set; }//[MAX_MNEMONIC_LEN];
     public INSTRUCTION()
     {
         ops = new OPERAND[3];//OPERAND[3];
     }
 }
 
-public struct DISASM_INOUT_PARAMS
-{
-    public int sf_prefixes_len;
-    public byte[] sf_prefixes;
-    public ERRS errcode;
-    public byte arch;
-    public DISMODE mode;
-    public byte options;
-    public UInt64 bas;
-};
+
 public class INTERNAL_DATA
 {
     public byte[] prefixes;//[PREFIX_COUNT]; //Valuable prefixes.
@@ -2245,7 +2086,7 @@ public static OP_SIZE get_operand_size(INSTRUCTION instr, ref INTERNAL_DATA idat
 * Postprocessing routines.
 **************************
 */
-static UInt32 post_proc_arpl_movsxd(long origin_offset, long offset, ref INSTRUCTION instr, INTERNAL_DATA idata, DISMODE mode)
+static UInt32 post_proc_arpl_movsxd(ulong origin_offset, ulong offset, ref INSTRUCTION instr, INTERNAL_DATA idata, DISMODE mode)
 {
     UInt32 res;
     res = 0;
@@ -2262,7 +2103,7 @@ static UInt32 post_proc_arpl_movsxd(long origin_offset, long offset, ref INSTRUC
         instr.flags &= (ushort)(INSTR_FLAG_MODRM | INSTR_FLAG_SIB);
 
         instr.mnemonic = "movsxd";
-        byte[] bt = assembly.ReadBytes(instr.opcode_offset + 1, 4);
+        byte[] bt = assembly.ReadBytes((ulong)instr.opcode_offset + 1, 4);
         res = (UInt32)(
               bt[0] +
               bt[1]*256 +  
@@ -2294,7 +2135,7 @@ static UInt32 post_proc_arpl_movsxd(long origin_offset, long offset, ref INSTRUC
     return res;
 }
 
-static UInt32 post_proc_nop_pause(long origin_offset, long offset, ref INSTRUCTION instr, INTERNAL_DATA idata, DISMODE mode)
+static UInt32 post_proc_nop_pause(ulong origin_offset, ulong offset, ref INSTRUCTION instr, INTERNAL_DATA idata, DISMODE mode)
 {
     if (idata.prefixes[PREF_REP_INDEX] == PREF_REPNZ_ID)
     {
@@ -2307,7 +2148,7 @@ static UInt32 post_proc_nop_pause(long origin_offset, long offset, ref INSTRUCTI
     return 0;
 }
 
-static UInt32 post_proc_multinop(long origin_offset, long offset, ref INSTRUCTION instr, INTERNAL_DATA idata, DISMODE mode)
+static UInt32 post_proc_multinop(ulong origin_offset, ulong offset, ref INSTRUCTION instr, INTERNAL_DATA idata, DISMODE mode)
 {
     instr.ops[0].flags &= (byte)~OPERAND_FLAG_PRESENT;
     instr.ops[1].flags &= (byte)~OPERAND_FLAG_PRESENT;
@@ -2315,7 +2156,7 @@ static UInt32 post_proc_multinop(long origin_offset, long offset, ref INSTRUCTIO
     return 0;
 }
 
-static UInt32 post_proc_cmpxchg8b(long  origin_offset, long offset, ref INSTRUCTION instr, INTERNAL_DATA idata, DISMODE mode)
+static UInt32 post_proc_cmpxchg8b(ulong  origin_offset, ulong offset, ref INSTRUCTION instr, INTERNAL_DATA idata, DISMODE mode)
 {
     if ((idata.prefixes[PREF_REX_INDEX] != 0xFF) && ((instr.rex & PREFIX_REX_W)!=0))
     {
@@ -2332,7 +2173,7 @@ static UInt32 post_proc_cmpxchg8b(long  origin_offset, long offset, ref INSTRUCT
 ****************************************
 */
 
-public delegate UInt32 PP(long origin_offset, long offset, ref INSTRUCTION instr, INTERNAL_DATA idata, DISMODE mode);
+public delegate UInt32 PP(ulong origin_offset, ulong offset, ref INSTRUCTION instr, INTERNAL_DATA idata, DISMODE mode);
 
 public static PP[] postprocs = 
 {
@@ -2393,7 +2234,7 @@ static void create_xmmreg_operand(ref INSTRUCTION instr, int op_index, byte code
 }
 
 //Parses operand accordingly to MODRM value.
-static UInt32 parse_rm_operand(long origin_offset, long  offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, ref INTERNAL_DATA idata, DISMODE mode)
+static UInt32 parse_rm_operand(ulong origin_offset, ulong  offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, ref INTERNAL_DATA idata, DISMODE mode)
 {
     UInt32 len = 0;
 
@@ -2410,7 +2251,7 @@ static UInt32 parse_rm_operand(long origin_offset, long  offset, ref INSTRUCTION
 }
 
 //Parses memory address operand.
-static UInt32 parse_mem_operand(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+static UInt32 parse_mem_operand(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     UInt32 len;
 
@@ -2430,7 +2271,7 @@ static UInt32 parse_mem_operand(long origin_offset, long offset, ref INSTRUCTION
 }
 
 //Calculates displacement's size and copies it to struct DISPLACEMENT.
-static byte get_disp(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, DISMODE mode)
+static byte get_disp(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, DISMODE mode)
 {
     byte len = 0;
 
@@ -2473,7 +2314,7 @@ static byte get_disp(long origin_offset, long offset, ref INSTRUCTION instr, int
 }
 
 //Parses 16bit memory address operand.
-static UInt32 parse_mem_operand_16(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, DISMODE mode)
+static UInt32 parse_mem_operand_16(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, DISMODE mode)
 {
     byte len;
     int index;
@@ -2537,7 +2378,7 @@ static void get_mod_type_sib(ref INSTRUCTION instr, int op_index)
 }
 
 //Parses 32/64bit memory address operand.
-static UInt32 parse_mem_operand_32_64(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, INTERNAL_DATA idata, DISMODE mode)
+static UInt32 parse_mem_operand_32_64(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, INTERNAL_DATA idata, DISMODE mode)
 {
     UInt32 len = 0;
 
@@ -2737,9 +2578,9 @@ pref_LOCK_set};
 * Operand's type qualifiers' (TQ_*) handlers.
 *********************************************
 */
-public delegate UInt32 TQ(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode);
+public delegate UInt32 TQ(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode);
 
-static UInt32 tq_1(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+static UInt32 tq_1(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     instr.ops[op_index].flags |= (byte)OP_TYPE.OPERAND_TYPE_IMM;
     instr.ops[op_index].size = (ushort)OP_SIZE.OPERAND_SIZE_8;
@@ -2747,7 +2588,7 @@ static UInt32 tq_1(long origin_offset, long offset, ref INSTRUCTION instr, int o
     return 0x0;
 }
 
-public static UInt32 tq_3(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_3(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     instr.ops[op_index].flags |= (byte)OP_TYPE.OPERAND_TYPE_IMM;
     instr.ops[op_index].size = (ushort)OP_SIZE.OPERAND_SIZE_8;
@@ -2756,7 +2597,7 @@ public static UInt32 tq_3(long origin_offset, long offset, ref INSTRUCTION instr
     return 0;
 }
 
-public static UInt32 tq_A(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_A(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     instr.ops[op_index].flags |= (byte)OP_TYPE.OPERAND_TYPE_DIR;
     instr.ops[op_index].size = (ushort)opsize.size;
@@ -2772,34 +2613,34 @@ public static UInt32 tq_A(long origin_offset, long offset, ref INSTRUCTION instr
     return instr.ops[op_index].size;
 }
 
-public static UInt32 tq_C(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_C(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     create_reg_operand(ref instr, op_index, REG_TYPE.REG_TYPE_CR, (byte)((instr.modrm >> 0x3) & 0x7), (OP_SIZE)(instr.ops[op_index].size));
 
     return 0x0;
 }
 
-public static UInt32 tq_D(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_D(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     create_reg_operand(ref instr, op_index, REG_TYPE.REG_TYPE_DBG, (byte)((instr.modrm >> 0x3) & 0x7), (OP_SIZE)instr.ops[op_index].size);
 
     return 0x0;
 }
 
-public static UInt32 tq_E(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_E(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     return parse_rm_operand(origin_offset, offset, ref instr, op_index, opsize, ref idata, mode);
 }
 
 
-public static UInt32 tq_G(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_G(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     create_genreg_operand(ref instr, op_index, (byte)((instr.modrm >> 3) & 0x7), opsize.size, PREFIX_REX_R, ref idata, mode);
 
     return 0x0;
 }
 
-public static UInt32 tq_H(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_H(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     create_genreg_operand(ref instr, op_index, (byte)(instr.modrm & 0x7), opsize.size, PREFIX_REX_B, ref idata, mode);
 
@@ -2807,7 +2648,7 @@ public static UInt32 tq_H(long origin_offset, long offset, ref INSTRUCTION instr
 }
 
 
-public static UInt32 tq_I(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_I(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     instr.ops[op_index].flags |= (byte)OP_TYPE.OPERAND_TYPE_IMM;
     instr.ops[op_index].size = (ushort)opsize.size;
@@ -2829,13 +2670,13 @@ public static UInt32 tq_I(long origin_offset, long offset, ref INSTRUCTION instr
     return (byte)opsize.size_in_stream;
 }
 
-public static UInt32 tq_J(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_J(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     instr.ops[op_index].flags |= OPERAND_FLAG_REL;
     return tq_I(origin_offset, offset, ref instr, op_index, opsize, idata, mode);
 }
 
-public static UInt32 tq_M(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_M(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     UInt32 res = parse_rm_operand(origin_offset, offset, ref instr, op_index, opsize, ref idata, mode);
     if ((instr.modrm & 0xC0) == 0xC0)
@@ -2845,14 +2686,14 @@ public static UInt32 tq_M(long origin_offset, long offset, ref INSTRUCTION instr
     return res;
 }
 
-public static UInt32 tq_N(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_N(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     create_reg_operand(ref instr, op_index, REG_TYPE.REG_TYPE_MMX, (byte)(instr.modrm & 0x7), opsize.size);
 
     return 0x0;
 }
 
-public static UInt32 tq_O(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_O(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     UInt32 res;
 
@@ -2874,14 +2715,14 @@ public static UInt32 tq_O(long origin_offset, long offset, ref INSTRUCTION instr
     return res;
 }
 
-public static UInt32 tq_P(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_P(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     create_reg_operand(ref instr, op_index, REG_TYPE.REG_TYPE_MMX, (byte)((instr.modrm >> 0x3) & 0x7), opsize.size);
 
     return 0x0;
 }
 
-public static UInt32 tq_Q(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_Q(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     UInt32 res;
 
@@ -2898,7 +2739,7 @@ public static UInt32 tq_Q(long origin_offset, long offset, ref INSTRUCTION instr
     return res;
 }
 
-public static UInt32 tq_R(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_R(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     UInt32 res = parse_rm_operand(origin_offset, offset, ref instr, op_index, opsize, ref idata, mode);
     if ((instr.modrm & 0xC0) != 0xC0)
@@ -2908,35 +2749,35 @@ public static UInt32 tq_R(long origin_offset, long offset, ref INSTRUCTION instr
     return res;
 }
 
-public static UInt32 tq_S(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_S(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     create_reg_operand(ref instr, op_index, REG_TYPE.REG_TYPE_SEG, (byte)((instr.modrm >> 3) & 0x7), OP_SIZE.OPERAND_SIZE_16);
 
     return 0x0;
 }
 
-public static UInt32 tq_T(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_T(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     create_reg_operand(ref instr, op_index, REG_TYPE.REG_TYPE_TR, (byte)((instr.modrm >> 0x3) & 0x7), opsize.size);
 
     return 0x0;
 }
 
-public static UInt32 tq_U(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_U(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     create_xmmreg_operand(ref instr, op_index, (byte)(instr.modrm & 0x7), opsize.size, PREFIX_REX_B, ref idata, mode);
 
     return 0x0;
 }
 
-public static UInt32 tq_V(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_V(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     create_xmmreg_operand(ref instr, op_index, (byte)((instr.modrm >> 0x3) & 0x7), opsize.size, PREFIX_REX_R, ref idata, mode);
 
     return 0;
 }
 
-public static UInt32 tq_W(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_W(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     UInt32 res;
 
@@ -2953,7 +2794,7 @@ public static UInt32 tq_W(long origin_offset, long offset, ref INSTRUCTION instr
     return res;
 }
 
-public static UInt32 tq_X(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_X(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     UInt32 res;
 
@@ -2967,7 +2808,7 @@ public static UInt32 tq_X(long origin_offset, long offset, ref INSTRUCTION instr
     return 0x0;
 }
 
-public static UInt32 tq_Y(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_Y(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     instr.ops[op_index].flags |= (byte)OP_TYPE.OPERAND_TYPE_MEM;
     instr.ops[op_index].size = (ushort)opsize.size;
@@ -2981,7 +2822,7 @@ public static UInt32 tq_Y(long origin_offset, long offset, ref INSTRUCTION instr
     return 0x0;
 }
 
-public static UInt32 tq_Z(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_Z(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     byte[] bt = assembly.ReadBytes(offset - 1, 1);
     //We already consumed opcode, hence we need to look backward.
@@ -2990,63 +2831,63 @@ public static UInt32 tq_Z(long origin_offset, long offset, ref INSTRUCTION instr
     return 0x0;
 }
 
-public static UInt32 tq_rAX(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_rAX(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     create_genreg_operand(ref instr, op_index, REG_CODE_AX, opsize.size, PREFIX_REX_B, ref idata, mode);
 
     return 0x0;
 }
 
-public static UInt32 tq_rCX(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_rCX(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     create_genreg_operand(ref instr, op_index, REG_CODE_CX, opsize.size, PREFIX_REX_B, ref idata, mode);
 
     return 0x0;
 }
 
-public static UInt32 tq_rDX(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_rDX(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     create_genreg_operand(ref instr, op_index, REG_CODE_DX, opsize.size, PREFIX_REX_B, ref idata, mode);
 
     return 0x0;
 }
 
-public static UInt32 tq_rBX(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_rBX(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     create_genreg_operand(ref instr, op_index, REG_CODE_BX, opsize.size, PREFIX_REX_B, ref idata, mode);
 
     return 0x0;
 }
 
-public static UInt32 tq_rSP(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_rSP(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     create_genreg_operand(ref instr, op_index, REG_CODE_SP, opsize.size, PREFIX_REX_B, ref idata, mode);
 
     return 0x0;
 }
 
-public static UInt32 tq_rBP(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_rBP(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     create_genreg_operand(ref instr, op_index, REG_CODE_BP, opsize.size, PREFIX_REX_B, ref idata, mode);
 
     return 0x0;
 }
 
-public static UInt32 tq_rSI(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_rSI(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     create_genreg_operand(ref instr, op_index, REG_CODE_SI, opsize.size, PREFIX_REX_B,ref idata, mode);
 
     return 0x0;
 }
 
-public static UInt32 tq_rDI(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_rDI(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     create_genreg_operand(ref instr, op_index, REG_CODE_DI, opsize.size, PREFIX_REX_B, ref idata, mode);
 
     return 0x0;
 }
 
-public static UInt32 tq_fES(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_fES(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     UInt32 res;
 
@@ -3058,113 +2899,113 @@ public static UInt32 tq_fES(long origin_offset, long offset, ref INSTRUCTION ins
     return res;
 }
 
-public static UInt32 tq_fEST(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_fEST(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     create_reg_operand(ref instr, op_index, REG_TYPE.REG_TYPE_FPU, (byte)(instr.modrm & 0x7), opsize.size);
 
     return 0;
 }
 
-public static UInt32 tq_fST0(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_fST0(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     create_reg_operand(ref instr, op_index, REG_TYPE.REG_TYPE_FPU, FREG_CODE_ST0, opsize.size);
 
     return 0;
 }
 
-public static UInt32 tq_CS(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_CS(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     create_reg_operand(ref instr, op_index, REG_TYPE.REG_TYPE_SEG, SREG_CODE_CS, opsize.size);
 
     return 0;
 }
 
-public static UInt32 tq_DS(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_DS(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     create_reg_operand(ref instr, op_index, REG_TYPE.REG_TYPE_SEG, SREG_CODE_DS, opsize.size);
 
     return 0;
 }
 
-public static UInt32 tq_ES(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_ES(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     create_reg_operand(ref instr, op_index, REG_TYPE.REG_TYPE_SEG, SREG_CODE_ES, opsize.size);
 
     return 0;
 }
 
-public static UInt32 tq_SS(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_SS(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     create_reg_operand(ref instr, op_index, REG_TYPE.REG_TYPE_SEG, SREG_CODE_SS, opsize.size);
 
     return 0;
 }
 
-public static UInt32 tq_FS(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_FS(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     create_reg_operand(ref instr, op_index, REG_TYPE.REG_TYPE_SEG, SREG_CODE_FS, opsize.size);
 
     return 0;
 }
 
-public static UInt32 tq_GS(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 tq_GS(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     create_reg_operand(ref instr, op_index, REG_TYPE.REG_TYPE_SEG, SREG_CODE_GS, opsize.size);
 
     return 0;
 }
 
-public static UInt32 pref_CS_set(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 pref_CS_set(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     return (UInt32)(PREF_SEG_INDEX << 8 | PREF_CS_ID);
 }
 
-public static UInt32 pref_DS_set(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 pref_DS_set(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     return (UInt32)(PREF_SEG_INDEX << 8 | PREF_DS_ID);
 }
 
-public static UInt32 pref_ES_set(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 pref_ES_set(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     return (UInt32)(PREF_SEG_INDEX  << 8 | PREF_ES_ID);
 }
 
-public static UInt32 pref_SS_set(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 pref_SS_set(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     return (UInt32)(PREF_SEG_INDEX  << 8 | PREF_SS_ID);
 }
 
-public static UInt32 pref_FS_set(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 pref_FS_set(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     return (UInt32)(PREF_SEG_INDEX << 8 | PREF_FS_ID);
 }
     
-public static UInt32 pref_GS_set(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 pref_GS_set(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     return (UInt32)(PREF_SEG_INDEX << 8 | PREF_GS_ID);
 }
 
-public static UInt32 pref_OPSIZE_set(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 pref_OPSIZE_set(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     return (UInt32)(PREF_OPSIZE_INDEX << 8 | PREF_OPSIZE_ID);
 }
 
-public static UInt32 pref_ADDRSIZE_set(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 pref_ADDRSIZE_set(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     return (UInt32)(PREF_ADDRSIZE_INDEX << 8 | PREF_ADDRSIZE_ID);
 }
 
-public static UInt32 pref_REPZ_set(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 pref_REPZ_set(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     return (UInt32)(PREF_REP_INDEX << 8 | PREF_REPZ_ID);
 }
 
-public static UInt32 pref_REPNZ_set(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 pref_REPNZ_set(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     return (UInt32)(PREF_REP_INDEX << 8 | PREF_REPNZ_ID);
 }
 
-public static UInt32 pref_LOCK_set(long origin_offset, long offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
+public static UInt32 pref_LOCK_set(ulong origin_offset, ulong offset, ref INSTRUCTION instr, int op_index, OPERAND_SIZE opsize, INTERNAL_DATA idata, DISMODE mode)
 {
     return (UInt32)(PREF_LOCK_INDEX << 8 | PREF_LOCK_ID);
 }
@@ -3325,10 +3166,6 @@ static byte ADDR_SIZE_16 = 0x2;
 static byte ADDR_SIZE_32 = 0x4;
 static byte ADDR_SIZE_64 = 0x8;
 
-//DISASM_INOUT_PARAMS.options' bits:
-public static byte DISASM_OPTION_APPLY_REL = 0x1;
-public static byte DISASM_OPTION_OPTIMIZE_DISP = 0x2;
-
 
 static char MM_INDICATOR = '*';
 
@@ -3346,12 +3183,6 @@ public static byte[] pref_opcodes =
     0xF3, //REPNZ
     0xF0  //LOCK
 };
-
-public static byte ARCH_COMMON = 0x1;
-public static byte ARCH_INTEL = 0x2;
-public static byte ARCH_AMD = 0x4;
-public static byte ARCH_ALL = (byte)((int)ARCH_COMMON | (int)ARCH_INTEL | (int)ARCH_AMD);
-
 
 //Warning: may contain a lot of tables!
 
@@ -6277,7 +6108,7 @@ static void add_sf_prefix(byte[] prefixes, int index, ref INSTRUCTION instr, ref
 // was already met and if so, replaces old prefix with a new one.
 // Old prefix is added to superfluous prefixes array.
  // The function also checks if a prefix is opcode-extension.
-static UInt32 parse_prefixes(long offset, ref INSTRUCTION instr, INTERNAL_DATA idata, byte ext_table_index, byte ext_pref_index, ref DISASM_INOUT_PARAMS param)
+static UInt32 parse_prefixes(ulong offset, ref INSTRUCTION instr, INTERNAL_DATA idata, byte ext_table_index, byte ext_pref_index, ref DISASM_INOUT_PARAMS param)
 {
     byte pref_code;
     byte rex_found;
@@ -6356,7 +6187,7 @@ static UInt32 parse_prefixes(long offset, ref INSTRUCTION instr, INTERNAL_DATA i
 
 //Reads input stream and iterates through tables looking up appropriate struct OPCODE_DESCRIPTOR.
 // Byte value at [offset] is used as index, the function checks tables limits and max instruction's length.
-static UInt32 lookup_opcode(long offset, byte table, ref OPCODE_DESCRIPTOR opcode_descr, INTERNAL_DATA idata)
+static UInt32 lookup_opcode(ulong offset, byte table, ref OPCODE_DESCRIPTOR opcode_descr, INTERNAL_DATA idata)
 {
     byte max;
     byte opcode;
@@ -6432,7 +6263,7 @@ static void check_ext_sf_prefixes(byte[] prefixes, ref INSTRUCTION instr, ref DI
 //                No: Error.
 //                Yes: Success.
 //          Yes: Success.
-static UInt32 parse_opcode(long offset, ref OPCODE_DESCRIPTOR opcode_descr, ref INSTRUCTION instr, INTERNAL_DATA idata, ref DISASM_INOUT_PARAMS param)
+static UInt32 parse_opcode(ulong offset, ref OPCODE_DESCRIPTOR opcode_descr, ref INSTRUCTION instr, INTERNAL_DATA idata, ref DISASM_INOUT_PARAMS param)
 {
     byte ext_table_index  = 0xFF;
     byte ext_prefix_index = 0;
@@ -6497,7 +6328,7 @@ static void apply_disasm_options(ref INSTRUCTION instr, UInt32 len, DISASM_INOUT
     }
 }
 
-static UInt32 parse_operand(long origin_offset, long offset, INTERNAL_OPERAND iop, INSTRUCTION instr, int op_index, INTERNAL_DATA idata, DISMODE mode)
+static UInt32 parse_operand(ulong origin_offset, ulong offset, INTERNAL_OPERAND iop, INSTRUCTION instr, int op_index, INTERNAL_DATA idata, DISMODE mode)
 {
     UInt32 res = 0;
     OPERAND_SIZE opsize = new OPERAND_SIZE();
@@ -6550,7 +6381,7 @@ static void get_address_size(ref INSTRUCTION instr, byte[] prefixes, DISMODE mod
 }
 
 //Copies MODRM and SIB bytes to struct INSTRUCTION.
-static byte parse_modrm_sib(long offset, ref INSTRUCTION instr, OPCODE_DESCRIPTOR opcode)
+static byte parse_modrm_sib(ulong offset, ref INSTRUCTION instr, OPCODE_DESCRIPTOR opcode)
 {
     byte len = 0;
 
@@ -6710,17 +6541,17 @@ static void convert_prefixes(INSTRUCTION instr, byte[] prefixes)
 
 
         public static ILoader assembly;
-        public mediana(ILoader _assembly)
+        public void Init(ILoader _assembly)
         {
             assembly = _assembly;
         }
-        public UInt32 disassemble(long offset, ref INSTRUCTION instr, ref DISASM_INOUT_PARAMS param)
+        public UInt32 disassemble(ulong offset, ref IInstruction instr1, ref DISASM_INOUT_PARAMS param)
         {
             UInt32 len;
             UInt32 res;
             OPCODE_DESCRIPTOR opcode = new OPCODE_DESCRIPTOR();
             INTERNAL_DATA idata = new INTERNAL_DATA(0xFF);
-
+            INSTRUCTION instr = instr1 as INSTRUCTION;
             //Setup everything.
             //memset(instr, 0x0, sizeof(*instr));
             //memset(&idata, 0x0, sizeof(idata));

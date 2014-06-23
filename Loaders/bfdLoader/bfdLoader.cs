@@ -22,38 +22,38 @@ namespace bfdLoader
         public static extern int bfd_sec_count(IntPtr bfd);
         
 
-        public byte[] ReadBytes(long offset, int length)     
+        public byte[] ReadBytes(ulong offset, int length)     
         {
             byte[] tmp = new byte[10];
             tmp[0] = 0xC3;//Костыль
             return tmp;
         }
-        public SubSystem SubSystem()
-        { return GNIDA.Loaders.SubSystem.WindowsConsoleUI; }
-        public GNIDA.Loaders.ExecutableFlags ExecutableFlags()
-        { return GNIDA.Loaders.ExecutableFlags.ExecutableFile; }
+        public ulong SubSystem()
+        { return (ulong)GNIDA.Loaders.SubSystem.WindowsConsoleUI; }
+        public ulong ExecutableFlags()
+        { return (ulong)GNIDA.Loaders.ExecutableFlags.ExecutableFile; }
         public ulong ImageBase()
         { return 0; }
         public ulong Entrypoint()
         { 
             return bfd_entrypoint(tmp);
         }
-        public List<Section> Sections()
+        public List<Section1> Sections()
         {
             //bfd_count_sections
   //struct bfd_section *sections;
 
   /* The number of sections.  */
   //unsigned int section_count;
-            return new List<Section>();
+            return new List<Section1>();
         }
-        public List<ExportMethod> LibraryExports()
+        public List<ExportMethod1> LibraryExports()
         {
-            return new List<ExportMethod>();
+            return new List<ExportMethod1>();
         }
-        public List<LibraryReference> LibraryImports()
+        public List<LibraryReference1> LibraryImports()
         {
-            return new List<LibraryReference>();
+            return new List<LibraryReference1>();
         }
         public bool CanLoad(string FName, out string descr)
         {

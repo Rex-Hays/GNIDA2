@@ -53,4 +53,3 @@ C:\Users\Damir\Documents\GNIDA27\WIDE\FCTB\FastColoredTextBox\obj\Debug\FastColo
 C:\Users\Damir\Documents\GNIDA27\WIDE\FCTB\FastColoredTextBox\obj\Debug\FastColoredTextBox.csproj.GenerateResource.Cache
 C:\Users\Damir\Documents\GNIDA27\WIDE\FCTB\FastColoredTextBox\obj\Debug\FastColoredTextBox.dll
 C:\Users\Damir\Documents\GNIDA27\WIDE\FCTB\FastColoredTextBox\obj\Debug\FastColoredTextBox.pdb
-C:\Users\Damir\Documents\GNIDA27\WIDE\FCTB\FastColoredTextBox\obj\Debug\FastColoredTextBox.csprojResolveAssemblyReference.cache

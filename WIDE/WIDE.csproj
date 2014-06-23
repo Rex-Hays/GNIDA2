@@ -37,9 +37,17 @@
     <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Be.Windows.Forms.HexBox, Version=1.6.0.40211, Culture=neutral, PublicKeyToken=e0e5adf0ebc99863, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Release\Be.Windows.Forms.HexBox.dll</HintPath>
+    </Reference>
     <Reference Include="common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Release\common.dll</HintPath>
+    </Reference>
+    <Reference Include="DMediana, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Release\Dasmer\DMediana.dll</HintPath>
     </Reference>
     <Reference Include="GNIDA, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -55,9 +63,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Be.Windows.Forms.HexBox">
-      <HintPath>Be.Windows.Forms.HexBox\bin\Debug\Be.Windows.Forms.HexBox.dll</HintPath>
-    </Reference>
     <Reference Include="FastColoredTextBox">
       <HintPath>FCTB\Binary\FastColoredTextBox.dll</HintPath>
     </Reference>

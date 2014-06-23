@@ -1211,7 +1211,7 @@ static string dump_addr(INSTRUCTION instr, OPERAND op)
     return res;
 }
 
-public ulong Addr { get; set; }
+//public ulong Addr { get; set; }
     //public byte[] bytes { get; set; }
     public UInt64 groups;
     public UInt16 id;
@@ -1219,7 +1219,7 @@ public ulong Addr { get; set; }
     public UInt16 prefixes;
     public byte opcode_offset;
 
-    //public OPERAND[] ops;//OPERAND[3];
+    public OPERAND[] ops;//OPERAND[3];
     //public DISPLACEMENT disp { get; set; }
 
     public byte addrsize;
@@ -1234,7 +1234,7 @@ public ulong Addr { get; set; }
     public byte cleared_flags;
     public byte undefined_flags;
 
-    public string mnemonic;// { get; set; }//[MAX_MNEMONIC_LEN];
+    public string mnemonic;//[MAX_MNEMONIC_LEN];
     public INSTRUCTION()
     {
         ops = new OPERAND[3];//OPERAND[3];
@@ -6453,9 +6453,7 @@ static void convert_prefixes(INSTRUCTION instr, byte[] prefixes)
             UInt32 res;
             OPCODE_DESCRIPTOR opcode = new OPCODE_DESCRIPTOR();
             INTERNAL_DATA idata = new INTERNAL_DATA(0xFF);
-            //INSTRUCTION instr =  new INSTRUCTION();
-            INSTRUCTION instr = new INSTRUCTION();
-
+            INSTRUCTION instr = instr1 as INSTRUCTION;
             //Setup everything.
             //memset(instr, 0x0, sizeof(*instr));
             //memset(&idata, 0x0, sizeof(idata));
@@ -6594,7 +6592,6 @@ static void convert_prefixes(INSTRUCTION instr, byte[] prefixes)
     instr.bytes = assembly.ReadBytes(offset, (int)len);
 
             instr.Addr = (ulong)offset;
-            instr1 = instr;
             return len;
         }
     }

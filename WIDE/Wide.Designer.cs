@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using Be.Windows.Forms;
 
 namespace WIDE
 {
@@ -44,6 +45,7 @@ namespace WIDE
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pluginsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -107,6 +109,7 @@ namespace WIDE
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
+            this.pluginsToolStripMenuItem1,
             this.viewToolStripMenuItem,
             this.optionsToolStripMenuItem,
             this.helpToolStripMenuItem});
@@ -187,6 +190,12 @@ namespace WIDE
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(47, 24);
             this.editToolStripMenuItem.Text = "Edit";
+            // 
+            // pluginsToolStripMenuItem1
+            // 
+            this.pluginsToolStripMenuItem1.Name = "pluginsToolStripMenuItem1";
+            this.pluginsToolStripMenuItem1.Size = new System.Drawing.Size(68, 24);
+            this.pluginsToolStripMenuItem1.Text = "Plugins";
             // 
             // viewToolStripMenuItem
             // 
@@ -471,10 +480,8 @@ namespace WIDE
             this.hexBox1.ColumnInfoVisible = true;
             this.hexBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hexBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.hexBox1.GroupSize = 8;
             this.hexBox1.LineInfoVisible = true;
             this.hexBox1.Location = new System.Drawing.Point(4, 4);
-            this.hexBox1.Margin = new System.Windows.Forms.Padding(4);
             this.hexBox1.Name = "hexBox1";
             this.hexBox1.ReadOnly = true;
             this.hexBox1.ShadowSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(60)))), ((int)(((byte)(188)))), ((int)(((byte)(255)))));
@@ -626,7 +633,7 @@ namespace WIDE
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "GNIDA v12.0.0.0";
+            this.Text = "GNIDA v1.0.0.2";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -703,6 +710,7 @@ namespace WIDE
         private System.Windows.Forms.ListView listView4;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ToolStripMenuItem pluginsToolStripMenuItem1;
     }
 }
 

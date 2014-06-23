@@ -15,7 +15,7 @@ using GNIDA;
 using GNIDA.Loaders;
 using plugins;
 using System.Reflection;
-
+using medi;
 
 namespace WIDE
 {
@@ -38,7 +38,12 @@ namespace WIDE
             string iMyInterfaceName = typeof(ILoader).ToString();
             Type[] defaultConstructorParametersTypes = new Type[0];
             object[] defaultConstructorParameters = new object[0];
-            Assembly assembly1 = Assembly.LoadFrom(Path);
+            Assembly assembly1;
+            try
+            {
+                assembly1 = Assembly.LoadFrom(Path);
+            }
+            catch(System.BadImageFormatException){return;}
             foreach (Type type in assembly1.GetTypes())
             {
                 if (type.GetInterface(iMyInterfaceName) != null)
@@ -70,18 +75,22 @@ namespace WIDE
                 MyGNIDA.OnVarEvent += AddVarEvent1;
                 MyGNIDA.OnFuncChanged += OnFuncChanged1;
 
+
                 Load ldfrm = new Load();
                 ListView lv = ldfrm.ldrs();
                 lv.Clear();
-                Loaders(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\Loaders\\LoaderWin32.dll", lv);
-                Loaders(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\Loaders\\bfdLoader.dll", lv);
+                foreach (string findPlg in System.IO.Directory.GetFiles(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\Loaders\\", "*.dll", System.IO.SearchOption.TopDirectoryOnly))
+                    Loaders(findPlg, lv);
+                //Loaders(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\Loaders\\bfdLoader.dll", lv);
 
                 if (ldfrm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     MyGNIDA.assembly = lv.SelectedItems[0].Tag as ILoader;
                     ldfrm.Dispose();
 
-                    MyGNIDA.MeDisasm = new medi.mediana(MyGNIDA.assembly);
+                    MyGNIDA.MeDisasm = new medi.mediana();
+                    MyGNIDA.MeDisasm.Init(MyGNIDA.assembly);
+
                     MyGNIDA.LoadFile(openFileDialog1.FileName);
 
                     dynamicFileByteProvider = new DynamicFileByteProvider(openFileDialog1.FileName, true);
@@ -97,14 +106,14 @@ namespace WIDE
                                       "\n//+---------------------------------------------------------------------+\n";
                     //if( & DynamicLoadedLibraryFile)
 
-                    if ((MyGNIDA.assembly.ExecutableFlags() & ExecutableFlags.DynamicLoadedLibraryFile) != 0)
+                    if ((MyGNIDA.assembly.ExecutableFlags() & (ulong)ExecutableFlags.DynamicLoadedLibraryFile) != 0)
                     { fastColoredTextBox1.Text += "#pragma option DLL\n"; }
                     else
                     {
                         switch (MyGNIDA.assembly.SubSystem())
                         {
-                            case SubSystem.WindowsGraphicalUI: fastColoredTextBox1.Text += "#pragma option W32\n"; break;
-                            case SubSystem.WindowsConsoleUI: fastColoredTextBox1.Text += "#pragma option W32C\n"; break;
+                            case (ulong)SubSystem.WindowsGraphicalUI: fastColoredTextBox1.Text += "#pragma option W32\n"; break;
+                            case (ulong)SubSystem.WindowsConsoleUI: fastColoredTextBox1.Text += "#pragma option W32C\n"; break;
                             default: fastColoredTextBox1.Text += "#pragma option W32;//TO-DO!!!\n"; break;
                         }
                     }
@@ -129,7 +138,7 @@ namespace WIDE
             VarLine++;
         }
 
-        public void AddVarEvent1(object sender, medi.TVar Var)
+        public void AddVarEvent1(object sender, TVar Var)
         {
             if (this.fastColoredTextBox1.InvokeRequired)
             {
@@ -145,7 +154,7 @@ namespace WIDE
                 AppendText(Var.FName);
             }
         }
-        public void AddFuncEvent1(object sender, medi.TFunc func)
+        public void AddFuncEvent1(object sender, TFunc func)
         {
             ListViewItem itm1 = new ListViewItem();
             itm1.Text = func.FName;
@@ -157,10 +166,10 @@ namespace WIDE
             Log.Items.Add(LogStr);
             //Log.SelectedIndex = Log.Items.Count-1;
         }
-        public void OnFuncChanged1(object sender, medi.TFunc Func)
+        public void OnFuncChanged1(object sender, TFunc Func)
         {
             foreach(ListViewItem itm in listView3.Items)
-                if ((itm.Tag as medi.TFunc).Equals(Func))
+                if ((itm.Tag as TFunc).Equals(Func))
                 {
                     fastColoredTextBox1.BeginUpdate();
                     fastColoredTextBox1.Text = fastColoredTextBox1.Text.Replace(itm.Text, Func.FName);
@@ -244,7 +253,7 @@ namespace WIDE
         private void Funclist_DoubleClick(object sender, EventArgs e)
         {
             string sss = "";
-            medi.TFunc Func = (medi.TFunc)listView3.SelectedItems[0].Tag;
+            TFunc Func = (TFunc)listView3.SelectedItems[0].Tag;
             Console.WriteLine(Func.Addr.ToString("X8"));
         }
 
@@ -263,7 +272,7 @@ namespace WIDE
             e.ChangedRange.ClearStyle(blueStyle);
             e.ChangedRange.SetStyle(blueStyle, @"Loc_[\dA-Fa-f]+");
             if(MyGNIDA!=null)
-                foreach (KeyValuePair<long, medi.TFunc> fnc in MyGNIDA.FullProcList)
+                foreach (KeyValuePair<ulong, TFunc> fnc in MyGNIDA.FullProcList)
             {
                 e.ChangedRange.SetStyle(funcStyle, ' '+fnc.Value.FName);
             }
@@ -274,16 +283,16 @@ namespace WIDE
             if (listView3.SelectedItems.Count == 1)
             {
                 Form2 Fm = new Form2();
-                Fm.NName = (listView3.SelectedItems[0].Tag as medi.TFunc).FName;
+                Fm.NName = (listView3.SelectedItems[0].Tag as TFunc).FName;
                 if (Fm.ShowDialog() == DialogResult.OK)
-                    MyGNIDA.RenameFunction((listView3.SelectedItems[0].Tag as medi.TFunc), Fm.NName);
+                    MyGNIDA.RenameFunction((listView3.SelectedItems[0].Tag as TFunc), Fm.NName);
             };
         }
 
         private void renameToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
-            medi.TFunc f = GetSelectedFunction();
+            TFunc f = GetSelectedFunction();
             if (f != null) 
             {
                 Form2 Fm = new Form2();
@@ -295,7 +304,7 @@ namespace WIDE
 
         private void fastColoredTextBox1_DoubleClick(object sender, EventArgs e)
         {
-            medi.TFunc f = GetSelectedFunction();
+            TFunc f = GetSelectedFunction();
             if (f!= null)
             {
                 //foreach(Line L in fastColoredTextBox1.Lines)
@@ -305,18 +314,18 @@ namespace WIDE
 
         private void fastColoredTextBox1_Click(object sender, EventArgs e)
         {
-            medi.TFunc f = GetSelectedFunction();
+            TFunc f = GetSelectedFunction();
             if (f != null) renameToolStripMenuItem1.Text = f.FName;
             renameToolStripMenuItem1.Enabled = f!= null;
         }
 
-        private medi.TFunc GetSelectedFunction()
+        private TFunc GetSelectedFunction()
         {
             Place place = fastColoredTextBox1.Selection.Start;
             var r = new Range(fastColoredTextBox1, place, place);
             string hoveredWord = r.GetFragment("[_a-zA-Z0-9]").Text;
             ListViewItem itm = listView3.FindItemWithText(hoveredWord);
-            if (itm != null) return (itm.Tag as medi.TFunc);
+            if (itm != null) return (itm.Tag as TFunc);
             return null;
         }
         private void sendToFLIRTToolStripMenuItem_Click(object sender, EventArgs e)

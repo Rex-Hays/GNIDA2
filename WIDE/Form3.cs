@@ -21,7 +21,7 @@ namespace WIDE
             InitializeComponent();
         }
         public Flirt flrt;
-        public medi.TFunc Func;
+        public TFunc Func;
         private void Form3_Load(object sender, EventArgs e)
         {
             XmlTextReader reader = new XmlTextReader(flrt.DName);

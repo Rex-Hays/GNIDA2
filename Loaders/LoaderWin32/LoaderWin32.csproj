@@ -65,7 +65,10 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Loaders\LoaderWin32\bin\Debug\" />
+    <Folder Include="Loaders\LoaderWin32\obj\Debug\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="LoaderWin32.csproj">
       <Link>Loaders\LoaderWin32\LoaderWin32.csproj</Link>
