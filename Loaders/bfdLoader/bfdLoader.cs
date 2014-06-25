@@ -11,6 +11,7 @@ namespace bfdLoader
 {
     public class bfdLoader : ILoader 
     {
+        public string FName { get; set; }
         IntPtr tmp;
         [DllImport("libbfd.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr bfd_open(String filename, String target);

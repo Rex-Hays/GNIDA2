@@ -11,6 +11,7 @@ namespace LoaderWin32
 {
 	public class LoaderWin32 : ILoader 
     {
+        public string FName { get; set; }
         LWin32 ldr;
         public ulong SubSystem()
         {
@@ -78,6 +79,7 @@ namespace LoaderWin32
 		}
         public IntPtr LoadFile(string FName)
         {
+            this.FName = FName;
             ldr = LWin32.LoadFile(FName);
             return IntPtr.Zero;
         }

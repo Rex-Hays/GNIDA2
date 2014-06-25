@@ -77,6 +77,7 @@
             // 
             // listView1
             // 
+            this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(12, 35);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
@@ -88,18 +89,21 @@
             // 
             // listView2
             // 
+            this.listView2.HideSelection = false;
             this.listView2.Location = new System.Drawing.Point(12, 169);
             this.listView2.MultiSelect = false;
             this.listView2.Name = "listView2";
             this.listView2.Size = new System.Drawing.Size(264, 97);
             this.listView2.TabIndex = 6;
             this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.View = System.Windows.Forms.View.List;
+            this.listView2.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listView1_ItemSelectionChanged);
             // 
             // Load
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 328);
+            this.ClientSize = new System.Drawing.Size(287, 328);
             this.Controls.Add(this.listView2);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.button2);

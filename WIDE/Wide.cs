@@ -43,7 +43,7 @@ namespace WIDE
             {
                 assembly1 = Assembly.LoadFrom(Path);
             }
-            catch(System.BadImageFormatException){return;}
+            catch (System.BadImageFormatException) { return; }
             foreach (Type type in assembly1.GetTypes())
             {
                 if (type.GetInterface(iMyInterfaceName) != null)
@@ -58,6 +58,30 @@ namespace WIDE
                         itm.Tag = instance as ILoader;
                         lv.Items.Add(itm);
                     }
+                }
+            }
+        }
+        private void Dasmers(string Path, ListView lv)
+        {
+            string iMyInterfaceName = typeof(IDasmer).ToString();
+            Type[] defaultConstructorParametersTypes = new Type[0];
+            object[] defaultConstructorParameters = new object[0];
+            Assembly assembly1;
+            try
+            {
+                assembly1 = Assembly.LoadFrom(Path);
+            }
+            catch (System.BadImageFormatException) { return; }
+            foreach (Type type in assembly1.GetTypes())
+            {
+                if (type.GetInterface(iMyInterfaceName) != null)
+                //if (type.IsClass & !type.IsAbstract)
+                {
+                    ConstructorInfo defaultConstructor = type.GetConstructor(defaultConstructorParametersTypes);
+                    object instance = defaultConstructor.Invoke(defaultConstructorParameters);
+                    ListViewItem itm = new ListViewItem((instance as IDasmer).Name());
+                    itm.Tag = instance as IDasmer;
+                    lv.Items.Add(itm);
                 }
             }
         }
@@ -78,18 +102,21 @@ namespace WIDE
 
                 Load ldfrm = new Load();
                 ListView lv = ldfrm.ldrs();
+                ListView da = ldfrm.dsmrs();
                 lv.Clear();
+                da.Clear();
                 foreach (string findPlg in System.IO.Directory.GetFiles(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\Loaders\\", "*.dll", System.IO.SearchOption.TopDirectoryOnly))
                     Loaders(findPlg, lv);
-                //Loaders(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\Loaders\\bfdLoader.dll", lv);
+                foreach (string findPlg in System.IO.Directory.GetFiles(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\Dasmers\\", "*.dll", System.IO.SearchOption.TopDirectoryOnly))
+                    Dasmers(findPlg, da);
 
                 if (ldfrm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     MyGNIDA.assembly = lv.SelectedItems[0].Tag as ILoader;
+                    MyGNIDA.MeDisasm = da.SelectedItems[0].Tag as IDasmer;
+                    MyGNIDA.MeDisasm.Init(MyGNIDA.assembly);
                     ldfrm.Dispose();
 
-                    MyGNIDA.MeDisasm = new medi.mediana();
-                    MyGNIDA.MeDisasm.Init(MyGNIDA.assembly);
 
                     MyGNIDA.LoadFile(openFileDialog1.FileName);
 

@@ -47,7 +47,7 @@
     </Reference>
     <Reference Include="DMediana, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Release\Dasmer\DMediana.dll</HintPath>
+      <HintPath>..\Release\Dasmers\DMediana.dll</HintPath>
     </Reference>
     <Reference Include="GNIDA, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

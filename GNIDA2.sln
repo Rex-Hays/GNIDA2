@@ -51,6 +51,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TUP.AsmResolver", "Loaders\TUP\TUP.AsmResolver\TUP.AsmResolver.csproj", "{B1C33316-7181-4C94-A6D4-7C66CA02808D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TUPLoader", "Loaders\TUPLoader\TUPLoader.csproj", "{E4264A50-4B9F-4AF5-A7E1-DF67C1858BAF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B1C33316-7181-4C94-A6D4-7C66CA02808D} = {B1C33316-7181-4C94-A6D4-7C66CA02808D}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DasmerTUP", "Dasmer\DasmerTUP\DasmerTUP.csproj", "{E0480ECA-8B20-459A-B129-3B5A28424308}"
 EndProject

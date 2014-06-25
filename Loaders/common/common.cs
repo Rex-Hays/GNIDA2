@@ -296,6 +296,7 @@ namespace plugins
     }
     public interface ILoader
     {
+        string FName { get; set; }
         ulong SubSystem();
         ulong ExecutableFlags();
         ulong ImageBase();
@@ -352,6 +353,7 @@ namespace plugins
     public interface IDasmer
    {
        void Init(ILoader ldr);
+       string Name();
         UInt32 disassemble(ulong offset, out IInstruction instr, ref DISASM_INOUT_PARAMS param);
     }
 }

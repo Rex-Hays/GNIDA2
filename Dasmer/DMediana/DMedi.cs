@@ -11,7 +11,8 @@ namespace medi
 {
     public class mediana : IDasmer
     {
-
+        public string Name()
+        { return "mediana"; }
         /*******************
         * Instructions' IDs.
         ********************

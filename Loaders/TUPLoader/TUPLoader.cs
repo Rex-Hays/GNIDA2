@@ -12,6 +12,7 @@ namespace TUPLoader
 {
     public class TUPLoader : ILoader
     {
+        public string FName { get; set; }
         Win32Assembly asmbly;
         public static Section1 s2s(Section sc)
         {
@@ -76,6 +77,7 @@ namespace TUPLoader
         }
         public IntPtr LoadFile(string FName)
         {
+            this.FName = FName;
             asmbly = Win32Assembly.LoadFile(FName);
             return IntPtr.Zero;
         }
